@@ -3,8 +3,8 @@ import React from "react";
 import Footer from "./Footer"
 import Header from "./Header"
 
-const Home = () => {
-    const pageName = "Domov";
+const Information = () => {
+    const pageName = "Informácie";
     return (
         <>
             <Header pageName={ pageName }/>
@@ -14,4 +14,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Information;
