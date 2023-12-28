@@ -2,23 +2,27 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
+import bcrypt from "bcryptjs";
+
 import Footer from "./Footer"
 import Header from "./Header"
 
+const salt = bcrypt.genSaltSync(10);
+
 const Register = () => {
+
     const pageName = "Registrácia";
     const databaseAddress = "http://localhost:3001/";
     const endPoint = "/create";
 
-    const [name, setName] = useState(null);
-    const [surname, setSurname] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [passwordRepeat, setPasswordRepeat] = useState(null);
-    const [userExists, setUserExists] = useState(false);
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordRepeat, setPasswordRepeat] = useState("");
 
     const checkName = () => {
-        if ( name == null ) {
+        if ( name === "" ) {
             return false;
         }
 
@@ -26,7 +30,7 @@ const Register = () => {
     };
 
     const checkSurname = () => {
-        if ( surname == null ) {
+        if ( surname === "" ) {
             return false;
         }
 
@@ -39,25 +43,22 @@ const Register = () => {
     };
 
     const checkPaswords = () => {
-        if (password != null && passwordRepeat != null && password === passwordRepeat) {
+        if (password !== "" && passwordRepeat !== "" && password === passwordRepeat) {
             return true;
         }
         return false;
     };
 
     const checkIfUserExists = async () => {
-        try {
+        return true;
+        {/*try {
             const response = await fetch(`${databaseAddress}checkUser?email=${email}`);
-
             const result = await response.json();
-
-            setUserExists(result.exists);
-
-            return result.exists;
+            return !result.exists;
         } catch (error) {
             console.error("Error checking user existence:", error);
             return false;
-        }
+        }*/}
     };
 
     const addUser = () => {
@@ -72,11 +73,13 @@ const Register = () => {
         } else if ( !checkPaswords() ) {
             alert("Zadané heslá sa nezhodujú");
         } else {
+            const hashedPassword = bcrypt.hashSync( password , salt );
+            alert(hashedPassword);
             Axios.post(databaseAddress + endPoint, {
                 name: name,
                 surname: surname,
                 email: email,
-                password: password
+                password: hashedPassword
             }).catch(err => {
                 console.error(err);
             });
