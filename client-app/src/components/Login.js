@@ -7,20 +7,69 @@ import bcrypt from "bcryptjs";
 import Footer from "./Footer"
 import Header from "./Header"
 
+const salt = bcrypt.genSaltSync(10);
+
 const Login = () => {
     const pageName = "Prihlásenie";
     const databaseAddress = "http://localhost:3001/"; // Change
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [comparedPassword, setComparedPassword] = useState("");
+    const [isChecked, setIsChecked] = useState(true);
+
+    const checkEmail = () => {
+        const emailRegex = /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
+        return emailRegex.test(email);
+    };
+
+    const checkPassword = () => {
+        if (password !== "") {
+            return true;
+        }
+
+        return false;
+    };
+
+    const checkIfUserExists = async () => {
+        try {
+            const response = await fetch(`${databaseAddress}checkUser?email=${email}`);
+            const result = await response.json();
+            return !result.exists;
+        } catch (error) {
+            console.error("Error checking user existence:", error);
+            return false;
+        }
+    };
 
     const checkUser = () => {
-
+        if (!checkEmail()) {
+            alert("Zadajte email");
+        } else if (!checkPassword()) {
+            alert("Zadajte heslo");
+        } else if (!checkIfUserExists()) {
+            alert("Použivateľ z takými údajmi neexisuje");
+        } else {
+            bcrypt.compare( password, comparedPassword ,function (err ,isMatch) {
+                if (err) {
+                    throw err;
+                } else if (!isMatch) {
+                    alert("Heslo nie je správne");
+                } else {
+                    handleUserLogin();
+                }
+            });
+        }
     };
 
-    const saveUser = () => {
-        
-    };
+    const handleUserLogin = () => {
+        // If the checkbox is checkd
+        if (!isChecked) {
+
+        } else {
+
+        }
+   };
 
     return (
         <>
@@ -32,7 +81,7 @@ const Login = () => {
 
                 <div className="py-3 body-height">
                     <div className="form-signin">
-                        <from>
+                        <form>
                             <div className="form-floating">
                                 <input
                                     type="email"
@@ -59,13 +108,20 @@ const Login = () => {
                                 <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label> <br />
                             </div>
                             <div className="form-check text-start my-3">
-                                <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    value="remember-me"
+                                    id="flexCheckDefault"
+                                    checked={isChecked}
+                                    onChange={() => setIsChecked(!isChecked)}
+                                />
                                 <label className="form-check-label" htmlFor="flexCheckDefault">Zapamätať si ma</label>
                             </div>
                             <div className="d-flex gap-2">
                                 <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={checkUser}>Prihlásiť sa</button>
                             </div>
-                        </from>
+                        </form>
                     </div>
                 </div>
             </main>
