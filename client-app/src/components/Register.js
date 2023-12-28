@@ -7,40 +7,72 @@ import Header from "./Header"
 
 const Register = () => {
     const pageName = "Registrácia";
-    const databaseAddress = "http://localhost/create";
+    const databaseAddress = "http://localhost:3001/";
+    const endPoint = "/create";
 
-    const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordRepeat, setPasswordRepeat] = useState("");
+    const [name, setName] = useState(null);
+    const [surname, setSurname] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [passwordRepeat, setPasswordRepeat] = useState(null);
+    const [userExists, setUserExists] = useState(false);
+
+    const checkName = () => {
+        if ( name == null ) {
+            return false;
+        }
+
+        return true;
+    };
+
+    const checkSurname = () => {
+        if ( surname == null ) {
+            return false;
+        }
+
+        return true;
+    };
 
     const checkEmail = () => {
         const emailRegex = /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
-        return emailRegex.test( email );
+        return emailRegex.test(email);
     };
-    
+
     const checkPaswords = () => {
-        if ( password === passwordRepeat ) {
+        if (password != null && passwordRepeat != null && password === passwordRepeat) {
             return true;
-        } else {
+        }
+        return false;
+    };
+
+    const checkIfUserExists = async () => {
+        try {
+            const response = await fetch(`${databaseAddress}checkUser?email=${email}`);
+
+            const result = await response.json();
+
+            setUserExists(result.exists);
+
+            return result.exists;
+        } catch (error) {
+            console.error("Error checking user existence:", error);
             return false;
         }
     };
 
-    const checkIfUserExists = () => {
-        return false;
-    };
-
-    const addUsers = () => {
-        if ( checkIfUserExists ) {
-            alert( "Použivateľ z touto emailovou adresou už existuje" );
-        } else if ( checkEmail ) {
-            alert( "Zadaná emailová adresa nie je platná" );
-        } else if ( checkPaswords ) {
-            alert ( "Heslá sa musia zhodovať" );
+    const addUser = () => {
+        if( !checkName() ) {
+            alert("Zadajte meno");
+        } else if ( !checkSurname() ) {
+            alert("Zadajte priezvysko");
+        } else if ( !checkEmail() ) {
+            alert("Zadajte platý email");
+        } else if ( !checkIfUserExists() ) {
+            alert("Používateľ s takouto emailovou adresou už existuje");
+        } else if ( !checkPaswords() ) {
+            alert("Zadané heslá sa nezhodujú");
         } else {
-            Axios.post(databaseAddress, {
+            Axios.post(databaseAddress + endPoint, {
                 name: name,
                 surname: surname,
                 email: email,
@@ -71,23 +103,23 @@ const Register = () => {
                                     name="Meno"
                                     placeholder="Meno"
                                     autoComplete="given-name"
-                                    value={ name }
-                                    onChange={ ( event ) => setName( event.target.value ) }
+                                    value={name}
+                                    onChange={(event) => setName(event.target.value)}
                                 />
-                                <label htmlFor="floatingName">Meno</label> <br/>
+                                <label htmlFor="floatingName">Meno</label> <br />
                             </div>
                             <div className="form-floating">
-                                <input 
+                                <input
                                     type="text"
                                     className="input form-control"
                                     id="floatingSurname"
                                     name="Priezvysko"
                                     placeholder="Priezvysko"
                                     autoComplete="family-name"
-                                    value={ surname }
-                                    onChange={ ( event ) => setSurname( event.target.value ) }
+                                    value={surname}
+                                    onChange={(event) => setSurname(event.target.value)}
                                 />
-                                <label htmlFor="floatingSurname"> Priezvysko </label> <br/>
+                                <label htmlFor="floatingSurname"> Priezvysko </label> <br />
                             </div>
                             <div className="form-floating">
                                 <input
@@ -97,10 +129,10 @@ const Register = () => {
                                     name="Email"
                                     placeholder="Email"
                                     autoComplete="email"
-                                    value={ email }
-                                    onChange={ ( event ) => setEmail( event.target.value ) }
+                                    value={email}
+                                    onChange={(event) => setEmail(event.target.value)}
                                 />
-                                <label htmlFor="floatingEmail"> Emailová adresa </label> <br/> 
+                                <label htmlFor="floatingEmail"> Emailová adresa </label> <br />
                             </div>
                             <div className="form-floating">
                                 <input
@@ -110,10 +142,10 @@ const Register = () => {
                                     name="Heslo"
                                     placeholder="Heslo"
                                     autoComplete="new-password"
-                                    value={ password }
-                                    onChange={ ( event ) => setPassword( event.target.value ) }
+                                    value={password}
+                                    onChange={(event) => setPassword(event.target.value)}
                                 />
-                                <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label> <br/> 
+                                <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label> <br />
                             </div>
                             <div className="form-floating">
                                 <input
@@ -123,13 +155,13 @@ const Register = () => {
                                     name="Heslo"
                                     placeholder="Heslo"
                                     autoComplete="new-password"
-                                    value={ passwordRepeat }
-                                    onChange={ ( event ) => setPasswordRepeat( event.target.value ) }
+                                    value={passwordRepeat}
+                                    onChange={(event) => setPasswordRepeat(event.target.value)}
                                 />
-                                <label htmlFor="floatingPasswordRepeat"> Zopakujte Heslo </label> <br/> 
+                                <label htmlFor="floatingPasswordRepeat"> Zopakujte Heslo </label> <br />
                             </div>
                             <div className="d-flex gap-2">
-                                <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={addUsers}>Zaregistrovať sa</button>
+                                <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={addUser}>Zaregistrovať sa</button>
                             </div>
                         </form>
                     </div>
