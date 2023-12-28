@@ -1,3 +1,5 @@
+// Spravit este nezobrazovanie na konzole input callback(): blur HESLO
+
 import React, { useState } from "react";
 
 import Axios from "axios";
@@ -12,7 +14,7 @@ const salt = bcrypt.genSaltSync(10);
 const Register = () => {
 
     const pageName = "Registrácia";
-    const databaseAddress = "http://localhost:3001/";
+    const databaseAddress = "http://localhost:3001/"; //Change
     const endPoint = "/create";
 
     const [name, setName] = useState("");
@@ -51,6 +53,7 @@ const Register = () => {
 
     const checkIfUserExists = async () => {
         return true;
+        // eslint-disable-next-line
         {/*try {
             const response = await fetch(`${databaseAddress}checkUser?email=${email}`);
             const result = await response.json();
@@ -74,6 +77,8 @@ const Register = () => {
             alert("Zadané heslá sa nezhodujú");
         } else {
             const hashedPassword = bcrypt.hashSync( password , salt );
+            setPassword(hashedPassword); setPasswordRepeat( hashedPassword );
+
             alert(hashedPassword);
             Axios.post(databaseAddress + endPoint, {
                 name: name,
@@ -144,7 +149,6 @@ const Register = () => {
                                     id="floatingPasswordMain"
                                     name="Heslo"
                                     placeholder="Heslo"
-                                    autoComplete="new-password"
                                     value={password}
                                     onChange={(event) => setPassword(event.target.value)}
                                 />
@@ -157,7 +161,6 @@ const Register = () => {
                                     id="floatingPasswordRepeat"
                                     name="Heslo"
                                     placeholder="Heslo"
-                                    autoComplete="new-password"
                                     value={passwordRepeat}
                                     onChange={(event) => setPasswordRepeat(event.target.value)}
                                 />
