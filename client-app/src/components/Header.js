@@ -18,7 +18,7 @@ const Home = ( { pageName } ) => {
                         <li className="nav-item"> <NavLink to="/Information" className="nav-link"> Informácie </NavLink> </li>
                     </ul>
 
-                    <div class="col-md-3 text-end">
+                    <div className="col-md-3 text-end">
                         <button type="button" className="btn btn-outline-primary me-2"> <NavLink to="/Login" className="nav-link"> Prihlásenie </NavLink> </button>
                         <button type="button" className="btn btn-primary"> <NavLink to="/Register" className="nav-link"> Registrácia </NavLink> </button>
                     </div>

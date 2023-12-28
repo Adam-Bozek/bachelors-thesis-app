@@ -8,6 +8,10 @@ const Home = () => {
     return (
         <>
             <Header pageName={ pageName }/>
+
+            <main className="container">
+                <h1 className="header" >Vitajte!</h1>
+            </main>
                 
             <Footer />
         </>
