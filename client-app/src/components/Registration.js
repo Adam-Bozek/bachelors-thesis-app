@@ -4,12 +4,10 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
-import bcrypt from "bcryptjs";
+import { SHA256 } from 'crypto-js';
 
 import Footer from "./Footer"
 import Header from "./Header"
-
-const salt = bcrypt.genSaltSync(10);
 
 const Registration = () => {
 
@@ -22,7 +20,6 @@ const Registration = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
-    const [] = useState("");
 
     const checkName = () => {
         if (name === "") {
@@ -66,6 +63,10 @@ const Registration = () => {
         }
     };
 
+    const hashPassword = (password) => {
+        return SHA256(password).toString();
+    };
+
     const registerUser = () => {
         if (!checkName()) {
             alert("Zadajte meno");
@@ -78,15 +79,11 @@ const Registration = () => {
         } else if (!checkPaswords()) {
             alert("Zadané heslá sa nezhodujú");
         } else {
-            const hashedPassword = bcrypt.hashSync(password, salt);
-            setPassword(hashedPassword); setPasswordRepeat(hashedPassword);
-
-            alert(hashedPassword);
             Axios.post(databaseAddress + endPoint, {
                 name: name,
                 surname: surname,
                 email: email,
-                password: hashedPassword
+                password: hashPassword(password)
             }).catch(err => {
                 console.error(err);
             });
@@ -110,7 +107,7 @@ const Registration = () => {
                                     type="text"
                                     className="input form-control"
                                     id="floatingName"
-                                    name="Meno"
+                                    name="name"
                                     placeholder="Meno"
                                     autoComplete="given-name"
                                     value={name}
@@ -122,7 +119,7 @@ const Registration = () => {
                                     type="text"
                                     className="input form-control"
                                     id="floatingSurname"
-                                    name="Priezvysko"
+                                    name="surname"
                                     placeholder="Priezvysko"
                                     autoComplete="family-name"
                                     value={surname}
@@ -134,7 +131,7 @@ const Registration = () => {
                                     type="email"
                                     className="input form-control"
                                     id="floatingEmail"
-                                    name="Email"
+                                    name="email"
                                     placeholder="Email"
                                     autoComplete="email"
                                     value={email}
@@ -146,7 +143,7 @@ const Registration = () => {
                                     type="password"
                                     className="input form-control"
                                     id="floatingPasswordMain"
-                                    name="Heslo"
+                                    name="password"
                                     placeholder="Heslo"
                                     value={password}
                                     onChange={(event) => setPassword(event.target.value)} />
