@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
-import { SHA256 } from 'crypto-js';
+import { checkEmail , checkPassword , checkIfUserExists , hashPassword } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
@@ -15,16 +15,16 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [isChecked, setIsChecked] = useState(false);
 
-    const checkEmail = () => {
-        const emailRegex = /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
-        return emailRegex.test(email);
-    };
+    const logInUser = async () => {
+        if (!checkEmail(email)) {
 
-    const checkPasswords = () => {
-        if (password !== "") {
-            return true;
+        } else if (!checkPassword(password)) {
+
+        } else if (!checkIfUserExists(email, databaseAddress)) {
+
+        } else {
+
         }
-        return false;
     };
 
     return (

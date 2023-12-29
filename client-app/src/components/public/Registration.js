@@ -4,13 +4,12 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
-import { SHA256 } from 'crypto-js';
+import { checkEmail, checkIfUserExists, checkName, checkPasswords, checkSurname, hashPassword } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
 
 const Registration = () => {
-
     const pageName = "Registrácia";
     const databaseAddress = "http://localhost:3001/"; //Change
     const endPoint = "/create";
@@ -21,62 +20,16 @@ const Registration = () => {
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
 
-    const checkName = () => {
-        if (name === "") {
-            return false;
-        }
-
-        return true;
-    };
-
-    const checkSurname = () => {
-        if (surname === "") {
-            return false;
-        }
-
-        return true;
-    };
-
-    const checkEmail = () => {
-        const emailRegex = /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
-        return emailRegex.test(email);
-    };
-
-    const checkPaswords = () => {
-        if (password !== "" && passwordRepeat !== "" && password === passwordRepeat) {
-            return true;
-        }
-        return false;
-    };
-
-    const checkIfUserExists = async () => {
-        return true;
-        // eslint-disable-next-line
-        { /*try {
-            const response = await fetch(`${databaseAddress}checkUser?email=${email}`);
-            const result = await response.json();
-            return !result.exists;
-        } catch (error) {
-            console.error("Error checking user existence:", error);
-            return false;
-        }*/
-        }
-    };
-
-    const hashPassword = (password) => {
-        return SHA256(password).toString();
-    };
-
     const registerUser = () => {
-        if (!checkName()) {
+        if (!checkName(name)) {
             alert("Zadajte meno");
-        } else if (!checkSurname()) {
+        } else if (!checkSurname(surname)) {
             alert("Zadajte priezvysko");
-        } else if (!checkEmail()) {
+        } else if (!checkEmail(email)) {
             alert("Zadajte platý email");
-        } else if (!checkIfUserExists()) {
+        } else if (!checkIfUserExists(email, databaseAddress)) {
             alert("Používateľ s takouto emailovou adresou už existuje");
-        } else if (!checkPaswords()) {
+        } else if (!checkPasswords(password, passwordRepeat)) {
             alert("Zadané heslá sa nezhodujú");
         } else {
             Axios.post(databaseAddress + endPoint, {
