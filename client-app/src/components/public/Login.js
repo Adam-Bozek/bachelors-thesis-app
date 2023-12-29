@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
-import { checkEmail , checkPassword , checkIfUserExists , hashPassword } from "../../Utils";
+import { checkEmail, checkPassword, checkIfUserExists, hashPassword , checkIfPasswordIsCorrect } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
@@ -17,13 +17,15 @@ const Login = () => {
 
     const logInUser = async () => {
         if (!checkEmail(email)) {
-
+            alert("Zadajte platný email");
         } else if (!checkPassword(password)) {
-
+            alert("Zadajte heslo");
         } else if (!checkIfUserExists(email, databaseAddress)) {
-
+            alert("Táto emailová adresa nie je registrovaná");
+        } else if (!checkIfPasswordIsCorrect(hashPassword(password))) {
+            alert("Heslo nie je správne");
         } else {
-
+            alert("success");
         }
     };
 
@@ -75,7 +77,7 @@ const Login = () => {
                                 <label className="form-check-label" htmlFor="flexCheckDefault">Zapamätať si ma</label>
                             </div>
                             <div className="d-flex gap-2">
-                                <button className="btn btn-primary py-2 sign-in-btn" type="submit" >Prihlásiť sa</button>
+                                <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={logInUser} >Prihlásiť sa</button>
                             </div>
                         </form>
                     </div>
