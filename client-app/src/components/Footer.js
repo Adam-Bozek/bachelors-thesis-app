@@ -11,7 +11,7 @@ const Home = () => {
                         <li className="nav-item"> <NavLink to="/" className="nav-link px-2 text-body-secondary"> Domov </NavLink> </li>
                         <li className="nav-item"> <NavLink to="/Information" className="nav-link px-2 text-body-secondary"> Informácie </NavLink> </li>
                         <li className="nav-item"> <NavLink to="/Login" className="nav-link px-2 text-body-secondary"> Prihlásenie </NavLink> </li>
-                        <li className="nav-item"> <NavLink to="/Register" className="nav-link px-2 text-body-secondary"> Registrácia </NavLink> </li>
+                        <li className="nav-item"> <NavLink to="/Registration" className="nav-link px-2 text-body-secondary"> Registrácia </NavLink> </li>
                     </ul>
                     <p className="text-center text-body-secondary">&copy; 2023 Adam Božek. Všetky práva vyhradené.</p>
                 </div>

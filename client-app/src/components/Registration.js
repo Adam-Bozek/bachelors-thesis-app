@@ -11,7 +11,7 @@ import Header from "./Header"
 
 const salt = bcrypt.genSaltSync(10);
 
-const Register = () => {
+const Registration = () => {
 
     const pageName = "Registrácia";
     const databaseAddress = "http://localhost:3001/"; //Change
@@ -22,9 +22,10 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
+    const [] = useState("");
 
     const checkName = () => {
-        if ( name === "" ) {
+        if (name === "") {
             return false;
         }
 
@@ -32,7 +33,7 @@ const Register = () => {
     };
 
     const checkSurname = () => {
-        if ( surname === "" ) {
+        if (surname === "") {
             return false;
         }
 
@@ -54,30 +55,31 @@ const Register = () => {
     const checkIfUserExists = async () => {
         return true;
         // eslint-disable-next-line
-        {/*try {
+        { /*try {
             const response = await fetch(`${databaseAddress}checkUser?email=${email}`);
             const result = await response.json();
             return !result.exists;
         } catch (error) {
             console.error("Error checking user existence:", error);
             return false;
-        }*/}
+        }*/
+        }
     };
 
-    const addUser = () => {
-        if( !checkName() ) {
+    const registerUser = () => {
+        if (!checkName()) {
             alert("Zadajte meno");
-        } else if ( !checkSurname() ) {
+        } else if (!checkSurname()) {
             alert("Zadajte priezvysko");
-        } else if ( !checkEmail() ) {
+        } else if (!checkEmail()) {
             alert("Zadajte platý email");
-        } else if ( !checkIfUserExists() ) {
+        } else if (!checkIfUserExists()) {
             alert("Používateľ s takouto emailovou adresou už existuje");
-        } else if ( !checkPaswords() ) {
+        } else if (!checkPaswords()) {
             alert("Zadané heslá sa nezhodujú");
         } else {
-            const hashedPassword = bcrypt.hashSync( password , salt );
-            setPassword(hashedPassword); setPasswordRepeat( hashedPassword );
+            const hashedPassword = bcrypt.hashSync(password, salt);
+            setPassword(hashedPassword); setPasswordRepeat(hashedPassword);
 
             alert(hashedPassword);
             Axios.post(databaseAddress + endPoint, {
@@ -112,8 +114,7 @@ const Register = () => {
                                     placeholder="Meno"
                                     autoComplete="given-name"
                                     value={name}
-                                    onChange={(event) => setName(event.target.value)}
-                                />
+                                    onChange={(event) => setName(event.target.value)} />
                                 <label htmlFor="floatingName">Meno</label> <br />
                             </div>
                             <div className="form-floating">
@@ -125,8 +126,7 @@ const Register = () => {
                                     placeholder="Priezvysko"
                                     autoComplete="family-name"
                                     value={surname}
-                                    onChange={(event) => setSurname(event.target.value)}
-                                />
+                                    onChange={(event) => setSurname(event.target.value)} />
                                 <label htmlFor="floatingSurname"> Priezvysko </label> <br />
                             </div>
                             <div className="form-floating">
@@ -138,8 +138,7 @@ const Register = () => {
                                     placeholder="Email"
                                     autoComplete="email"
                                     value={email}
-                                    onChange={(event) => setEmail(event.target.value)}
-                                />
+                                    onChange={(event) => setEmail(event.target.value)} />
                                 <label htmlFor="floatingEmail"> Emailová adresa </label> <br />
                             </div>
                             <div className="form-floating">
@@ -150,8 +149,7 @@ const Register = () => {
                                     name="Heslo"
                                     placeholder="Heslo"
                                     value={password}
-                                    onChange={(event) => setPassword(event.target.value)}
-                                />
+                                    onChange={(event) => setPassword(event.target.value)} />
                                 <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label> <br />
                             </div>
                             <div className="form-floating">
@@ -162,12 +160,11 @@ const Register = () => {
                                     name="Heslo"
                                     placeholder="Heslo"
                                     value={passwordRepeat}
-                                    onChange={(event) => setPasswordRepeat(event.target.value)}
-                                />
+                                    onChange={(event) => setPasswordRepeat(event.target.value)} />
                                 <label htmlFor="floatingPasswordRepeat"> Zopakujte Heslo </label> <br />
                             </div>
                             <div className="d-flex gap-2">
-                                <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={addUser}>Zaregistrovať sa</button>
+                                <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={registerUser}>Zaregistrovať sa</button>
                             </div>
                         </form>
                     </div>
@@ -177,6 +174,6 @@ const Register = () => {
             <Footer />
         </>
     );
-};
+}
 
-export default Register;
+export default Registration;

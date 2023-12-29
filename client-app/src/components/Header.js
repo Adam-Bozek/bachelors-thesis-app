@@ -20,7 +20,7 @@ const Home = ( { pageName } ) => {
 
                     <div className="col-md-3 text-end">
                         <button type="button" className="btn btn-outline-primary me-2"> <NavLink to="/Login" className="nav-link"> Prihlásenie </NavLink> </button>
-                        <button type="button" className="btn btn-primary"> <NavLink to="/Register" className="nav-link"> Registrácia </NavLink> </button>
+                        <button type="button" className="btn btn-primary"> <NavLink to="/Registration" className="nav-link"> Registrácia </NavLink> </button>
                     </div>
                 </div>
             </header>
