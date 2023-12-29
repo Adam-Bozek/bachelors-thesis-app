@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes , Route } from 'react-router-dom';
 
-import Home from "./components/Home";
-import Information from "./components/Information";
-import Login from "./components/Login";
-import Registration from './components/Registration';
+import Home from "./components/public/Home";
+import Information from "./components/public/Information";
+import Login from "./components/public/Login";
+import Registration from './components/public/Registration';
 
 const App = () => {
     return (

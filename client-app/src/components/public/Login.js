@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
+import { SHA256 } from 'crypto-js';
+
 import Footer from "./Footer"
 import Header from "./Header"
 
@@ -14,9 +16,15 @@ const Login = () => {
     const [isChecked, setIsChecked] = useState(false);
 
     const checkEmail = () => {
+        const emailRegex = /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
+        return emailRegex.test(email);
     };
 
     const checkPasswords = () => {
+        if (password !== "") {
+            return true;
+        }
+        return false;
     };
 
     return (
