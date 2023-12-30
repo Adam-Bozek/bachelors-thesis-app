@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-import Axios from "axios";
-
-import { checkEmail, checkPassword, checkIfUserExists, hashPassword , checkIfPasswordIsCorrect } from "../../Utils";
+import { checkEmail, checkPassword, checkIfUserExists } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
@@ -22,8 +20,6 @@ const Login = () => {
             alert("Zadajte heslo");
         } else if (!checkIfUserExists(email, databaseAddress)) {
             alert("Táto emailová adresa nie je registrovaná");
-        } else if (!checkIfPasswordIsCorrect(hashPassword(password))) {
-            alert("Heslo nie je správne");
         } else {
             alert("success");
         }

@@ -11,7 +11,7 @@ import Header from "./Header"
 
 const Registration = () => {
     const pageName = "Registrácia";
-    const databaseAddress = "http://localhost:3001/"; //Change
+    const apiAddress = "http://localhost:3001"; //Change
     const endPoint = "/create";
 
     const [name, setName] = useState("");
@@ -20,28 +20,51 @@ const Registration = () => {
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
 
-    const registerUser = () => {
+    //temp
+    const [apiKey, setApiKey] = useState("");
+
+    const registerUser = async () => {
         if (!checkName(name)) {
             alert("Zadajte meno");
         } else if (!checkSurname(surname)) {
             alert("Zadajte priezvysko");
         } else if (!checkEmail(email)) {
             alert("Zadajte platý email");
-        } else if (!checkIfUserExists(email, databaseAddress)) {
+        } else if (!checkIfUserExists(email, apiAddress)) {
             alert("Používateľ s takouto emailovou adresou už existuje");
         } else if (!checkPasswords(password, passwordRepeat)) {
             alert("Zadané heslá sa nezhodujú");
         } else {
-            Axios.post(databaseAddress + endPoint, {
-                name: name,
-                surname: surname,
-                email: email,
-                password: hashPassword(password)
-            }).catch(err => {
-                console.error(err);
-            });
-        }
+            try {
+                const hashedPassword = await hashPassword(password);
+                setPassword(hashedPassword);
+                setPasswordRepeat(hashedPassword);
+
+                Axios.post(apiAddress + endPoint, {
+                    name: name,
+                    surname: surname,
+                    email: email,
+                    password: hashedPassword, // Use the hashed password here
+                }, {
+                    headers: {
+                        'api-key': apiKey,
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => {
+                        // Handle the response
+                        alert(response.data);
+                    })
+                    .catch(err => {
+                        alert(err);
+                    });
+            } catch (error) {
+                console.error("Error hashing password:", error);
+                // Handle the error (e.g., show an error message to the user)
+            }
+        };
     };
+
 
     return (
         <>
@@ -107,7 +130,7 @@ const Registration = () => {
                                     type="password"
                                     className="input form-control"
                                     id="floatingPasswordRepeat"
-                                    name="Heslo"
+                                    name="password"
                                     placeholder="Heslo"
                                     value={passwordRepeat}
                                     onChange={(event) => setPasswordRepeat(event.target.value)} />
@@ -115,6 +138,17 @@ const Registration = () => {
                             </div>
                             <div className="d-flex gap-2">
                                 <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={registerUser}>Zaregistrovať sa</button>
+                            </div> <br />
+                            <div className="form-floating">
+                                <input
+                                    type="text"
+                                    className="input form-control"
+                                    id="floatingKey"
+                                    name="Kľúč"
+                                    placeholder="Kľúč"
+                                    value={apiKey}
+                                    onChange={(event) => setApiKey(event.target.value)} />
+                                <label htmlFor="floatingKey"> API Kľúč </label> <br />
                             </div>
                         </form>
                     </div>

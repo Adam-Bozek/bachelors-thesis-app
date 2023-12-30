@@ -5,15 +5,15 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
+const saltRounds = 10;
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// Port numer on which appliction will listen
 const port = 3001;
 
-// Connection to the database
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
@@ -27,24 +27,20 @@ const generateApiKey = () => {
     console.log('API key generated: ' + apiKey);
     return apiKey;
 };
-
-// Storing created API key
-const generatedApiKey = generateApiKey();
+const customApiKey = generateApiKey();
 
 // Middleware for API key verification
-const apiKeyMiddleware = (request, response, next) => {
-    const apiKey = request.headers['api-key'];
+const apiKeyMiddleware = (req, res, next) => {
+    const apiKey = req.headers['api-key'];
 
     // Check if API key is present and valid
-    if (apiKey && apiKey === generatedApiKey) {
-        next();
+    if (apiKey && apiKey === customApiKey) {
+        next(); // Move to the next middleware or route handler
     } else {
-        response.status(401).send('Unauthorized: Invalid API Key');
+        res.status(401).send('Unauthorized: Invalid API Key');
     }
 };
 
-
-// Applying the API key middleware function
 app.use('/create', apiKeyMiddleware);
 app.use('/compare', apiKeyMiddleware);
 
@@ -67,6 +63,31 @@ app.post('/create', (req, response) => {
             }
         }
     );
+});
+
+
+
+// Creating an API endpoint where the API will compare two passwords
+app.post('/compare', (req, res) => {
+    const userPassword = req.body.userPassword;
+    const userEmail = req.body.userEmail;
+
+    const query = 'SELECT password FROM user_data WHERE email = ?';
+
+    db.query(query, [userEmail], (error, result) => {
+        if (error) {
+            console.log(error);
+            res.status(500).send("Internal Server Error");
+        } else {
+            if (result.length === 0) {
+                // User with the given email not found
+                res.send(false);
+            } else {
+                const hashedPassword = result[0].password;
+                res.send(hashedPassword === userPassword);
+            }
+        }
+    });
 });
 
 app.listen(port, () => {
