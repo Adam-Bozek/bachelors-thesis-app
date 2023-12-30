@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { checkEmail, checkPassword, checkIfUserExists } from "../../Utils";
+import { checkEmail, checkPassword, verifyUser } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
@@ -18,7 +18,7 @@ const Login = () => {
             alert("Zadajte platný email");
         } else if (!checkPassword(password)) {
             alert("Zadajte heslo");
-        } else if (!checkIfUserExists(email, databaseAddress)) {
+        } else if (!verifyUser(email, databaseAddress)) {
             alert("Táto emailová adresa nie je registrovaná");
         } else {
             alert("success");

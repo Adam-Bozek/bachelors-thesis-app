@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
-import { checkEmail, checkIfUserExists, checkName, checkPasswords, checkSurname, hashPassword } from "../../Utils";
+import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyPassword } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
@@ -12,7 +12,8 @@ import Header from "./Header"
 const Registration = () => {
     const pageName = "Registrácia";
     const apiAddress = "http://localhost:3001"; //Change
-    const endPoint = "/create";
+    const createEndPoint = "/create";
+    const verifyEndpoint = "/verify";
 
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
@@ -30,39 +31,39 @@ const Registration = () => {
             alert("Zadajte priezvysko");
         } else if (!checkEmail(email)) {
             alert("Zadajte platý email");
-        } else if (!checkIfUserExists(email, apiAddress)) {
-            alert("Používateľ s takouto emailovou adresou už existuje");
         } else if (!checkPasswords(password, passwordRepeat)) {
             alert("Zadané heslá sa nezhodujú");
         } else {
             try {
                 const hashedPassword = await hashPassword(password);
-                setPassword(hashedPassword);
-                setPasswordRepeat(hashedPassword);
 
-                Axios.post(apiAddress + endPoint, {
-                    name: name,
-                    surname: surname,
-                    email: email,
-                    password: hashedPassword, // Use the hashed password here
-                }, {
-                    headers: {
-                        'api-key': apiKey,
-                        'Content-Type': 'application/json',
-                    },
-                })
-                    .then(response => {
-                        // Handle the response
-                        alert(response.data);
+                if (verifyPassword(email, hashedPassword, apiKey, apiAddress + verifyEndpoint)) {
+                    Axios.post(apiAddress + createEndPoint, {
+                        name: name,
+                        surname: surname,
+                        email: email,
+                        password: hashedPassword, // Use the hashed password here
+                    }, {
+                        headers: {
+                            'api-key': apiKey,
+                            'Content-Type': 'application/json',
+                        },
                     })
-                    .catch(err => {
-                        alert(err);
-                    });
+                        .then(response => {
+                            // Handle the response
+                            alert(response.data);
+                        })
+                        .catch(err => {
+                            alert(err);
+                        });
+                } else {
+                    alert("bad info");
+                }
             } catch (error) {
                 console.error("Error hashing password:", error);
                 // Handle the error (e.g., show an error message to the user)
             }
-        };
+        }
     };
 
 
