@@ -100,7 +100,7 @@ app.post(createEndpoint, (request, response) => {
     );
 });
 
-// Creating an API endpoint for authentication
+// Creating an API endpoint for authentication of Login
 app.post(verifyUserLoginEndpoint, (request, response) => {
     const email = request.body.email;
     const password = request.body.password;
@@ -141,6 +141,7 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
     );
 });
 
+// Creating an API endpoint for chceck if user with the provided email exists
 app.post(verifyUserExistanceEndpoint, (request, response) => {
     const email = request.body.email;
 
