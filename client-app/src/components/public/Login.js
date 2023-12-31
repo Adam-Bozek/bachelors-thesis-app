@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-import { checkEmail, checkPassword, verifyUser } from "../../Utils";
+import { checkEmail, checkPassword, verifyUserLogin } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
 
 const Login = () => {
     const pageName = "Prihlásenie";
-    const databaseAddress = "http://localhost:3001/"; // Change
+    const apiAddress = "http://localhost:3001";
+    const verifyUserLoginEndpoint = "/verifyUserLogin";
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +19,7 @@ const Login = () => {
             alert("Zadajte platný email");
         } else if (!checkPassword(password)) {
             alert("Zadajte heslo");
-        } else if (!verifyUser(email, databaseAddress)) {
+        } else if (!verifyUserLogin(email, password, apiAddress + verifyUserLoginEndpoint)) {
             alert("Táto emailová adresa nie je registrovaná");
         } else {
             alert("success");

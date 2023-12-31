@@ -4,25 +4,25 @@ import React, { useState } from "react";
 
 import Axios from "axios";
 
-import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyPassword } from "../../Utils";
+import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyUserExistance } from "../../Utils";
 
 import Footer from "./Footer"
 import Header from "./Header"
 
 const Registration = () => {
     const pageName = "Registrácia";
+
     const apiAddress = "http://localhost:3001"; //Change
     const createEndPoint = "/create";
-    const verifyEndpoint = "/verify";
+    const verifyEndpoint = "/verifyUserExistance";
+
+    const apiKey = "8be5864ea8195c870a50d065bcaf5f2e831f188c0ca05091e692b5b96c90fff5";
 
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
-
-    //temp
-    const [apiKey, setApiKey] = useState("");
 
     const registerUser = async () => {
         if (!checkName(name)) {
@@ -36,13 +36,14 @@ const Registration = () => {
         } else {
             try {
                 const hashedPassword = await hashPassword(password);
+                const userExists = await verifyUserExistance(email, apiAddress + verifyEndpoint);
 
-                if (verifyPassword(email, hashedPassword, apiKey, apiAddress + verifyEndpoint)) {
+                if (userExists) {
                     Axios.post(apiAddress + createEndPoint, {
                         name: name,
                         surname: surname,
                         email: email,
-                        password: hashedPassword, // Use the hashed password here
+                        password: hashedPassword,
                     }, {
                         headers: {
                             'api-key': apiKey,
@@ -50,21 +51,20 @@ const Registration = () => {
                         },
                     })
                         .then(response => {
-                            // Handle the response
                             alert(response.data);
                         })
                         .catch(err => {
                             alert(err);
                         });
                 } else {
-                    alert("bad info");
+                    alert("User with this email already exists");
                 }
             } catch (error) {
                 console.error("Error hashing password:", error);
-                // Handle the error (e.g., show an error message to the user)
             }
         }
     };
+
 
 
     return (
@@ -139,17 +139,6 @@ const Registration = () => {
                             </div>
                             <div className="d-flex gap-2">
                                 <button className="btn btn-primary py-2 sign-in-btn" type="submit" onClick={registerUser}>Zaregistrovať sa</button>
-                            </div> <br />
-                            <div className="form-floating">
-                                <input
-                                    type="text"
-                                    className="input form-control"
-                                    id="floatingKey"
-                                    name="Kľúč"
-                                    placeholder="Kľúč"
-                                    value={apiKey}
-                                    onChange={(event) => setApiKey(event.target.value)} />
-                                <label htmlFor="floatingKey"> API Kľúč </label> <br />
                             </div>
                         </form>
                     </div>

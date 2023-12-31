@@ -1,5 +1,7 @@
 import bcrypt from 'bcryptjs';
 
+const apiKey = "8be5864ea8195c870a50d065bcaf5f2e831f188c0ca05091e692b5b96c90fff5";
+
 // This bool function checks if the name was inputed
 // On sucess function will return TRUE
 export function checkName(name) {
@@ -40,7 +42,7 @@ export function checkPasswords(password, passwordRepeat) {
 
 // This bool function checks if the User credentials are not empty and if they are equal
 // On sucess function will return TRUE
-export async function verifyUser(email, password, apiKey, apiAddress) {
+export async function verifyUserLogin(email, password, apiAddress) {
   try {
     const response = await fetch(apiAddress, {
       method: 'POST',
@@ -71,7 +73,7 @@ export async function verifyUser(email, password, apiKey, apiAddress) {
 
 // This bool function checks if the email is allready regis
 // On sucess function will return TRUE
-export async function verifyPassword(email, password, apiKey, apiAddress) {
+export async function verifyUserExistance(email, apiAddress) {
   try {
     const response = await fetch(apiAddress, {
       method: 'POST',
@@ -81,17 +83,14 @@ export async function verifyPassword(email, password, apiKey, apiAddress) {
       },
       body: JSON.stringify({
         email: email,
-        password: password,
       }),
     });
 
     if (response.ok) {
-      // Authentication successful
-      console.log('Authentication successful');
+      // No user found with provided email address
       return true;
     } else {
-      // Authentication failed
-      console.log('Authentication failed');
+      // User found with provided email address
       return false;
     }
   } catch (error) {
