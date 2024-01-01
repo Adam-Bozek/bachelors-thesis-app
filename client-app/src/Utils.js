@@ -102,19 +102,13 @@ export async function verifyUserExistance(email, apiAddress) {
 // This function hashes passwords
 // Return is hashed string
 const saltRounds = 10;
-export function hashPassword(password) {
+export async function hashPassword(password) {
   return new Promise((resolve, reject) => {
-    bcrypt.genSalt(saltRounds, (err, salt) => {
+    bcrypt.hash(password, saltRounds, function(err, hash) {
       if (err) {
-        reject(err);
+        reject(hash);
       } else {
-        bcrypt.hash(password, salt, (err, hash) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(hash);
-          }
-        });
+        resolve(hash);
       }
     });
   });

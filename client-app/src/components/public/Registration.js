@@ -23,7 +23,7 @@ const Registration = () => {
   const [passwordRepeat, setPasswordRepeat] = useState("");
 
   const registerUser = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
 
     if (!checkName(name)) {
       alert("Zadajte meno");

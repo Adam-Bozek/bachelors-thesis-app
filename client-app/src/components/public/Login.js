@@ -34,7 +34,6 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error during login:', error);
-      // Provide a generic error message to the user
       alert("Chyba pri prihlásení");
     }
   };
