@@ -1,14 +1,13 @@
-const fs = require('fs');
-const https = require('https');
-
-const express = require('express');
-const cors = require('cors');
-
-const mysql = require('mysql');
-const bcrypt = require('bcrypt');
-const crypto = require('crypto');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
+const mysql = require("mysql");
+const bcrypt = require("bcrypt");
+
+const fs = require("fs");
+const https = require("https");
+const crypto = require("crypto");
 
 app.use(cors());
 app.use(express.json());
@@ -16,51 +15,52 @@ app.use(express.json());
 // Port numer on which appliction will listen
 const port = 3001;
 
-const privateKey = fs.readFileSync('./keys/localhost-key.pem', 'utf8');
-const certificate = fs.readFileSync('./keys/localhost.pem', 'utf8');
+const privateKey = fs.readFileSync("./keys/localhost-key.pem", "utf8");
+const certificate = fs.readFileSync("./keys/localhost.pem", "utf8");
 const credentials = { key: privateKey, cert: certificate };
 
 const httpsServer = https.createServer(credentials, app);
 
 // Connection to the database
 const db = mysql.createConnection({
-    user: 'root',
-    host: 'localhost',
-    password: '',
-    database: 'test_database',
+    user: "root",
+    host: "localhost",
+    password: "",
+    database: "test_database",
 });
 
+// Database connection test
 db.connect((err) => {
     if (err) {
-        console.error('FATAL error connecting to the database:', err);
+        console.error("FATAL error connecting to the database:", err);
         process.exit(1);
     }
-    console.log('Connected to the database succesfully');
+    console.log("Connected to the database succesfully");
 });
 
 // Function to generate random API key
 // On return there sould be a random API key
 const generateApiKey = () => {
-    const apiKey = crypto.randomBytes(32).toString('hex');
-    console.log('API key generated: ' + apiKey);
+    const apiKey = crypto.randomBytes(32).toString("hex");
+    console.log("API key generated: " + apiKey);
     return apiKey;
 };
 
 // Path to the file storing the API key
-const apiKeyFilePath = './keys/api-key.txt';
+const apiKeyFilePath = "./keys/api-key.txt";
 
 // Function to read the API key from the file or generate a new one if not present
 const readOrGenerateApiKey = () => {
     try {
         // Try to read the API key from the file
-        const apiKey = fs.readFileSync(apiKeyFilePath, 'utf8');
-        console.log('API key read from file: ' + apiKey);
+        const apiKey = fs.readFileSync(apiKeyFilePath, "utf8");
+        console.log("API key read from file: " + apiKey);
         return apiKey;
     } catch (error) {
         // File not found or other error, generate a new API key
         const newApiKey = generateApiKey();
         // Save the new API key to the file
-        fs.writeFileSync(apiKeyFilePath, newApiKey, 'utf8');
+        fs.writeFileSync(apiKeyFilePath, newApiKey, "utf8");
         return newApiKey;
     }
 };
@@ -71,22 +71,22 @@ const generatedApiKey = readOrGenerateApiKey();
 // Middleware for API key verification
 const apiKeyMiddleware = (request, response, next) => {
     try {
-        const apiKey = request.headers['api-key'];
+        const apiKey = request.headers["api-key"];
         // Check if API key is present and valid
         if (apiKey && apiKey === generatedApiKey) {
             next();
         } else {
-            response.status(401).send('Unauthorized: Invalid API Key');
+            response.status(401).send("Unauthorized: Invalid API Key");
         }
     } catch (error) {
-        response.status(500).send('Internal Server Error');
+        response.status(500).send("Internal Server Error");
     }
 };
 
 // Endpoint creation
-const createEndpoint = '/create';
-const verifyUserLoginEndpoint = '/verifyUserLogin';
-const verifyUserExistanceEndpoint = '/verifyUserExistance';
+const createEndpoint = "/create";
+const verifyUserLoginEndpoint = "/verifyUserLogin";
+const verifyUserExistanceEndpoint = "/verifyUserExistance";
 
 // Applying the API key middleware function
 app.use(createEndpoint, apiKeyMiddleware);
@@ -103,13 +103,13 @@ app.post(createEndpoint, (request, response) => {
     console.log()
 
     db.query(
-        'INSERT INTO user_data (name, surname, email, password) VALUES (?, ?, ?, ?)',
+        "INSERT INTO user_data (name, surname, email, password) VALUES (?, ?, ?, ?)",
         [name, surname, email, hashedPassword],
         (err, res) => {
             if (err) {
                 console.log(err);
-                response.status(500).send("Internal Server Error");
                 console.log("Internal Server Error");
+                response.status(500).send("Internal Server Error");
             } else {
                 response.status(200).send("User created successfully");
                 console.log("User created successfully");
@@ -124,7 +124,7 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
     const password = request.body.password;
 
     db.query(
-        'SELECT * FROM user_data WHERE email = ?',
+        "SELECT * FROM user_data WHERE email = ?",
         [email],
         (err, results) => {
             if (err) {
@@ -163,7 +163,7 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
     const email = request.body.email;
 
     db.query(
-        'SELECT * FROM user_data WHERE email = ?',
+        "SELECT * FROM user_data WHERE email = ?",
         [email],
         (err, results) => {
             if (err) {
