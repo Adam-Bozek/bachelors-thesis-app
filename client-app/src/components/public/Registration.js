@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-import Axios from "axios";
-
-import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyUserExistance } from "../../Utils";
+import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyUserExistance, createUser } from "../../Utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -14,56 +12,60 @@ const Registration = () => {
   const createEndPoint = "create";
   const verifyEndpoint = "verifyUserExistance";
 
-  const apiKey = "8be5864ea8195c870a50d065bcaf5f2e831f188c0ca05091e692b5b96c90fff5";
-
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
 
+  // Handles the registration of a new user.
   const registerUser = async (event) => {
+    // Prevents the default behavior of the event (e.g., form submission)
     event.preventDefault();
 
+    // Check if the name is valid
     if (!checkName(name)) {
       alert("Zadajte meno");
-    } else if (!checkSurname(surname)) {
+    }
+    // Check if the surname is valid
+    else if (!checkSurname(surname)) {
       alert("Zadajte priezvysko");
-    } else if (!checkEmail(email)) {
+    }
+    // Check if the email is valid
+    else if (!checkEmail(email)) {
       alert("Zadajte platý email");
-    } else if (!checkPasswords(password, passwordRepeat)) {
+    }
+    // Check if the passwords match
+    else if (!checkPasswords(password, passwordRepeat)) {
       alert("Zadané heslá sa nezhodujú");
-    } else {
+    }
+    // If all validations pass, proceed with user registration
+    else {
       try {
+        // Hash the user's password
         const hashedPassword = await hashPassword(password);
+
+        // Check if the user already exists
         const userExists = await verifyUserExistance(email, apiAddress + verifyEndpoint);
 
         if (userExists) {
-          Axios.post(apiAddress + createEndPoint, {
-            name: name,
-            surname: surname,
-            email: email,
-            password: hashedPassword,
-          }, {
-            headers: {
-              'api-key': apiKey,
-              'Content-Type': 'application/json',
-            },
-          })
-            .then(response => {
-              alert(response.data);
-            })
-            .catch(err => {
-              alert(err);
-            });
+          // If user does not exist, make a POST request to create a new user
+          try {
+            await createUser(name, surname, email, hashedPassword, apiAddress + createEndPoint);
+          } catch (error) {
+            console.error('Registration failed:', error);
+          }
         } else {
+          // Inform the user that a user with the provided email already exists
           alert("User with this email already exists");
         }
       } catch (error) {
+        // Handle errors related to hashing the password
         console.error("Error hashing password:", error);
       }
     }
   };
+
 
   return (
     <>

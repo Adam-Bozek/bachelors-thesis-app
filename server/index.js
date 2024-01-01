@@ -32,17 +32,17 @@ const db = mysql.createConnection({
 // Database connection test
 db.connect((err) => {
     if (err) {
-        console.error("FATAL error connecting to the database:", err);
+        console.error("DATABASE CONNECTION: FATAL error connecting to the database:", err);
         process.exit(1);
     }
-    console.log("Connected to the database succesfully");
+    console.log("DATABASE CONNECTION: Connected to the database succesfully");
 });
 
 // Function to generate random API key
 // On return there sould be a random API key
 const generateApiKey = () => {
     const apiKey = crypto.randomBytes(32).toString("hex");
-    console.log("API key generated: " + apiKey);
+    console.log("API KEY GEN: API key generated: " + apiKey);
     return apiKey;
 };
 
@@ -54,7 +54,7 @@ const readOrGenerateApiKey = () => {
     try {
         // Try to read the API key from the file
         const apiKey = fs.readFileSync(apiKeyFilePath, "utf8");
-        console.log("API key read from file: " + apiKey);
+        console.log("API KEY READ: API key read from file: " + apiKey);
         return apiKey;
     } catch (error) {
         // File not found or other error, generate a new API key
@@ -76,10 +76,10 @@ const apiKeyMiddleware = (request, response, next) => {
         if (apiKey && apiKey === generatedApiKey) {
             next();
         } else {
-            response.status(401).send("Unauthorized: Invalid API Key");
+            response.status(401).send("API AUTH: Unauthorized - Invalid API Key");
         }
     } catch (error) {
-        response.status(500).send("Internal Server Error");
+        response.status(500).send("API AUTH - Internal Server Error");
     }
 };
 
@@ -108,11 +108,11 @@ app.post(createEndpoint, (request, response) => {
         (err, res) => {
             if (err) {
                 console.log(err);
-                console.log("Internal Server Error");
+                console.log("REGISTER: Internal Server Error");
                 response.status(500).send("Internal Server Error");
             } else {
                 response.status(200).send("User created successfully");
-                console.log("User created successfully");
+                console.log("REGISTER: User created successfully");
             }
         }
     );
@@ -128,7 +128,7 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
         [email],
         (err, results) => {
             if (err) {
-                console.log(err);
+                console.log("USER LOGIN: " + err);
                 response.status(500).send("Internal Server Error");
             } else {
                 if (results.length > 0) {
@@ -136,22 +136,23 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
 
                     bcrypt.compare(password, storedHashedPassword, (bcryptErr, bcryptResult) => {
                         if (bcryptErr) {
-                            console.log(bcryptErr);
+                            console.log("USER LOGIN: " + bcryptErr);
                             response.status(500).send("Internal Server Error");
                         } else {
                             if (bcryptResult) {
                                 // Passwords match, authentication successful
+                                console.log("USER LOGIN: Authentification successful");
                                 response.status(200).send("Authentication successful");
                             } else {
                                 // Passwords do not match
                                 response.status(401).send("Unauthorized: Invalid email or password");
-                                console.log("Unauthorized: Invalid password");
+                                console.log("USER LOGIN: Unauthorized: Invalid password");
                             }
                         }
                     });
                 } else {
                     // No user found with the provided email
-                    console.log("Unauthorized: Invalid user");
+                    console.log("USER LOGIN: Unauthorized: Invalid user");
                 }
             }
         }
@@ -168,7 +169,7 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
         (err, results) => {
             if (err) {
                 console.log(err);
-                response.status(500).send("Internal Server Error");
+                response.status(500).send("USER EXISTANCE: Internal Server Error");
             } else {
                 if (results.length > 0) {
                     // User Found with provided email

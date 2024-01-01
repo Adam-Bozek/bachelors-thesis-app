@@ -1,6 +1,12 @@
 import bcrypt from 'bcryptjs';
+import Axios from "axios";
 
 const apiKey = "8be5864ea8195c870a50d065bcaf5f2e831f188c0ca05091e692b5b96c90fff5";
+
+/** TODO LIST
+ *  TODO: handle wrong function input properties
+ *  TODO: @param functions inputs
+*/
 
 // This bool function checks if the name was inputed
 // On sucess function will return TRUE
@@ -38,7 +44,6 @@ export function checkPassword(password) {
 export function checkPasswords(password, passwordRepeat) {
   return password !== "" && passwordRepeat !== "" && password === passwordRepeat;
 }
-
 
 // This bool function checks if the User credentials are not empty and if they are equal
 // On sucess function will return TRUE
@@ -99,12 +104,36 @@ export async function verifyUserExistance(email, apiAddress) {
   }
 };
 
+// This function will post to database
+// This is function without return
+export async function createUser(name, surname, email, password, apiAddress) {
+  try {
+    const response = await Axios.post(apiAddress, {
+      name: name,
+      surname: surname,
+      email: email,
+      password: password,
+    }, {
+      headers: {
+        'api-key': apiKey,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // Successful registration response
+    alert(response.data);
+  } catch (err) {
+    // Error handling for registration failure
+    alert(err);
+  }
+}
+
 // This function hashes passwords
 // Return is hashed string
 const saltRounds = 10;
 export async function hashPassword(password) {
   return new Promise((resolve, reject) => {
-    bcrypt.hash(password, saltRounds, function(err, hash) {
+    bcrypt.hash(password, saltRounds, function (err, hash) {
       if (err) {
         reject(hash);
       } else {

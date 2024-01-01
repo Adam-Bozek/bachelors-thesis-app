@@ -14,25 +14,35 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
+  // Function to handle user login
   const logInUser = async (event) => {
+    // Prevent the default form submission behavior
     event.preventDefault();
 
     try {
+      // Check if the entered email is valid
       if (!checkEmail(email)) {
         alert("Zadajte platný email");
       } else if (!checkPassword(password)) {
+        // Check if the entered password is valid
         alert("Zadajte heslo");
       } else {
+        // Hash the entered password using the hashPassword function
         const hashedPassword = await hashPassword(password);
+
+        // Verify user login using the verifyUserLogin function
         const loginInfo = await verifyUserLogin(email, hashedPassword, apiAddress + verifyUserLoginEndpoint);
 
         if (loginInfo) {
+          // If login is successful, display a success alert
           alert("Úspešné prihlásenie");
         } else {
+          // If login fails, display an alert for incorrect password or email
           alert("Nesprávne heslo alebo email");
         }
       }
     } catch (error) {
+      // Handle any errors that occur during the login process
       console.error('Error during login:', error);
       alert("Chyba pri prihlásení");
     }
