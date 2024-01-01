@@ -10,9 +10,9 @@ import Header from "./Header";
 const Registration = () => {
   const pageName = "Registrácia";
 
-  const apiAddress = "http://localhost:3001";
-  const createEndPoint = "/create";
-  const verifyEndpoint = "/verifyUserExistance";
+  const apiAddress = "https://localhost:3001/";
+  const createEndPoint = "create";
+  const verifyEndpoint = "verifyUserExistance";
 
   const apiKey = "8be5864ea8195c870a50d065bcaf5f2e831f188c0ca05091e692b5b96c90fff5";
 

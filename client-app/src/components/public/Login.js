@@ -7,8 +7,8 @@ import Header from "./Header";
 
 const Login = () => {
   const pageName = "Prihlásenie";
-  const apiAddress = "http://localhost:3001";
-  const verifyUserLoginEndpoint = "/verifyUserLogin";
+  const apiAddress = "https://localhost:3001/";
+  const verifyUserLoginEndpoint = "verifyUserLogin";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

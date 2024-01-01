@@ -1,11 +1,12 @@
+const fs = require('fs');
+const https = require('https');
+
 const express = require('express');
 const cors = require('cors');
 
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-
-const fs = require('fs');
 
 const app = express();
 
@@ -15,12 +16,26 @@ app.use(express.json());
 // Port numer on which appliction will listen
 const port = 3001;
 
+const privateKey = fs.readFileSync('./keys/localhost-key.pem', 'utf8');
+const certificate = fs.readFileSync('./keys/localhost.pem', 'utf8');
+const credentials = { key: privateKey, cert: certificate };
+
+const httpsServer = https.createServer(credentials, app);
+
 // Connection to the database
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     password: '',
     database: 'test_database',
+});
+
+db.connect((err) => {
+    if (err) {
+        console.error('FATAL error connecting to the database:', err);
+        process.exit(1);
+    }
+    console.log('Connected to the database succesfully');
 });
 
 // Function to generate random API key
@@ -32,7 +47,7 @@ const generateApiKey = () => {
 };
 
 // Path to the file storing the API key
-const apiKeyFilePath = 'api-key.txt';
+const apiKeyFilePath = './keys/api-key.txt';
 
 // Function to read the API key from the file or generate a new one if not present
 const readOrGenerateApiKey = () => {
@@ -55,13 +70,16 @@ const generatedApiKey = readOrGenerateApiKey();
 
 // Middleware for API key verification
 const apiKeyMiddleware = (request, response, next) => {
-    const apiKey = request.headers['api-key'];
-
-    // Check if API key is present and valid
-    if (apiKey && apiKey === generatedApiKey) {
-        next();
-    } else {
-        response.status(401).send('Unauthorized: Invalid API Key');
+    try {
+        const apiKey = request.headers['api-key'];
+        // Check if API key is present and valid
+        if (apiKey && apiKey === generatedApiKey) {
+            next();
+        } else {
+            response.status(401).send('Unauthorized: Invalid API Key');
+        }
+    } catch (error) {
+        response.status(500).send('Internal Server Error');
     }
 };
 
@@ -116,7 +134,6 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
                 if (results.length > 0) {
                     const storedHashedPassword = results[0].password;
 
-                    // Use bcrypt to compare the provided password with the stored hashed password
                     bcrypt.compare(password, storedHashedPassword, (bcryptErr, bcryptResult) => {
                         if (bcryptErr) {
                             console.log(bcryptErr);
@@ -165,6 +182,6 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
     );
 });
 
-app.listen(port, () => {
-    console.log('server is running on port 3001');
+httpsServer.listen(port, () => {
+    console.log(`Server is running on https://localhost:${port}`);
 });
