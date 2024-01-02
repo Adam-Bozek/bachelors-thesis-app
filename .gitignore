@@ -1,5 +1,2 @@
-# Ignore the "server/keys/" folder
-server/keys/
-
-# Ignore the "client-app/keys/" folder
-client-app/keys/
+#keys
+keys/
