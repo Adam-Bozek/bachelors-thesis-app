@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { checkEmail, hashPassword, checkPassword, verifyUserLogin } from "../../Utils";
+import { checkEmail, checkPassword, verifyUserLogin } from "../../Utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -27,11 +27,9 @@ const Login = () => {
         // Check if the entered password is valid
         alert("Zadajte heslo");
       } else {
-        // Hash the entered password using the hashPassword function
-        const hashedPassword = await hashPassword(password);
-
         // Verify user login using the verifyUserLogin function
-        const loginInfo = await verifyUserLogin(email, hashedPassword, apiAddress + verifyUserLoginEndpoint);
+        // Password isn not encrypted in app due to transfer trough https protocol and bcrypt compare function
+        const loginInfo = await verifyUserLogin(email, password, apiAddress + verifyUserLoginEndpoint);
 
         if (loginInfo) {
           // If login is successful, display a success alert

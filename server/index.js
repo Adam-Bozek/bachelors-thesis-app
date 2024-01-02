@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+// express session plugin - session cookie
+
 const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");

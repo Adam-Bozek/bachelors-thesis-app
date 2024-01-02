@@ -42,15 +42,15 @@ const Registration = () => {
     // If all validations pass, proceed with user registration
     else {
       try {
-        // Hash the user's password
-        const hashedPassword = await hashPassword(password);
-
         // Check if the user already exists
-        const userExists = await verifyUserExistance(email, apiAddress + verifyEndpoint);
+        const userDoesntExists = await verifyUserExistance(email, apiAddress + verifyEndpoint);
 
-        if (userExists) {
+        if (userDoesntExists) {
           // If user does not exist, make a POST request to create a new user
           try {
+            // Hash the user's password
+            const hashedPassword = await hashPassword(password);
+            
             await createUser(name, surname, email, hashedPassword, apiAddress + createEndPoint);
           } catch (error) {
             console.error('Registration failed:', error);
