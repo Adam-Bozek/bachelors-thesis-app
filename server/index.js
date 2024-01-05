@@ -27,8 +27,8 @@ const httpsServer = https.createServer(credentials, app);
 
 // Database configuration
 const dbConfig = {
-    host: "root",
-    user: "localhost",
+    host: "localhost",
+    user: "root",
     password: "",
     database: "test_database",
 };
@@ -113,20 +113,27 @@ const readOrGenerateApiKey = () => {
 // Storing created or read API key
 const generatedApiKey = readOrGenerateApiKey();
 
-// Middleware for API key verification
-const apiKeyMiddleware = (request, response, next) => {
+// Middleware function authenticating API and session access
+const authMiddleware = (request, response, next) => {
     try {
         const apiKey = request.headers["api-key"];
+        
         // Check if API key is present and valid
         if (apiKey && apiKey === generatedApiKey) {
-            next();
+            // Check user session
+            if (request.session.user) {
+                next();
+            } else {
+                response.status(401).send("Unauthorized: User session not found");
+            }
         } else {
             response.status(401).send("API AUTH: Unauthorized - Invalid API Key");
         }
     } catch (error) {
-        response.status(500).send("API AUTH - Internal Server Error");
+        response.status(500).send("API AUTH: Internal Server Error");
     }
 };
+
 
 // Endpoint creation
 const createEndpoint = "/create";
@@ -134,9 +141,9 @@ const verifyUserLoginEndpoint = "/verifyUserLogin";
 const verifyUserExistanceEndpoint = "/verifyUserExistance";
 
 // Applying the API key middleware function
-app.use(createEndpoint, apiKeyMiddleware);
-app.use(verifyUserLoginEndpoint, apiKeyMiddleware);
-app.use(verifyUserExistanceEndpoint, apiKeyMiddleware);
+app.use(createEndpoint, authMiddleware);
+app.use(verifyUserLoginEndpoint, authMiddleware);
+app.use(verifyUserExistanceEndpoint, authMiddleware);
 
 // Creating an API endpoint where the API will add data to the database
 app.post(createEndpoint, (request, response) => {
@@ -229,5 +236,5 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
 });
 
 httpsServer.listen(PORT, () => {
-    console.log(`Server is running on https://localhost:${port}`);
+    console.log(`Server is running on https://localhost:${PORT}`);
 });
