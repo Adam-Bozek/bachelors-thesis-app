@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const session = require('express-session')
+const escapeHtml = require('escape-html')
 
 const app = express();
 const mysql = require("mysql");
@@ -9,35 +10,78 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const https = require("https");
 const crypto = require("crypto");
+const MySQLStore = require('express-mysql-session')(session);
 
 app.use(cors());
 app.use(express.json());
 
 // Port numer on which appliction will listen
-const port = 3001;
+const PORT = process.env.PORT || 3000;
 
+// Credentials fro https protocol
 const privateKey = fs.readFileSync("./keys/localhost-key.pem", "utf8");
 const certificate = fs.readFileSync("./keys/localhost.pem", "utf8");
 const credentials = { key: privateKey, cert: certificate };
 
 const httpsServer = https.createServer(credentials, app);
 
-// Connection to the database
-const db = mysql.createConnection({
-    user: "root",
-    host: "localhost",
+// Database configuration
+const dbConfig = {
+    host: "root",
+    user: "localhost",
     password: "",
     database: "test_database",
-});
+};
+
+// Create a MySQL connection pool
+const connectionPool = mysql.createPool(dbConfig);
 
 // Database connection test
-db.connect((err) => {
-    if (err) {
-        console.error("DATABASE CONNECTION: FATAL error connecting to the database:", err);
+connectionPool.getConnection((connectionError, connection) => {
+    if (connectionError) {
+        console.error("DATABASE CONNECTION: Unable to get a connection from the pool:", connectionError);
         process.exit(1);
     }
-    console.log("DATABASE CONNECTION: Connected to the database succesfully");
+
+    console.log("DATABASE CONNECTION: Connected to the database successfully");
+
+    // Release the connection back to the pool
+    connection.release();
 });
+
+// Handle database connection errors
+connectionPool.on('error', (poolError) => {
+    console.error("DATABASE CONNECTION: Pool error:", poolError);
+    process.exit(1);
+});
+
+// Setup MySQL session store
+const sessionStore = new MySQLStore({
+    clearExpired: true,
+    checkExpirationInterval: 1000 * 60 * 20,
+    expiration: 1000 * 60 * 60 * 24,
+    createDatabaseTable: true,
+    schema: {
+        tableName: 'sessions',
+        columnNames: {
+            session_id: 'session_id',
+            expires: 'expires',
+            data: 'data'
+        }
+    },
+}, connectionPool);
+
+// Use express-session middleware with MySQL session store
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 12,
+        secure: true,
+    },
+}));
 
 // Function to generate random API key
 // On return there sould be a random API key
@@ -103,7 +147,7 @@ app.post(createEndpoint, (request, response) => {
 
     console.log()
 
-    db.query(
+    connectionPool.query(
         "INSERT INTO user_data (name, surname, email, password) VALUES (?, ?, ?, ?)",
         [name, surname, email, hashedPassword],
         (err, res) => {
@@ -124,7 +168,7 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
     const email = request.body.email;
     const password = request.body.password;
 
-    db.query(
+    connectionPool.query(
         "SELECT * FROM user_data WHERE email = ?",
         [email],
         (err, results) => {
@@ -164,7 +208,7 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
 app.post(verifyUserExistanceEndpoint, (request, response) => {
     const email = request.body.email;
 
-    db.query(
+    connectionPool.query(
         "SELECT * FROM user_data WHERE email = ?",
         [email],
         (err, results) => {
@@ -184,6 +228,6 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
     );
 });
 
-httpsServer.listen(port, () => {
+httpsServer.listen(PORT, () => {
     console.log(`Server is running on https://localhost:${port}`);
 });
