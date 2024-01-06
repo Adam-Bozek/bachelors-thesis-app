@@ -1,8 +1,18 @@
 import React from 'react';
 
+import Header from "./Header";
+import Footer from "./Footer";
+
 const Dashboard = () => {
+    const pageName = "Informačný panel";
     return(
-        <p>LOL</p>
+        <>
+            <Header pageName={pageName}/>
+
+
+
+            <Footer />
+        </>
     );
 };
 
