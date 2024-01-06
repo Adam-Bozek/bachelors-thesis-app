@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 // Port numer on which appliction will listen
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Credentials fro https protocol
 const privateKey = fs.readFileSync("./keys/localhost-key.pem", "utf8");
@@ -83,6 +83,11 @@ app.use(session({
     },
 }));
 
+const sessionMiddleware = (request, response, next) => {
+    if (request.session.user) {next();}
+    else {response.status(401).send("Unauthorized: User session not found");}
+};
+
 // Function to generate random API key
 // On return there sould be a random API key
 const generateApiKey = () => {
@@ -114,18 +119,13 @@ const readOrGenerateApiKey = () => {
 const generatedApiKey = readOrGenerateApiKey();
 
 // Middleware function authenticating API and session access
-const authMiddleware = (request, response, next) => {
+const apiMiddleware = (request, response, next) => {
     try {
         const apiKey = request.headers["api-key"];
         
         // Check if API key is present and valid
         if (apiKey && apiKey === generatedApiKey) {
-            // Check user session
-            if (request.session.user) {
-                next();
-            } else {
-                response.status(401).send("Unauthorized: User session not found");
-            }
+            next();
         } else {
             response.status(401).send("API AUTH: Unauthorized - Invalid API Key");
         }
@@ -134,19 +134,19 @@ const authMiddleware = (request, response, next) => {
     }
 };
 
-
 // Endpoint creation
-const createEndpoint = "/create";
-const verifyUserLoginEndpoint = "/verifyUserLogin";
+const userRegisterEndpoint = "/userRegister";
+const userLoginEndpoint = "/userLogin";
 const verifyUserExistanceEndpoint = "/verifyUserExistance";
+const userLogoutEndpoint = "/userLogout";
 
 // Applying the API key middleware function
-app.use(createEndpoint, authMiddleware);
-app.use(verifyUserLoginEndpoint, authMiddleware);
-app.use(verifyUserExistanceEndpoint, authMiddleware);
+app.use(userRegisterEndpoint, apiMiddleware);
+app.use(userLoginEndpoint, apiMiddleware);
+app.use(verifyUserExistanceEndpoint, apiMiddleware);
 
 // Creating an API endpoint where the API will add data to the database
-app.post(createEndpoint, (request, response) => {
+app.post(userRegisterEndpoint, express.urlencoded({ extended: false }), (request, response) => {
     const name = request.body.name;
     const surname = request.body.surname;
     const email = request.body.email;
@@ -171,7 +171,7 @@ app.post(createEndpoint, (request, response) => {
 });
 
 // Creating an API endpoint for authentication of Login
-app.post(verifyUserLoginEndpoint, (request, response) => {
+app.post(userLoginEndpoint, express.urlencoded({ extended: false }), (request, response) => {
     const email = request.body.email;
     const password = request.body.password;
 
@@ -193,8 +193,29 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
                         } else {
                             if (bcryptResult) {
                                 // Passwords match, authentication successful
-                                console.log("USER LOGIN: Authentification successful");
-                                response.status(200).send("Authentication successful");
+                                console.log("USER LOGIN: Authentication successful LOL");
+
+                                // Regenerate session
+                                request.session.regenerate((sessionErr) => {
+                                    if (sessionErr) {
+                                        console.log("USER LOGIN: " + sessionErr);
+                                        response.status(500).send("Internal Server Error");
+                                    } else {
+                                        // Store user information in the session
+                                        request.session.user = email;
+
+                                        // Save the session before redirection
+                                        request.session.save((saveErr) => {
+                                            if (saveErr) {
+                                                console.log("USER LOGIN: " + saveErr);
+                                                response.status(500).send("Internal Server Error");
+                                            } else {
+                                                response.status(200).send("Authentication successful");
+                
+                                            }
+                                        });
+                                    }
+                                });
                             } else {
                                 // Passwords do not match
                                 response.status(401).send("Unauthorized: Invalid email or password");
@@ -205,6 +226,7 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
                 } else {
                     // No user found with the provided email
                     console.log("USER LOGIN: Unauthorized: Invalid user");
+                    response.status(401).send("Unauthorized: Invalid email or password");
                 }
             }
         }
@@ -212,7 +234,7 @@ app.post(verifyUserLoginEndpoint, (request, response) => {
 });
 
 // Creating an API endpoint for chceck if user with the provided email exists
-app.post(verifyUserExistanceEndpoint, (request, response) => {
+app.post(verifyUserExistanceEndpoint, express.urlencoded({ extended: false }), (request, response) => {
     const email = request.body.email;
 
     connectionPool.query(
