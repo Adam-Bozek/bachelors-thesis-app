@@ -10,7 +10,6 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const https = require("https");
 const crypto = require("crypto");
-const { receiveMessageOnPort } = require("worker_threads");
 const MySQLStore = require('express-mysql-session')(session);
 
 app.use(cors());
@@ -194,9 +193,7 @@ app.post(userLoginEndpoint, express.urlencoded({ extended: false }), (request, r
                             response.status(500).send("Internal Server Error");
                         } else {
                             if (bcryptResult) {
-                                // Passwords match, authentication successful
-                                console.log("USER LOGIN: Authentication successful LOL");
-
+                                // Passwords match
                                 // Regenerate session
                                 request.session.regenerate((sessionErr) => {
                                     if (sessionErr) {
@@ -212,8 +209,8 @@ app.post(userLoginEndpoint, express.urlencoded({ extended: false }), (request, r
                                                 console.log("USER LOGIN: " + saveErr);
                                                 response.status(500).send("Internal Server Error");
                                             } else {
+                                                console.log("USER LOGIN: Authentication successful");
                                                 response.status(200).send("Authentication successful");
-
                                             }
                                         });
                                     }

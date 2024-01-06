@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { isLoggedIn } from '../ContextProvider';
 import { checkEmail, checkPassword, verifyUserLogin } from "../../Utils";
 
 import Footer from "./Footer";
@@ -13,6 +15,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+
+  const { updateIsLoggedIn } = useContext(isLoggedIn);
+
+  const navigate = useNavigate();
 
   // Function to handle user login
   const logInUser = async (event) => {
@@ -32,8 +38,9 @@ const Login = () => {
         const loginInfo = await verifyUserLogin(email, password, apiAddress + verifyUserLoginEndpoint);
 
         if (loginInfo) {
-          // If login is successful, display a success alert
-          alert("Úspešné prihlásenie");
+          // If login is successful, redirect to Dashboard
+          updateIsLoggedIn(true);
+          navigate("/Dashboard");
         } else {
           // If login fails, display an alert for incorrect password or email
           alert("Nesprávne heslo alebo email");
