@@ -9,7 +9,7 @@ const Registration = () => {
   const pageName = "Registrácia";
 
   const apiAddress = "https://localhost:3001/";
-  const createEndPoint = "create";
+  const createEndPoint = "userRegister";
   const verifyEndpoint = "verifyUserExistance";
 
   const [name, setName] = useState("");

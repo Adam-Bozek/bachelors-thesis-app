@@ -10,6 +10,7 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const https = require("https");
 const crypto = require("crypto");
+const { receiveMessageOnPort } = require("worker_threads");
 const MySQLStore = require('express-mysql-session')(session);
 
 app.use(cors());
@@ -84,8 +85,8 @@ app.use(session({
 }));
 
 const sessionMiddleware = (request, response, next) => {
-    if (request.session.user) {next();}
-    else {response.status(401).send("Unauthorized: User session not found");}
+    if (request.session.user) { next(); }
+    else { response.status(401).send("Unauthorized: User session not found"); }
 };
 
 // Function to generate random API key
@@ -122,7 +123,7 @@ const generatedApiKey = readOrGenerateApiKey();
 const apiMiddleware = (request, response, next) => {
     try {
         const apiKey = request.headers["api-key"];
-        
+
         // Check if API key is present and valid
         if (apiKey && apiKey === generatedApiKey) {
             next();
@@ -144,6 +145,7 @@ const userLogoutEndpoint = "/userLogout";
 app.use(userRegisterEndpoint, apiMiddleware);
 app.use(userLoginEndpoint, apiMiddleware);
 app.use(verifyUserExistanceEndpoint, apiMiddleware);
+app.use(userLogoutEndpoint, apiMiddleware , sessionMiddleware);
 
 // Creating an API endpoint where the API will add data to the database
 app.post(userRegisterEndpoint, express.urlencoded({ extended: false }), (request, response) => {
@@ -211,7 +213,7 @@ app.post(userLoginEndpoint, express.urlencoded({ extended: false }), (request, r
                                                 response.status(500).send("Internal Server Error");
                                             } else {
                                                 response.status(200).send("Authentication successful");
-                
+
                                             }
                                         });
                                     }
@@ -255,6 +257,18 @@ app.post(verifyUserExistanceEndpoint, express.urlencoded({ extended: false }), (
             }
         }
     );
+});
+
+// Creating an API endpointfor user lougout
+app.post(userLogoutEndpoint, express.urlencoded({ extended: false }), (request, response) => {
+    request.session.user = null;
+    request.session.save(function (err) {
+        if (err) {
+            response.status(500).send("Internal Server Error");
+        } else {
+            response.status(200).send("Logout successful");
+        }
+    });
 });
 
 httpsServer.listen(PORT, () => {
