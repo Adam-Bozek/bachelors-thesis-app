@@ -5,7 +5,7 @@ const isLoggedIn = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [value, setValue] = useState('Initial Value');
-  const [isLoggedInValue, setIsLoggedInValue] = useState(true);
+  const [isLoggedInValue, setIsLoggedInValue] = useState(false);
 
   const updateValue = (newValue) => {
     setValue(newValue);

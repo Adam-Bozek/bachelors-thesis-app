@@ -12,6 +12,14 @@ const https = require("https");
 const crypto = require("crypto");
 const MySQLStore = require('express-mysql-session')(session);
 
+/** TODO LIST
+ *  TODO: handle worong inputs to the endpoints properly
+ *  TODO: add site where API keys will be generated
+ *  TODO: create a database table for storing api keys based on something
+ *  TODO: chnage this on line 84: secret: 'your-secret-key'
+ *  TODO: Finish user logout endpoint
+ */
+
 app.use(cors());
 app.use(express.json());
 
@@ -26,7 +34,7 @@ const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials, app);
 
 // Database configuration
-const dbConfig = {
+const DBConfig = {
     host: "localhost",
     user: "root",
     password: "",
@@ -34,7 +42,7 @@ const dbConfig = {
 };
 
 // Create a MySQL connection pool
-const connectionPool = mysql.createPool(dbConfig);
+const connectionPool = mysql.createPool(DBConfig);
 
 // Database connection test
 connectionPool.getConnection((connectionError, connection) => {
@@ -58,8 +66,8 @@ connectionPool.on('error', (poolError) => {
 // Setup MySQL session store
 const sessionStore = new MySQLStore({
     clearExpired: true,
-    checkExpirationInterval: 1000 * 60 * 20,
-    expiration: 1000 * 60 * 60 * 24,
+    checkExpirationInterval: 1000 * 60 * 20, // 20 minutes
+    expiration: 1000 * 60 * 60 * 24, // 24 hours
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -78,11 +86,12 @@ app.use(session({
     saveUninitialized: true,
     store: sessionStore,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 12,
+        maxAge: 1000 * 60 * 60 * 12, // 12 hours
         secure: true,
     },
 }));
 
+// Middleware function authentifiacates sessions
 const sessionMiddleware = (request, response, next) => {
     if (request.session.user) { next(); }
     else { response.status(401).send("Unauthorized: User session not found"); }
@@ -118,7 +127,7 @@ const readOrGenerateApiKey = () => {
 // Storing created or read API key
 const generatedApiKey = readOrGenerateApiKey();
 
-// Middleware function authenticating API and session access
+// Middleware function authenticating API access
 const apiMiddleware = (request, response, next) => {
     try {
         const apiKey = request.headers["api-key"];
@@ -146,7 +155,7 @@ app.use(userLoginEndpoint, apiMiddleware);
 app.use(verifyUserExistanceEndpoint, apiMiddleware);
 app.use(userLogoutEndpoint, apiMiddleware , sessionMiddleware);
 
-// Creating an API endpoint where the API will add data to the database
+// Creating an API endpoint where the API will add new user to the database
 app.post(userRegisterEndpoint, express.urlencoded({ extended: false }), (request, response) => {
     const name = request.body.name;
     const surname = request.body.surname;
@@ -232,7 +241,7 @@ app.post(userLoginEndpoint, express.urlencoded({ extended: false }), (request, r
     );
 });
 
-// Creating an API endpoint for chceck if user with the provided email exists
+// Creating an API endpoint to chceck if user with the provided email exists
 app.post(verifyUserExistanceEndpoint, express.urlencoded({ extended: false }), (request, response) => {
     const email = request.body.email;
 
@@ -256,7 +265,7 @@ app.post(verifyUserExistanceEndpoint, express.urlencoded({ extended: false }), (
     );
 });
 
-// Creating an API endpointfor user lougout
+// Creating an API endpoint for user lougout TODO: FINISH this
 app.post(userLogoutEndpoint, express.urlencoded({ extended: false }), (request, response) => {
     request.session.user = null;
     request.session.save(function (err) {
