@@ -1,0 +1,96 @@
+{
+    "Questions": [
+        {
+            "Marketplace": [
+                {
+                    "id": 1,
+                    "QuestionNo": 1,
+                    "Question": "Na ktorom obrázku je Ananás?",
+                    "Voice-Path": "",
+                    "Answers": [
+                        {
+                            "id": 1,
+                            "isCorrect": true,
+                            "Picture-Path": "./data/Pictures/Marketplace/Pineapple/Pineapple.jpeg",
+                            "Answer": "Ananás"
+                        },
+                        {
+                            "id": 2,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Pineapple/Kiwi.jpg",
+                            "Answer": "Kiwi"
+                        },
+                        {
+                            "id": 3,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Pineapple/Mango.jpeg",
+                            "Answer": "Mango"
+                        },
+                        {
+                            "id": 4,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Pineapple/Avocado.jpeg",
+                            "Answer": "Avokado"
+                        },
+                        {
+                            "id": 5,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Pineapple/Lemon.webp",
+                            "Answer": "Citrón"
+                        },
+                        {
+                            "id": 6,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Pineapple/Apple.jpeg",
+                            "Answer": "Jablko"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,                     
+                    "QuestionNo": 2,
+                    "Question": "Na ktorom obrázku je čokoláda?",
+                    "Voice-Path": "",
+                    "Answers": [
+                        {
+                            "id": 1,
+                            "isCorrect": true,
+                            "Picture-Path": "",
+                            "Answer": "Čokoláda"
+                        },
+                        {
+                            "id": 2,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Granko"
+                        },
+                        {
+                            "id": 3,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Koláč"
+                        },
+                        {
+                            "id": 4,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Piškóty"
+                        },
+                        {
+                            "id": 5,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Lízatko"
+                        },
+                        {
+                            "id": 6,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Cukrík"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
