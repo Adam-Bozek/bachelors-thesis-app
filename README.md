@@ -20,31 +20,31 @@ default question json:
                         },
                         {
                             "id": 2,
-                            "isCorrect": true,
+                            "isCorrect": false,
                             "Picture-Path": "",
                             "Answer": ""
                         },
                         {
                             "id": 3,
-                            "isCorrect": true,
+                            "isCorrect": false,
                             "Picture-Path": "",
                             "Answer": ""
                         },
                         {
                             "id": 4,
-                            "isCorrect": true,
+                            "isCorrect": false,
                             "Picture-Path": "",
                             "Answer": ""
                         },
                         {
                             "id": 5,
-                            "isCorrect": true,
+                            "isCorrect": false,
                             "Picture-Path": "",
                             "Answer": ""
                         },
                         {
                             "id": 6,
-                            "isCorrect": true,
+                            "isCorrect": false,
                             "Picture-Path": "",
                             "Answer": ""
                         }

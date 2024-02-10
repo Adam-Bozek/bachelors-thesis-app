@@ -100,7 +100,7 @@ const Registration = () => {
                   autoComplete="family-name"
                   value={surname}
                   onChange={(event) => setSurname(event.target.value)} />
-                <label htmlFor="floatingSurname"> Priezvysko </label> <br />
+                <label htmlFor="floatingSurname"> Priezvisko </label> <br />
               </div>
               <div className="form-floating">
                 <input

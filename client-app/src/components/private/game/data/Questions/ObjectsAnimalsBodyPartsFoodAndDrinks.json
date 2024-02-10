@@ -5,7 +5,7 @@
                 {
                     "id": 1,
                     "QuestionNo": 1,
-                    "Question": "Na ktorom obrázku je Ananás?",
+                    "Question": "Na ktorom obrázku je ananás?",
                     "Voice-Path": "",
                     "Answers": [
                         {
@@ -55,38 +55,170 @@
                         {
                             "id": 1,
                             "isCorrect": true,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Chocolate/Chocolate.webp",
                             "Answer": "Čokoláda"
                         },
                         {
                             "id": 2,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Chocolate/Granko.png",
                             "Answer": "Granko"
                         },
                         {
                             "id": 3,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Chocolate/Cake.jpeg",
                             "Answer": "Koláč"
                         },
                         {
                             "id": 4,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Chocolate/Piskoty.jfif",
                             "Answer": "Piškóty"
                         },
                         {
                             "id": 5,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Chocolate/Lollipop.jpg",
                             "Answer": "Lízatko"
                         },
                         {
                             "id": 6,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Chocolate/Sweets.jpg",
                             "Answer": "Cukrík"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,                      
+                    "QuestionNo": 3, 
+                    "Question": "Na ktorom obrázku je Lekvár?",
+                    "Voice-Path": "",
+                    "Answers": [
+                        {
+                            "id": 1,
+                            "isCorrect": true,
+                            "Picture-Path": "./data/Pictures/Marketplace/Jam/Jam.jpg",
+                            "Answer": "Lekvár"
+                        },
+                        {
+                            "id": 2,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Jam/Raspberry.webp",
+                            "Answer": "Malina"
+                        },
+                        {
+                            "id": 3,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Jam/Strawberry.jpg",
+                            "Answer": "Jahoda"
+                        },
+                        {
+                            "id": 4,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Jam/Sirup.jpg",
+                            "Answer": "Sirup"
+                        },
+                        {
+                            "id": 5,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Jam/Bread.jpg",
+                            "Answer": "Chlieb"
+                        },
+                        {
+                            "id": 6,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Jam/Blueberry.jpg",
+                            "Answer": "Čučoriekdka"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,                      
+                    "QuestionNo": 4,
+                    "Question": "Na ktorom obrázku je hrach?",
+                    "Voice-Path": "",
+                    "Answers": [
+                        {
+                            "id": 1,
+                            "isCorrect": true,
+                            "Picture-Path": "./data/Pictures/Marketplace/Peas/Peas.jpg",
+                            "Answer": "Hrach"
+                        },
+                        {
+                            "id": 2,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Peas/Corn.jpg",
+                            "Answer": "Kukurica"
+                        },
+                        {
+                            "id": 3,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Peas/Beans.jfif",
+                            "Answer": "Fazuľa"
+                        },
+                        {
+                            "id": 4,
+                            "isCorrect": false,
+                            "Picture-Path": "./data/Pictures/Marketplace/Peas/Broccoli.jfif",
+                            "Answer": "Brokolica"
+                        },
+                        {
+                            "id": 5,
+                            "isCorrect": false,
+                            "Picture-Path": "Salad.jfif",
+                            "Answer": "Šalát"
+                        },
+                        {
+                            "id": 6,
+                            "isCorrect": false,
+                            "Picture-Path": "Lentils.webp",
+                            "Answer": "Šošovica"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,       
+                    "QuestionNo": 5,
+                    "Question": "Na ktorom obrázku je klobása?",
+                    "Voice-Path": "",
+                    "Answers": [
+                        {
+                            "id": 1,
+                            "isCorrect": true,
+                            "Picture-Path": "",
+                            "Answer": "Klobása"
+                        },
+                        {
+                            "id": 2,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Párky"
+                        },
+                        {
+                            "id": 3,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Šunka"
+                        },
+                        {
+                            "id": 4,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Syr"
+                        },
+                        {
+                            "id": 5,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Slanina"
+                        },
+                        {
+                            "id": 6,
+                            "isCorrect": false,
+                            "Picture-Path": "",
+                            "Answer": "Paštéta"
                         }
                     ]
                 }
