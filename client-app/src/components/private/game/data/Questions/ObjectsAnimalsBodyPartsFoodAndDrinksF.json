@@ -187,31 +187,31 @@
                         {
                             "id": 1,
                             "isCorrect": true,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Sausage/Sausage.jfif",
                             "Answer": "Klobása"
                         },
                         {
                             "id": 2,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Sausage/Parky.jpg",
                             "Answer": "Párky"
                         },
                         {
                             "id": 3,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Sausage/Sunka.jfif",
                             "Answer": "Šunka"
                         },
                         {
                             "id": 4,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Sausage/Cheese.jpg",
                             "Answer": "Syr"
                         },
                         {
                             "id": 5,
                             "isCorrect": false,
-                            "Picture-Path": "",
+                            "Picture-Path": "./data/Pictures/Marketplace/Sausage/Beacon.jpg",
                             "Answer": "Slanina"
                         },
                         {
