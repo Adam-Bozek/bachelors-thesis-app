@@ -1,7 +1,9 @@
-# JSON File Structure Documentation for `Objects_Animals_BodyParts_FoodAndDrinks.json` and `SoundsOfAnimals_AndSurroudings.json`
+# JSON File Structure Documentation for `O_A_BP_Fad.json` and `SoA_AS.json`
 
 This document outlines the structure of the JSON file containing marketplace item questions and answers.
-
+File names represent this:
+- `O_A_BP_FaD.json`: Objects, Animals, Body Parts, Food and Drinks
+- `SoA_AS.json`: Sounds of Animals and Surroudndings
 ## Question Object
 
 - `id` (integer): Unique identifier for each marketplace item.
