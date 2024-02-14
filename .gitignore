@@ -1,5 +1,0 @@
-# Ignoring folders conating ssl and api keys
-server/keys/
-client-app/keys/
-
-
