@@ -2,14 +2,14 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { isLoggedIn } from '../ContextProvider';
-import { checkEmail, checkPassword, verifyUserLogin } from "../../Utils";
+import { checkEmail, checkPassword, verifyUserLogin, apiIPAddress, webProtocol } from "../../Utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
 
 const Login = () => {
   const pageName = "Prihlásenie";
-  const apiAddress = "https://localhost:3001/";
+  const apiAddress = `${webProtocol}://${apiIPAddress}/`;
   const verifyUserLoginEndpoint = "userLogin";
 
   const [email, setEmail] = useState("");

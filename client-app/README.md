@@ -29,39 +29,39 @@ This section contains questions related to marketplace items.
 
 ```json
 {
-    "id": 1,
-    "questionNo": 1,
-    "question": "Na ktorom obrázku je ananás?",
+    "id": 37,
+    "questionNo": 11,
+    "question": "Na ktorom obrázku je pohár?",
     "answers": [
         {
             "id": 1,
             "isCorrect": true,
-            "answer": "Ananás"
+            "answer": "Pohár"
         },
         {
             "id": 2,
             "isCorrect": false,
-            "answer": "Kiwi"
+            "answer": "Tanier"
         },
         {
             "id": 3,
             "isCorrect": false,
-            "answer": "Mango"
+            "answer": "Vydlička"
         },
         {
             "id": 4,
             "isCorrect": false,
-            "answer": "Avokádo"
+            "answer": "Kohútik"
         },
         {
             "id": 5,
             "isCorrect": false,
-            "answer": "Citrón"
+            "answer": "Fľaša"
         },
         {
             "id": 6,
             "isCorrect": false,
-            "answer": "Jablko"
+            "answer": "Kefka"
         }
     ]
 }

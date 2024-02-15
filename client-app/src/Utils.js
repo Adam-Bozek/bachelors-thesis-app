@@ -3,6 +3,9 @@ import Axios from "axios";
 
 const apiKey = "8be5864ea8195c870a50d065bcaf5f2e831f188c0ca05091e692b5b96c90fff5";
 
+export const webProtocol = "https";
+export const apiIPAddress = "192.168.36.200:3001";
+
 /** TODO LIST
  *  TODO: handle wrong function input properties
  *  TODO: @param functions inputs

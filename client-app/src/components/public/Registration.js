@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyUserExistance, createUser } from "../../Utils";
+import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyUserExistance, createUser, apiIPAddress, webProtocol } from "../../Utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -8,7 +8,7 @@ import Header from "./Header";
 const Registration = () => {
   const pageName = "Registrácia";
 
-  const apiAddress = "https://localhost:3001/";
+  const apiAddress = `${webProtocol}://${apiIPAddress}/`;
   const createEndPoint = "userRegister";
   const verifyEndpoint = "verifyUserExistance";
 

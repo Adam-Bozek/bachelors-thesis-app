@@ -23,12 +23,13 @@ const MySQLStore = require('express-mysql-session')(session);
 app.use(cors());
 app.use(express.json());
 
-// Port numer on which appliction will listen
+// Port number on which application will listen
+const IP_ADDRESS = "192.168.36.200";
 const PORT = process.env.PORT || 3001;
 
-// Credentials fro https protocol
-const privateKey = fs.readFileSync("./keys/localhost-key.pem", "utf8");
-const certificate = fs.readFileSync("./keys/localhost.pem", "utf8");
+// Credentials for https protocol
+const privateKey = fs.readFileSync(`./keys/IP/${IP_ADDRESS}-key.pem`, "utf8");
+const certificate = fs.readFileSync(`./keys/IP/${IP_ADDRESS}.pem`, "utf8");
 const credentials = { key: privateKey, cert: certificate };
 
 const httpsServer = https.createServer(credentials, app);
@@ -277,6 +278,6 @@ app.post(userLogoutEndpoint, express.urlencoded({ extended: false }), (request, 
     });
 });
 
-httpsServer.listen(PORT, () => {
-    console.log(`Server is running on https://localhost:${PORT}`);
+httpsServer.listen(PORT, IP_ADDRESS, () => {
+    console.log(`Server is running on https://${IP_ADDRESS}:${PORT}`);
 });
