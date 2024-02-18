@@ -2,6 +2,8 @@ import React from "react";
 
 import { NavLink } from 'react-router-dom';
 
+import { year } from "../../Utils";
+
 const Home = () => {
     return (
         <>
@@ -13,7 +15,7 @@ const Home = () => {
                         <li className="nav-item"> <NavLink to="/Login" className="nav-link px-2 text-body-secondary"> Prihlásenie </NavLink> </li>
                         <li className="nav-item"> <NavLink to="/Registration" className="nav-link px-2 text-body-secondary"> Registrácia </NavLink> </li>
                     </ul>
-                    <p className="text-center text-body-secondary">&copy; 2023 Adam Božek. Všetky práva vyhradené.</p>
+                    <p className="text-center text-body-secondary">&copy; {year} Adam Božek. Všetky práva vyhradené.</p>
                 </div>
             </footer>
         </>
