@@ -40,7 +40,7 @@ const Login = () => {
         if (loginInfo) {
           // If login is successful, redirect to Dashboard
           updateIsLoggedIn(true);
-          navigate("/Dashboard");
+          navigate("/Tiles");
         } else {
           // If login fails, display an alert for incorrect password or email
           alert("Nesprávne heslo alebo email");

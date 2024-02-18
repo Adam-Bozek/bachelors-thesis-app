@@ -111,7 +111,7 @@ export async function verifyUserExistance(email, apiAddress) {
 
 // This function will post to database
 // This is function without return
-export async function createUser(name, surname, email, password, apiAddress) {
+export async function createUser(name, surname, email, password, apiAddress, navigate) {
   try {
     const response = await Axios.post(apiAddress, {
       name: name,
@@ -126,7 +126,8 @@ export async function createUser(name, surname, email, password, apiAddress) {
     });
 
     // Successful registration response
-    alert(response.data);
+    alert(response.data + ". Please log in.");
+    navigate("/Login");
   } catch (err) {
     // Error handling for registration failure
     alert(err);

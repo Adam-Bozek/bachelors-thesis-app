@@ -10,6 +10,7 @@ import Registration from './components/public/Registration';
 
 /* Private Routes */
 import Dashboard from "./components/private/Dashboard";
+import Tiles from "./components/private/game/Tiles";
 
 const App = () => {
     const { isLoggedInValue } = useContext(isLoggedIn);
@@ -23,6 +24,7 @@ const App = () => {
 
             {/* Private route auth */}
             {isLoggedInValue && <Route path="/Dashboard" element={<Dashboard />} />}
+            {isLoggedInValue && <Route path="/Tiles" element={<Tiles />} />}
 
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

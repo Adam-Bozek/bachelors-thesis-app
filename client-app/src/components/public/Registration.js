@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyUserExistance, createUser, apiIPAddress, webProtocol } from "../../Utils";
+import { useNavigate } from "react-router-dom";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -17,6 +18,8 @@ const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+
+  const navigate = useNavigate();
 
   // Handles the registration of a new user.
   const registerUser = async (event) => {
@@ -51,7 +54,7 @@ const Registration = () => {
             // Hash the user's password
             const hashedPassword = await hashPassword(password);
             
-            await createUser(name, surname, email, hashedPassword, apiAddress + createEndPoint);
+            await createUser(name, surname, email, hashedPassword, apiAddress + createEndPoint, navigate);
           } catch (error) {
             console.error('Registration failed:', error);
           }
