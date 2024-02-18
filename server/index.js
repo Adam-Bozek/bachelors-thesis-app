@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const session = require('express-session')
-const escapeHtml = require('escape-html')
 
 const app = express();
 const mysql = require("mysql");
@@ -22,6 +21,7 @@ const MySQLStore = require('express-mysql-session')(session);
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 // Port number on which application will listen
 const IP_ADDRESS = "192.168.36.200";
@@ -82,8 +82,8 @@ const sessionStore = new MySQLStore({
 
 // Use express-session middleware with MySQL session store
 app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
+    secret: 'your-lol-key',
+    resave: true,
     saveUninitialized: true,
     store: sessionStore,
     cookie: {
@@ -95,7 +95,10 @@ app.use(session({
 // Middleware function authentifiacates sessions
 const sessionMiddleware = (request, response, next) => {
     if (request.session.user) { next(); }
-    else { response.status(401).send("Unauthorized: User session not found"); }
+    else {
+        console.log("SESSION MIDDLEWARE: unauthorized");
+        response.status(401).send("Unauthorized: User session not found");
+    }
 };
 
 // Function to generate random API key
@@ -154,10 +157,10 @@ const userLogoutEndpoint = "/userLogout";
 app.use(userRegisterEndpoint, apiMiddleware);
 app.use(userLoginEndpoint, apiMiddleware);
 app.use(verifyUserExistanceEndpoint, apiMiddleware);
-app.use(userLogoutEndpoint, apiMiddleware , sessionMiddleware);
+app.use(userLogoutEndpoint, apiMiddleware);
 
 // Creating an API endpoint where the API will add new user to the database
-app.post(userRegisterEndpoint, express.urlencoded({ extended: false }), (request, response) => {
+app.post(userRegisterEndpoint, (request, response) => {
     const name = request.body.name;
     const surname = request.body.surname;
     const email = request.body.email;
@@ -182,7 +185,7 @@ app.post(userRegisterEndpoint, express.urlencoded({ extended: false }), (request
 });
 
 // Creating an API endpoint for authentication of Login
-app.post(userLoginEndpoint, express.urlencoded({ extended: false }), (request, response) => {
+app.post(userLoginEndpoint, (request, response) => {
     const email = request.body.email;
     const password = request.body.password;
 
@@ -242,8 +245,9 @@ app.post(userLoginEndpoint, express.urlencoded({ extended: false }), (request, r
     );
 });
 
+
 // Creating an API endpoint to chceck if user with the provided email exists
-app.post(verifyUserExistanceEndpoint, express.urlencoded({ extended: false }), (request, response) => {
+app.post(verifyUserExistanceEndpoint, (request, response) => {
     const email = request.body.email;
 
     connectionPool.query(
@@ -266,17 +270,39 @@ app.post(verifyUserExistanceEndpoint, express.urlencoded({ extended: false }), (
     );
 });
 
-// Creating an API endpoint for user lougout TODO: FINISH this
-app.post(userLogoutEndpoint, express.urlencoded({ extended: false }), (request, response) => {
-    request.session.user = null;
-    request.session.save(function (err) {
+// Creating an API endpoint for user logout
+app.post(userLogoutEndpoint, (request, response) => {
+    if (!request.session) {
+        // Session doesn't exist, handle accordingly
+        console.error("USER LOGOUT: Session doesn't exist");
+        response.status(400).send("Bad Request: Session doesn't exist");
+        return;
+    }
+
+    request.session.destroy((err) => {
         if (err) {
+            console.error("USER LOGOUT: " + err);
             response.status(500).send("Internal Server Error");
         } else {
-            response.status(200).send("Logout successful");
+            // Remove session data from the database
+            const sessionId = request.session.id;
+            connectionPool.query(
+                "DELETE FROM sessions WHERE session_id = ?",
+                [sessionId],
+                (deleteErr, result) => {
+                    if (deleteErr) {
+                        console.error("Error deleting session from database:", deleteErr);
+                        response.status(500).send("Internal Server Error");
+                    } else {
+                        console.log("USER LOGOUT: Logout Successful");
+                        response.status(200).send("Logout successful");
+                    }
+                }
+            );
         }
     });
 });
+
 
 httpsServer.listen(PORT, IP_ADDRESS, () => {
     console.log(`Server is running on https://${IP_ADDRESS}:${PORT}`);

@@ -148,3 +148,27 @@ export async function hashPassword(password) {
     });
   });
 }
+
+export async function logoutUser(apiAddress, navigate) {
+  try {
+    const response = await fetch(apiAddress, {
+      method: 'POST',
+      headers: {
+        'api-key': apiKey,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Logout failed');
+    }
+
+    const data = await response.text();
+    console.log('Logout successful:', data);
+    // Perform any additional actions after successful logout (e.g., redirect to login page)
+    navigate("/Home");
+  } catch (error) {
+    console.error('Logout error:', error.message);
+    // Handle error (e.g., display error message to the user)
+    alert(error.message);
+  }
+}

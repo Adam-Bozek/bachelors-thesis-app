@@ -2,7 +2,7 @@ import React from "react";
 
 import { year } from "../../Utils";
 
-const Home = () => {
+const Footer = () => {
     return (
         <>
             <footer className="container">
@@ -14,4 +14,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Footer;
