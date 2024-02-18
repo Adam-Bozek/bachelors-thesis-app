@@ -930,7 +930,7 @@
             ]
         },
         {
-            "id": 48,
+            "id": 26,
             "questionNo": 10,
             "question": "Na ktorom obrázku je veverička?",
             "answers": [
@@ -969,7 +969,7 @@
     ],
     "home": [
         {
-            "id": 26,
+            "id": 27,
             "questionNo": 1,
             "question": "Na ktorom obrázku je čelo?",
             "answers": [
@@ -1006,7 +1006,7 @@
             ]
         },
         {
-            "id": 27,
+            "id": 28,
             "questionNo": 2,
             "question": "na ktorom obrázku je krupica?",
             "answers": [
@@ -1043,7 +1043,7 @@
             ]
         },
         {
-            "id": 28,
+            "id": 29,
             "questionNo": 4,
             "question": "Na ktorom obrázku je lepidlo?",
             "answers": [
@@ -1080,7 +1080,7 @@
             ]
         },
         {
-            "id": 29,
+            "id": 30,
             "questionNo": 5,
             "question": "Na ktorom obrázku je lyžička?",
             "answers": [
@@ -1116,7 +1116,7 @@
                 }
             ]
         },{
-            "id": 30,
+            "id": 31,
             "questionNo": 6,
             "question": "Na ktorom obrázku je mačka?",
             "answers": [
@@ -1153,7 +1153,7 @@
             ]
         },
         {
-            "id": 31,
+            "id": 32,
             "questionNo": 7,
             "question": "Na ktorom obrázku je mašľa?",
             "answers": [
@@ -1190,7 +1190,7 @@
             ]
         },
         {
-            "id": 32,
+            "id": 33,
             "questionNo": 8,
             "question": "Na ktorom obrázku je nočník?",
             "answers": [
@@ -1227,7 +1227,7 @@
             ]
         },
         {
-            "id": 33,
+            "id": 34,
             "questionNo": 9,
             "question": "Na ktorom obrázku je nos?",
             "answers": [
@@ -1264,7 +1264,7 @@
             ]
         },
         {
-            "id": 34,
+            "id": 35,
             "questionNo": 10,
             "question": "Na ktorom obrázku sú papučky?",
             "answers": [
@@ -1301,7 +1301,7 @@
             ]
         },
         {
-            "id": 35,
+            "id": 36,
             "questionNo": 11,
             "question": "Na ktorom obrázku je pena?",
             "answers": [
@@ -1338,7 +1338,7 @@
             ]
         },
         {
-            "id": 36,
+            "id": 37,
             "questionNo": 12,
             "question": "na ktorom obrázku je sedačka?",
             "answers": [
@@ -1375,7 +1375,7 @@
             ]
         },
         {
-            "id": 37,
+            "id": 38,
             "questionNo": 11,
             "question": "Na ktorom obrázku je pohár?",
             "answers": [
@@ -1412,7 +1412,7 @@
             ]
         },
         {
-            "id": 38,
+            "id": 39,
             "questionNo": 12,
             "question": "Na ktorom obrázku je váha?",
             "answers": [
@@ -1449,7 +1449,7 @@
             ]
         },
         {
-            "id": 39,
+            "id": 40,
             "questionNo": 13,
             "question": "Na ktorom obrázku je váza?",
             "answers": [
@@ -1485,7 +1485,7 @@
                 }
             ]
         },{
-            "id": 40,
+            "id": 41,
             "questionNo": 14,
             "question": "Na ktorom obrázku je zubná pasta?",
             "answers": [
@@ -1524,7 +1524,7 @@
     ],
     "street": [
         {
-            "id": 41,
+            "id": 42,
             "questionNo": 1,
             "question": "Na ktorom obrázku je auto?",
             "answers": [
@@ -1560,7 +1560,7 @@
                 }
             ]
         },{
-            "id": 42,
+            "id": 43,
             "questionNo": 2,
             "question": "Na ktorom obrázku je kamión?",
             "answers": [
@@ -1597,7 +1597,7 @@
             ]
         },
         {
-            "id": 43,
+            "id": 44,
             "questionNo": 3,
             "question": "Na ktorom obrázku je miešačka?",
             "answers": [
@@ -1634,7 +1634,7 @@
             ]
         },
         {
-            "id": 44,
+            "id": 45,
             "questionNo": 4,
             "question": "Na ktorom obrázku je sanitka?",
             "answers": [
@@ -1671,7 +1671,7 @@
             ]
         },
         {
-            "id": 45,
+            "id": 46,
             "questionNo": 5,
             "question": "Na ktorom obrázku je svetlo?",
             "answers": [
@@ -1708,7 +1708,7 @@
             ]
         },
         {
-            "id": 46,
+            "id": 47,
             "questionNo": 6,
             "question": "na ktorom obrázku je mesiac?",
             "answers": [
@@ -1745,7 +1745,7 @@
             ]
         },
         {
-            "id": 47,
+            "id": 48,
             "questionNo": 7,
             "question": "Na ktorom obrázku je diera?",
             "answers": [

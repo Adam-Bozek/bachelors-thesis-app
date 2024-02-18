@@ -1,5 +1,9 @@
 import React from 'react';
+
 import "./TilesStyle.css";
+
+import O_A_BP_FaD from "./data/questions/O_A_BP_FaD.json";
+import SoA_AS from "./data/questions/SoA_AS.json";
 
 import Image1 from "./data/pictures/O_A_BP_FaD-Marketplace-1-1.jpg";
 import Image2 from "./data/pictures/O_A_BP_FaD-Marketplace-1-2.webp";
