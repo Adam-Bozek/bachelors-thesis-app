@@ -1,28 +1,24 @@
 import { createContext, useState } from 'react';
 
-const MyContext = createContext();
+// Define only the isLoggedIn context
 const isLoggedIn = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [value, setValue] = useState('Initial Value');
+  // Define state variable for isLoggedInValue
   const [isLoggedInValue, setIsLoggedInValue] = useState(false);
 
-  const updateValue = (newValue) => {
-    setValue(newValue);
-  };
-
+  // Function to update the isLoggedInValue in isLoggedIn context
   const updateIsLoggedIn = (newValue) => {
     setIsLoggedInValue(newValue);
   };
 
+  // Provide isLoggedIn context with its value and update function
   return (
-    <MyContext.Provider value={{ value, updateValue }}>
-      <isLoggedIn.Provider value={{ isLoggedInValue, updateIsLoggedIn }}>
-        {children}
-      </isLoggedIn.Provider>
-    </MyContext.Provider>
+    <isLoggedIn.Provider value={{ isLoggedInValue, updateIsLoggedIn }}>
+      {children}
+    </isLoggedIn.Provider>
   );
 };
 
-export default MyContext;
+// Export isLoggedIn context for use in other components
 export { isLoggedIn };
