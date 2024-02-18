@@ -69,6 +69,7 @@ export async function verifyUserLogin(email, password, apiAddress) {
     if (response.ok) {
       // Authentication successful
       console.log('Authentication successful');
+
       return true;
     } else {
       // Authentication failed
@@ -149,6 +150,7 @@ export async function hashPassword(password) {
   });
 }
 
+// This function logs out User from and application
 export async function logoutUser(apiAddress, navigate) {
   try {
     const response = await fetch(apiAddress, {
@@ -171,4 +173,31 @@ export async function logoutUser(apiAddress, navigate) {
     // Handle error (e.g., display error message to the user)
     alert(error.message);
   }
+}
+
+export async function test(email, password) {
+  try {
+    fetch(`https://192.168.36.200:3001/data?param1=${email}&param2=${password}`, {
+      credentials: 'include',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey,
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assuming response is JSON, change this if needed
+      })
+      .then(data => {
+        // Handle the data received from the API
+        console.log(data);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  } catch (error) { alert(error.message); }
 }

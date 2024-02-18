@@ -11,30 +11,9 @@ const https = require("https");
 const crypto = require("crypto");
 const MySQLStore = require('express-mysql-session')(session);
 
-/** TODO LIST
- *  TODO: handle worong inputs to the endpoints properly
- *  TODO: add site where API keys will be generated
- *  TODO: create a database table for storing api keys based on something
- *  TODO: chnage this on line 84: secret: 'your-secret-key'
- *  TODO: Finish user logout endpoint
- *  TODO: THINK OF HOW TO SEND COOKIES TO USER
- */
-
-const corsOptions = {
-    origin: (origin, callback) => {
-        // Check if the origin is allowed
-        if (!origin || origin === 'https://192.168.36.200:3000') {
-            callback(null, true); // Allow the request
-        } else {
-            callback(new Error('Not allowed by CORS')); // Block the request
-        }
-    },
-    credentials: true, // Allow cookies to be sent with the request
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
 // IP address and port number on which application will run
 const IP_ADDRESS = "192.168.36.200";
@@ -45,6 +24,7 @@ const privateKey = fs.readFileSync(`./keys/IP/${IP_ADDRESS}-key.pem`, "utf8");
 const certificate = fs.readFileSync(`./keys/IP/${IP_ADDRESS}.pem`, "utf8");
 const credentials = { key: privateKey, cert: certificate };
 
+// Creating https server
 const httpsServer = https.createServer(credentials, app);
 
 // Database configuration
@@ -188,69 +168,12 @@ app.post(userRegisterEndpoint, (request, response) => {
     );
 });
 
-// Creating an API endpoint for authentication of Login
-app.post(userLoginEndpoint, (request, response) => {
-    const email = request.body.email;
-    const password = request.body.password;
 
-    connectionPool.query(
-        "SELECT * FROM user_data WHERE email = ?",
-        [email],
-        (err, results) => {
-            if (err) {
-                console.log("USER LOGIN: " + err);
-                response.status(500).send("Internal Server Error");
-            } else {
-                if (results.length > 0) {
-                    const storedHashedPassword = results[0].password;
+// Creating an API endpoint for authentication if user exists already
+app.post
 
-                    bcrypt.compare(password, storedHashedPassword, (bcryptErr, bcryptResult) => {
-                        if (bcryptErr) {
-                            console.log("USER LOGIN: " + bcryptErr);
-                            response.status(500).send("Internal Server Error");
-                        } else {
-                            if (bcryptResult) {
-                                // Passwords match
-                                // Regenerate session
-                                request.session.regenerate((sessionErr) => {
-                                    if (sessionErr) {
-                                        console.log("USER LOGIN: " + sessionErr);
-                                        response.status(500).send("Internal Server Error");
-                                    } else {
-                                        // Store user information in the session
-                                        request.session.user = email;
-
-                                        // Set a cookie with the user's email
-                                        response.cookie('userEmail', email, { maxAge: 1000 * 60 * 60 * 12, secure: true });
-
-                                        // Save the session before redirection
-                                        request.session.save((saveErr) => {
-                                            if (saveErr) {
-                                                console.log("USER LOGIN: " + saveErr);
-                                                response.status(500).send("Internal Server Error");
-                                            } else {
-                                                console.log("USER LOGIN: Authentication successful");
-                                                response.status(200).send("Authentication successful");
-                                            }
-                                        });
-                                    }
-                                });
-                            } else {
-                                // Passwords do not match
-                                response.status(401).send("Unauthorized: Invalid email or password");
-                                console.log("USER LOGIN: Unauthorized: Invalid password");
-                            }
-                        }
-                    });
-                } else {
-                    // No user found with the provided email
-                    console.log("USER LOGIN: Unauthorized: Invalid user");
-                    response.status(401).send("Unauthorized: Invalid email or password");
-                }
-            }
-        }
-    );
-});
+// Create an API endpoint for user Login authentication
+app.get
 
 // Creating an API endpoint to chceck if user with the provided email exists
 app.post(verifyUserExistanceEndpoint, (request, response) => {
@@ -309,23 +232,7 @@ app.post(userLogoutEndpoint, (request, response) => {
     });
 });
 
+// App listening on port
 httpsServer.listen(PORT, IP_ADDRESS, () => {
     console.log(`Server is running on https://${IP_ADDRESS}:${PORT}`);
 });
-
-app.get('/data', apiMiddleware, (req, res) => {
-    // Retrieve query parameters from the request
-    const param1 = req.query.param1;
-    const param2 = req.query.param2;
-
-    // Process the parameters (in this example, just sending them back)
-    const responseData = {
-        param1,
-        param2
-    };
-
-    // Send the response
-    console.log(responseData);
-    res.json(responseData);
-});
-
