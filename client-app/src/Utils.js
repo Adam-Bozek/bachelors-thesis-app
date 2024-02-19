@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import Axios from "axios";
 
-const apiKey = "8be5864ea8195c870a50d065bcaf5f2e831f188c0ca05091e692b5b96c90fff5";
+const apiKey = "5432175b6c1df2fae956bfafc50a193375645c615df82ed6ae7887fb31834971";
 
 export const webProtocol = "https";
 export const apiIPAddress = "192.168.36.200:3001";
@@ -54,33 +54,24 @@ export function checkPasswords(password, passwordRepeat) {
 // On sucess function will return TRUE
 export async function verifyUserLogin(email, password, apiAddress) {
   try {
-    const response = await fetch(apiAddress, {
-      method: 'POST',
+    const response = await fetch(`${apiAddress}?param1=${email}&param2=${password}`, {
+      credentials: 'include',
+      method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
         'api-key': apiKey,
       },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
     });
 
-    if (response.ok) {
-      // Authentication successful
-      console.log('Authentication successful');
-
-      return true;
-    } else {
-      // Authentication failed
-      console.log('Authentication failed');
-      return false;
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+
+    return true;
   } catch (error) {
-    console.error('Error during authentication: ' + error);
+    console.error('There was a problem with the fetch operation:', error);
     return false;
   }
-};
+}
 
 // This bool function checks if the email is allready regis
 // On sucess function will return TRUE
@@ -173,31 +164,4 @@ export async function logoutUser(apiAddress, navigate) {
     // Handle error (e.g., display error message to the user)
     alert(error.message);
   }
-}
-
-export async function test(email, password) {
-  try {
-    fetch(`https://192.168.36.200:3001/data?param1=${email}&param2=${password}`, {
-      credentials: 'include',
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey,
-      },
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Assuming response is JSON, change this if needed
-      })
-      .then(data => {
-        // Handle the data received from the API
-        console.log(data);
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  } catch (error) { alert(error.message); }
 }

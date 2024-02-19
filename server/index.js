@@ -11,6 +11,8 @@ const https = require("https");
 const crypto = require("crypto");
 const MySQLStore = require('express-mysql-session')(session);
 
+const { authenticateUser } = require("./utils");
+
 /** TODO LIST
  *  TODO: handle worong inputs to the endpoints properly
  *  TODO: add site where API keys will be generated
@@ -170,15 +172,12 @@ app.post(userRegisterEndpoint, (request, response) => {
     const email = request.body.email;
     const hashedPassword = request.body.password;
 
-    console.log()
-
     connectionPool.query(
         "INSERT INTO user_data (name, surname, email, password) VALUES (?, ?, ?, ?)",
         [name, surname, email, hashedPassword],
         (err, res) => {
             if (err) {
-                console.log(err);
-                console.log("REGISTER: Internal Server Error");
+                console.error("REGISTER: Internal Server Error" + err.message);
                 response.status(500).send("Internal Server Error");
             } else {
                 response.status(200).send("User created successfully");
@@ -189,69 +188,25 @@ app.post(userRegisterEndpoint, (request, response) => {
 });
 
 // Creating an API endpoint for authentication of Login
-app.post(userLoginEndpoint, (request, response) => {
-    const email = request.body.email;
-    const password = request.body.password;
+
+app.get(userLoginEndpoint, (request, response) => {
+    const email = request.query.param1;
+    const password = request.query.param2;
 
     connectionPool.query(
         "SELECT * FROM user_data WHERE email = ?",
         [email],
         (err, results) => {
             if (err) {
-                console.log("USER LOGIN: " + err);
+                console.err("USER LOGIN: " + err);
                 response.status(500).send("Internal Server Error");
             } else {
-                if (results.length > 0) {
-                    const storedHashedPassword = results[0].password;
-
-                    bcrypt.compare(password, storedHashedPassword, (bcryptErr, bcryptResult) => {
-                        if (bcryptErr) {
-                            console.log("USER LOGIN: " + bcryptErr);
-                            response.status(500).send("Internal Server Error");
-                        } else {
-                            if (bcryptResult) {
-                                // Passwords match
-                                // Regenerate session
-                                request.session.regenerate((sessionErr) => {
-                                    if (sessionErr) {
-                                        console.log("USER LOGIN: " + sessionErr);
-                                        response.status(500).send("Internal Server Error");
-                                    } else {
-                                        // Store user information in the session
-                                        request.session.user = email;
-
-                                        // Set a cookie with the user's email
-                                        response.cookie('userEmail', email, { maxAge: 1000 * 60 * 60 * 12, secure: true });
-
-                                        // Save the session before redirection
-                                        request.session.save((saveErr) => {
-                                            if (saveErr) {
-                                                console.log("USER LOGIN: " + saveErr);
-                                                response.status(500).send("Internal Server Error");
-                                            } else {
-                                                console.log("USER LOGIN: Authentication successful");
-                                                response.status(200).send("Authentication successful");
-                                            }
-                                        });
-                                    }
-                                });
-                            } else {
-                                // Passwords do not match
-                                response.status(401).send("Unauthorized: Invalid email or password");
-                                console.log("USER LOGIN: Unauthorized: Invalid password");
-                            }
-                        }
-                    });
-                } else {
-                    // No user found with the provided email
-                    console.log("USER LOGIN: Unauthorized: Invalid user");
-                    response.status(401).send("Unauthorized: Invalid email or password");
-                }
+                // Definition of this function and functions which this function uses are located in utils.js
+                authenticateUser(results, password, request, response);
             }
         }
     );
 });
-
 // Creating an API endpoint to chceck if user with the provided email exists
 app.post(verifyUserExistanceEndpoint, (request, response) => {
     const email = request.body.email;
@@ -261,7 +216,7 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
         [email],
         (err, results) => {
             if (err) {
-                console.log(err);
+                console.error(err);
                 response.status(500).send("USER EXISTANCE: Internal Server Error");
             } else {
                 if (results.length > 0) {
@@ -312,20 +267,3 @@ app.post(userLogoutEndpoint, (request, response) => {
 httpsServer.listen(PORT, IP_ADDRESS, () => {
     console.log(`Server is running on https://${IP_ADDRESS}:${PORT}`);
 });
-
-app.get('/data', apiMiddleware, (req, res) => {
-    // Retrieve query parameters from the request
-    const param1 = req.query.param1;
-    const param2 = req.query.param2;
-
-    // Process the parameters (in this example, just sending them back)
-    const responseData = {
-        param1,
-        param2
-    };
-
-    // Send the response
-    console.log(responseData);
-    res.json(responseData);
-});
-

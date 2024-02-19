@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { isLoggedIn } from '../ContextProvider';
-import { checkEmail, checkPassword, verifyUserLogin, apiIPAddress, webProtocol } from "../../Utils";
+import { checkEmail, checkPassword, verifyUserLogin, apiIPAddress, webProtocol, } from "../../Utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
