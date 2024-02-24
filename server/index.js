@@ -4,7 +4,6 @@ const session = require('express-session')
 
 const app = express();
 const mysql = require("mysql");
-const bcrypt = require("bcrypt");
 
 const fs = require("fs");
 const https = require("https");
@@ -67,7 +66,7 @@ connectionPool.getConnection((connectionError, connection) => {
         process.exit(1);
     }
 
-    console.log("DATABASE CONNECTION: Connected to the database successfully");
+    console.log("DATABASE CONNECTION: Connected to the database successfully.");
 
     // Release the connection back to the pool
     connection.release();
@@ -83,7 +82,7 @@ connectionPool.on('error', (poolError) => {
 const sessionStore = new MySQLStore({
     clearExpired: true,
     checkExpirationInterval: 1000 * 60 * 20, // 20 minutes
-    expiration: 1000 * 60 * 60 * 24, // 24 hours
+    expiration: 1000 * 60 * 60 * 1, // 1 hour
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -102,7 +101,7 @@ app.use(session({
     saveUninitialized: true,
     store: sessionStore,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 12, // 12 hours
+        maxAge: 1000 * 60 * 60 * 1, // 1 hour
         secure: true,
     },
 }));
@@ -160,10 +159,7 @@ const verifyUserExistanceEndpoint = "/verifyUserExistance";
 const userLogoutEndpoint = "/userLogout";
 
 // Applying the API key middleware function
-app.use(userRegisterEndpoint, apiMiddleware);
-app.use(userLoginEndpoint, apiMiddleware);
-app.use(verifyUserExistanceEndpoint, apiMiddleware);
-app.use(userLogoutEndpoint, apiMiddleware);
+app.use(apiMiddleware);
 
 // Creating an API endpoint where the API will add new user to the database
 app.post(userRegisterEndpoint, (request, response) => {
@@ -177,18 +173,17 @@ app.post(userRegisterEndpoint, (request, response) => {
         [name, surname, email, hashedPassword],
         (err, res) => {
             if (err) {
-                console.error("REGISTER: Internal Server Error" + err.message);
+                console.error("USER REGISTRATION: Internal Server Error" + err.message);
                 response.status(500).send("Internal Server Error");
             } else {
+                console.log("USER REGISTRATION: User created successfully");
                 response.status(200).send("User created successfully");
-                console.log("REGISTER: User created successfully");
             }
         }
     );
 });
 
 // Creating an API endpoint for authentication of Login
-
 app.get(userLoginEndpoint, (request, response) => {
     const email = request.query.param1;
     const password = request.query.param2;
@@ -207,6 +202,7 @@ app.get(userLoginEndpoint, (request, response) => {
         }
     );
 });
+
 // Creating an API endpoint to chceck if user with the provided email exists
 app.post(verifyUserExistanceEndpoint, (request, response) => {
     const email = request.body.email;
@@ -216,14 +212,16 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
         [email],
         (err, results) => {
             if (err) {
-                console.error(err);
+                console.error("VERIFY USER: " + err);
                 response.status(500).send("USER EXISTANCE: Internal Server Error");
             } else {
                 if (results.length > 0) {
                     // User Found with provided email
+                    console.log("VERIFY USER: User with provided email was found.");
                     response.status(404).send("Email address allready in use");
                 } else {
                     // No user found with the provided email
+                    console.log("VERIFY USER: No user with provided email found");
                     response.status(200).send("No user found with the provided email");
                 }
             }

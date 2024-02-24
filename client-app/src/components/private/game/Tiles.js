@@ -23,9 +23,8 @@ const ClickableCard = ({ imageUrl, title, onClick }) => (
 );
 
 const Tiles = () => {
-    const handleClick = (event) => {
-        // Handle click action here
-        alert();
+    const handleClick = () => {
+        alert("you clicked");
     };
 
     return (
