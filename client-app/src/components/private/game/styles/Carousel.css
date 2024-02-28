@@ -67,3 +67,13 @@ body {
         margin-top: 7rem;
     }
 }
+
+#play-svg {
+    height: 39.76px;
+    width: 39.76px;
+}
+
+#pause-svg {
+    height: 39.76px;
+    width: 39.76px;
+}
