@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const session = require('express-session')
+const session = require("express-session");
 
 const app = express();
 const mysql = require("mysql");
@@ -8,7 +8,7 @@ const mysql = require("mysql");
 const fs = require("fs");
 const https = require("https");
 const crypto = require("crypto");
-const MySQLStore = require('express-mysql-session')(session);
+const MySQLStore = require("express-mysql-session")(session);
 
 const { authenticateUser } = require("./utils");
 
@@ -24,10 +24,10 @@ const { authenticateUser } = require("./utils");
 const corsOptions = {
     origin: (origin, callback) => {
         // Check if the origin is allowed
-        if (!origin || origin === 'https://192.168.36.200:3000') {
+        if (!origin || origin === "https://localhost:3000") {
             callback(null, true); // Allow the request
         } else {
-            callback(new Error('Not allowed by CORS')); // Block the request
+            callback(new Error("Not allowed by CORS")); // Block the request
         }
     },
     credentials: true, // Allow cookies to be sent with the request
@@ -38,12 +38,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // IP address and port number on which application will run
-const IP_ADDRESS = "192.168.36.200";
+const IP_ADDRESS = "localhost";
 const PORT = process.env.PORT || 3001;
 
 // Credentials for https protocol
-const privateKey = fs.readFileSync(`./keys/IP/${IP_ADDRESS}-key.pem`, "utf8");
-const certificate = fs.readFileSync(`./keys/IP/${IP_ADDRESS}.pem`, "utf8");
+const privateKey = fs.readFileSync(
+    `./keys/localhost/${IP_ADDRESS}-key.pem`,
+    "utf8"
+);
+const certificate = fs.readFileSync(
+    `./keys/localhost/${IP_ADDRESS}.pem`,
+    "utf8"
+);
 const credentials = { key: privateKey, cert: certificate };
 
 const httpsServer = https.createServer(credentials, app);
@@ -62,7 +68,10 @@ const connectionPool = mysql.createPool(DBConfig);
 // Database connection test
 connectionPool.getConnection((connectionError, connection) => {
     if (connectionError) {
-        console.error("DATABASE CONNECTION: Unable to get a connection from the pool:", connectionError);
+        console.error(
+            "DATABASE CONNECTION: Unable to get a connection from the pool:",
+            connectionError
+        );
         process.exit(1);
     }
 
@@ -73,38 +82,43 @@ connectionPool.getConnection((connectionError, connection) => {
 });
 
 // Handle database connection errors
-connectionPool.on('error', (poolError) => {
+connectionPool.on("error", (poolError) => {
     console.error("DATABASE CONNECTION: Pool error:", poolError);
     process.exit(1);
 });
 
 // Setup MySQL session store
-const sessionStore = new MySQLStore({
-    clearExpired: true,
-    checkExpirationInterval: 1000 * 60 * 20, // 20 minutes
-    expiration: 1000 * 60 * 60 * 1, // 1 hour
-    createDatabaseTable: true,
-    schema: {
-        tableName: 'sessions',
-        columnNames: {
-            session_id: 'session_id',
-            expires: 'expires',
-            data: 'data'
-        }
+const sessionStore = new MySQLStore(
+    {
+        clearExpired: true,
+        checkExpirationInterval: 1000 * 60 * 20, // 20 minutes
+        expiration: 1000 * 60 * 60 * 1, // 1 hour
+        createDatabaseTable: true,
+        schema: {
+            tableName: "sessions",
+            columnNames: {
+                session_id: "session_id",
+                expires: "expires",
+                data: "data",
+            },
+        },
     },
-}, connectionPool);
+    connectionPool
+);
 
 // Use express-session middleware with MySQL session store
-app.use(session({
-    secret: 'your-lol-key',
-    resave: true,
-    saveUninitialized: true,
-    store: sessionStore,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 1, // 1 hour
-        secure: true,
-    },
-}));
+app.use(
+    session({
+        secret: "your-lol-key",
+        resave: true,
+        saveUninitialized: true,
+        store: sessionStore,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 1, // 1 hour
+            secure: true,
+        },
+    })
+);
 
 // Function to generate random API key
 // On return there sould be a random API key

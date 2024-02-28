@@ -4,7 +4,7 @@ import Axios from "axios";
 const apiKey = "5432175b6c1df2fae956bfafc50a193375645c615df82ed6ae7887fb31834971";
 
 export const webProtocol = "https";
-export const apiIPAddress = "192.168.36.200:3001";
+export const apiIPAddress = "localhost:3001";
 
 export const year = 2024;
 
