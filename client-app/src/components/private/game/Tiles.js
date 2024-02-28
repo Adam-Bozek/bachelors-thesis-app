@@ -4,7 +4,7 @@ import Style from "./styles/Style.module.css";
 import { ReactComponent as PlaySVG } from "./svg/play.svg";
 import { ReactComponent as PauseSVG } from "./svg/pause.svg";
 
-{/* One title  */}
+// Template for tiles
 const Tile = ({ imageUrl, onClick, index }) => (
     <div className="col-md-4 mb-3">
         <div className="card clickable text-center" onClick={() => onClick(index)}> 

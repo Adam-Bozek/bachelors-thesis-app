@@ -13,7 +13,7 @@ import ImgLink6 from "./data/pictures/O_A_BP_FaD-Marketplace-1-6.png";
 
 import ImgLink7 from "./data/pictures/O_A_BP_FaD-Marketplace-2-1.webp";
 import ImgLink8 from "./data/pictures/O_A_BP_FaD-Marketplace-2-2.png";
-import ImgLink9 from "./data/pictures/O_A_BP_FaD-Marketplace-2-3.avif";
+import ImgLink9 from "./data/pictures/O_A_BP_FaD-Marketplace-2-3.webp";
 import ImgLink10 from "./data/pictures/O_A_BP_FaD-Marketplace-2-4.jpg";
 import ImgLink11 from "./data/pictures/O_A_BP_FaD-Marketplace-2-5.webp";
 import ImgLink12 from "./data/pictures/O_A_BP_FaD-Marketplace-2-6.jpg";
