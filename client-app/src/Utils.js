@@ -1,7 +1,8 @@
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 import Axios from "axios";
 
-const apiKey = "5432175b6c1df2fae956bfafc50a193375645c615df82ed6ae7887fb31834971";
+const apiKey =
+  "5432175b6c1df2fae956bfafc50a193375645c615df82ed6ae7887fb31834971";
 
 export const webProtocol = "https";
 export const apiIPAddress = "localhost:3001";
@@ -11,7 +12,8 @@ export const year = 2024;
 /** TODO LIST
  *  TODO: handle wrong function input properties
  *  TODO: @param functions inputs
-*/
+ *  TODO: Make password functions recognize that password is incorrect
+ */
 
 // This bool function checks if the name was inputed
 // On sucess function will return TRUE
@@ -34,7 +36,8 @@ export function checkSurname(surname) {
 // This bool function checks if the email was inputed corectly using regex
 // On sucess function will return TRUE
 export function checkEmail(email) {
-  const emailRegex = /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
+  const emailRegex =
+    /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
   return emailRegex.test(email);
 }
 
@@ -47,28 +50,33 @@ export function checkPassword(password) {
 // This bool function checks if the passwords input are not empty and if they are equal
 // On sucess function will return TRUE
 export function checkPasswords(password, passwordRepeat) {
-  return password !== "" && passwordRepeat !== "" && password === passwordRepeat;
+  return (
+    password !== "" && passwordRepeat !== "" && password === passwordRepeat
+  );
 }
 
 // This bool function checks if the User credentials are not empty and if they are equal
 // On sucess function will return TRUE
 export async function verifyUserLogin(email, password, apiAddress) {
   try {
-    const response = await fetch(`${apiAddress}?param1=${email}&param2=${password}`, {
-      credentials: 'include',
-      method: 'GET',
-      headers: {
-        'api-key': apiKey,
-      },
-    });
+    const response = await fetch(
+      `${apiAddress}?param1=${email}&param2=${password}`,
+      {
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "api-key": apiKey,
+        },
+      }
+    );
 
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error("Network response was not ok");
     }
 
     return true;
   } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
+    console.error("There was a problem with the fetch operation:", error);
     return false;
   }
 }
@@ -78,10 +86,10 @@ export async function verifyUserLogin(email, password, apiAddress) {
 export async function verifyUserExistance(email, apiAddress) {
   try {
     const response = await fetch(apiAddress, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey,
+        "Content-Type": "application/json",
+        "api-key": apiKey,
       },
       body: JSON.stringify({
         email: email,
@@ -96,26 +104,28 @@ export async function verifyUserExistance(email, apiAddress) {
       return false;
     }
   } catch (error) {
-    console.error('Error during authentication: ' + error);
+    console.error("Error during authentication: " + error);
     return false;
   }
-};
+}
 
 // This function will post to database
 // This is function without return
 export async function createUser(name, surname, email, password, apiAddress, navigate) {
   try {
     const response = await Axios.post(apiAddress, {
-      name: name,
-      surname: surname,
-      email: email,
-      password: password,
-    }, {
-      headers: {
-        'api-key': apiKey,
-        'Content-Type': 'application/json',
+        name: name,
+        surname: surname,
+        email: email,
+        password: password,
       },
-    });
+      {
+        headers: {
+          "api-key": apiKey,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     // Successful registration response
     alert(response.data + ". Please log in.");
@@ -145,22 +155,22 @@ export async function hashPassword(password) {
 export async function logoutUser(apiAddress, navigate) {
   try {
     const response = await fetch(apiAddress, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'api-key': apiKey,
+        "api-key": apiKey,
       },
     });
 
     if (!response.ok) {
-      throw new Error('Logout failed');
+      throw new Error("Logout failed");
     }
 
     const data = await response.text();
-    console.log('Logout successful:', data);
+    console.log("Logout successful:", data);
     // Perform any additional actions after successful logout (e.g., redirect to login page)
     navigate("/Home");
   } catch (error) {
-    console.error('Logout error:', error.message);
+    console.error("Logout error:", error.message);
     // Handle error (e.g., display error message to the user)
     alert(error.message);
   }

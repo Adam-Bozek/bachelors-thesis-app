@@ -53,7 +53,7 @@ const Registration = () => {
           try {
             // Hash the user's password
             const hashedPassword = await hashPassword(password);
-            
+
             await createUser(name, surname, email, hashedPassword, apiAddress + createEndPoint, navigate);
           } catch (error) {
             console.error('Registration failed:', error);

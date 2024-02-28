@@ -4,6 +4,7 @@ import "./styles/Carousel.css";
 
 import Tile from "./Tiles";
 
+// Temporarily linked images
 import ImgLink1 from "./data/pictures/O_A_BP_FaD-Marketplace-1-1.jpg";
 import ImgLink2 from "./data/pictures/O_A_BP_FaD-Marketplace-1-2.webp";
 import ImgLink3 from "./data/pictures/O_A_BP_FaD-Marketplace-1-3.webp";
@@ -36,6 +37,7 @@ const QuestionStart = () => {
     return (
         <>
             <div id="myCarousel" className="carousel slide mb-6" data-bs-theme="dark">
+                {/* Carousel indicators */}
                 <div className="carousel-indicators">
                     <button
                         type="button"
@@ -67,19 +69,10 @@ const QuestionStart = () => {
                         className=""
                     ></button>
                 </div>
+
+                {/* Tiles are rendrered here */}
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <svg
-                            className="bd-placeholder-img"
-                            width="100%"
-                            height="100%"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            preserveAspectRatio="xMidYMid slice"
-                            focusable="false"
-                        >
-                            <rect width="100%" height="100%" fill="white"></rect>
-                        </svg>
                         <div className="container">
                             <div className="carousel-caption text-start">
                                 <Tile
@@ -97,17 +90,6 @@ const QuestionStart = () => {
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <svg
-                            className="bd-placeholder-img"
-                            width="100%"
-                            height="100%"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            preserveAspectRatio="xMidYMid slice"
-                            focusable="false"
-                        >
-                            <rect width="100%" height="100%" fill="white"></rect>
-                        </svg>
                         <div className="container">
                             <div className="carousel-caption text-start">
                                 <Tile
@@ -125,17 +107,6 @@ const QuestionStart = () => {
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <svg
-                            className="bd-placeholder-img"
-                            width="100%"
-                            height="100%"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            preserveAspectRatio="xMidYMid slice"
-                            focusable="false"
-                        >
-                            <rect width="100%" height="100%" fill="white"></rect>
-                        </svg>
                         <div className="container">
                             <div className="carousel-caption text-start">
                                 <Tile
@@ -153,17 +124,6 @@ const QuestionStart = () => {
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <svg
-                            className="bd-placeholder-img"
-                            width="100%"
-                            height="100%"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            preserveAspectRatio="xMidYMid slice"
-                            focusable="false"
-                        >
-                            <rect width="100%" height="100%" fill="white"></rect>
-                        </svg>
                         <div className="container">
                             <div className="carousel-caption text-start">
                                 <Tile
@@ -181,6 +141,8 @@ const QuestionStart = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Previous and Next buttons */}
                 <button
                     className="carousel-control-prev"
                     type="button"

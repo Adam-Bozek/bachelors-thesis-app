@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { isLoggedIn } from '../ContextProvider';
-import { checkEmail, checkPassword, verifyUserLogin, apiIPAddress, webProtocol, } from "../../Utils";
+import { isLoggedIn } from "../ContextProvider";
+import { checkEmail, checkPassword, verifyUserLogin, apiIPAddress, webProtocol } from "../../Utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -48,7 +48,7 @@ const Login = () => {
       }
     } catch (error) {
       // Handle any errors that occur during the login process
-      console.error('Error during login:', error);
+      console.error("Error during login:", error);
       alert("Chyba pri prihlásení");
     }
   };
@@ -87,7 +87,8 @@ const Login = () => {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />
-                <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label> <br />
+                <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label>
+                <br />
               </div>
               <div className="form-check text-start my-3">
                 <input
@@ -98,10 +99,18 @@ const Login = () => {
                   checked={isChecked}
                   onChange={() => setIsChecked(!isChecked)}
                 />
-                <label className="form-check-label" htmlFor="flexCheckDefault">Zapamätať si ma</label>
+                {/* DELETE MAYBE */}
+                <label className="form-check-label" htmlFor="flexCheckDefault">
+                  Zapamätať si ma
+                </label>
               </div>
               <div className="d-flex gap-2">
-                <button className="btn btn-primary py-2 sign-in-btn" type="submit">Prihlásiť sa</button>
+                <button
+                  className="btn btn-primary py-2 sign-in-btn"
+                  type="submit"
+                >
+                  Prihlásiť sa
+                </button>
               </div>
             </form>
           </div>
@@ -111,6 +120,6 @@ const Login = () => {
       <Footer />
     </>
   );
-}
+};
 
 export default Login;
