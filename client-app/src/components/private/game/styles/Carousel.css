@@ -66,11 +66,11 @@ body {
 /* CAUROSELS PLAY/PAUSE CSS
 -------------------------------------------------- */
 #play-svg {
-    height: 39.76px;
-    width: 39.76px;
+    height: 1.25em;
+    width: 1.25em;
 }
 
 #pause-svg {
-    height: 39.76px;
-    width: 39.76px;
+    height: 1.25em;
+    width: 1.25em;
 }
