@@ -69,4 +69,4 @@ const QuestionStart = ({ slides }) => {
     );
 };
 
-export default QuestionStart; // Export the QuestionStart component
+export default QuestionStart;
