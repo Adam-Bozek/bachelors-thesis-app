@@ -1,170 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./styles/Carousel.css";
 
 import Tile from "./Tiles";
 
-// Temporarily linked images
-import ImgLink1 from "./data/pictures/O_A_BP_FaD-Marketplace-1-1.jpg";
-import ImgLink2 from "./data/pictures/O_A_BP_FaD-Marketplace-1-2.webp";
-import ImgLink3 from "./data/pictures/O_A_BP_FaD-Marketplace-1-3.webp";
-import ImgLink4 from "./data/pictures/O_A_BP_FaD-Marketplace-1-4.webp";
-import ImgLink5 from "./data/pictures/O_A_BP_FaD-Marketplace-1-5.webp";
-import ImgLink6 from "./data/pictures/O_A_BP_FaD-Marketplace-1-6.png";
+const QuestionStart = ({ slides }) => {
+    // State to manage the current slide index
+    const [currentSlide, setCurrentSlide] = useState(0);
 
-import ImgLink7 from "./data/pictures/O_A_BP_FaD-Marketplace-2-1.webp";
-import ImgLink8 from "./data/pictures/O_A_BP_FaD-Marketplace-2-2.png";
-import ImgLink9 from "./data/pictures/O_A_BP_FaD-Marketplace-2-3.webp";
-import ImgLink10 from "./data/pictures/O_A_BP_FaD-Marketplace-2-4.jpg";
-import ImgLink11 from "./data/pictures/O_A_BP_FaD-Marketplace-2-5.webp";
-import ImgLink12 from "./data/pictures/O_A_BP_FaD-Marketplace-2-6.jpg";
+    // Effect hook to set up event listener when the component mounts
+    useEffect(() => {
+        const carouselElement = document.getElementById("myCarousel");
+        const onSlide = () => {
+            // Update currentSlide state when the carousel slides
+            setCurrentSlide(carouselElement.querySelector(".active").getAttribute("data-bs-slide-to"));
+        };
+        carouselElement.addEventListener("slid.bs.carousel", onSlide); // Add event listener for carousel slide event
+        // Clean up event listener when component unmounts
+        return () => carouselElement.removeEventListener("slid.bs.carousel", onSlide);
+    }, []);
 
-import ImgLink13 from "./data/pictures/O_A_BP_FaD-Marketplace-3-1.avif";
-import ImgLink14 from "./data/pictures/O_A_BP_FaD-Marketplace-3-2.jpg";
-import ImgLink15 from "./data/pictures/O_A_BP_FaD-Marketplace-3-3.jpg";
-import ImgLink16 from "./data/pictures/O_A_BP_FaD-Marketplace-3-4.jpg";
-import ImgLink17 from "./data/pictures/O_A_BP_FaD-Marketplace-3-5.jpg";
-import ImgLink18 from "./data/pictures/O_A_BP_FaD-Marketplace-3-6.webp";
-
-import ImgLink19 from "./data/pictures/O_A_BP_FaD-Marketplace-4-1.jpg";
-import ImgLink20 from "./data/pictures/O_A_BP_FaD-Marketplace-4-2.jpg";
-import ImgLink21 from "./data/pictures/O_A_BP_FaD-Marketplace-4-3.jpg";
-import ImgLink22 from "./data/pictures/O_A_BP_FaD-Marketplace-4-4.jpg";
-import ImgLink23 from "./data/pictures/O_A_BP_FaD-Marketplace-4-5.png";
-import ImgLink24 from "./data/pictures/O_A_BP_FaD-Marketplace-4-6.jpg";
-
-const QuestionStart = () => {
     return (
         <>
-            <div id="myCarousel" className="carousel slide mb-6" data-bs-theme="dark">
+            {/* Carousel container */}
+            <div id="myCarousel" className="carousel slide mb-6" data-bs-theme="dark" data-bs-ride="carousel">
                 {/* Carousel indicators */}
                 <div className="carousel-indicators">
-                    <button
-                        type="button"
-                        data-bs-target="#myCarousel"
-                        data-bs-slide-to="0"
-                        className="active"
-                        aria-label="Slide 1"
-                        aria-current="true"
-                    ></button>
-                    <button
-                        type="button"
-                        data-bs-target="#myCarousel"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"
-                        className=""
-                    ></button>
-                    <button
-                        type="button"
-                        data-bs-target="#myCarousel"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"
-                        className=""
-                    ></button>
-                    <button
-                        type="button"
-                        data-bs-target="#myCarousel"
-                        data-bs-slide-to="3"
-                        aria-label="Slide 4"
-                        className=""
-                    ></button>
+                    {/* Map over slides array to create carousel indicators */}
+                    {slides.map((slide, index) => (
+                        <button
+                            key={index}
+                            type="button"
+                            data-bs-target="#myCarousel"
+                            data-bs-slide-to={index}
+                            className={index === currentSlide ? "active" : ""}
+                            aria-label={`Slide ${index + 1}`}
+                            aria-current={index === currentSlide ? "true" : "false"}
+                        ></button>
+                    ))}
                 </div>
 
-                {/* Tiles are rendrered here */}
+                {/* Carousel inner content */}
                 <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <div className="container">
-                            <div className="carousel-caption text-start">
-                                <Tile
-                                    question="Na ktorom obrázku je ananás?"
-                                    imgLinks={[
-                                        ImgLink1,
-                                        ImgLink2,
-                                        ImgLink3,
-                                        ImgLink4,
-                                        ImgLink5,
-                                        ImgLink6,
-                                    ]}
-                                />
+                    {/* Map over slides array to create carousel items */}
+                    {slides.map((slide, index) => (
+                        <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
+                            <div className="container">
+                                <div className="carousel-caption text-start">
+                                    {/* Render Tile component for each slide */}
+                                    <Tile question={slide.question} imgLinks={slide.imgLinks} />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="carousel-item">
-                        <div className="container">
-                            <div className="carousel-caption text-start">
-                                <Tile
-                                    question="Na ktorom obrázku je čokoláda?"
-                                    imgLinks={[
-                                        ImgLink7,
-                                        ImgLink8,
-                                        ImgLink9,
-                                        ImgLink10,
-                                        ImgLink11,
-                                        ImgLink12,
-                                    ]}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <div className="container">
-                            <div className="carousel-caption text-start">
-                                <Tile
-                                    question="Na ktorom obrázku je lekvár?"
-                                    imgLinks={[
-                                        ImgLink13,
-                                        ImgLink14,
-                                        ImgLink15,
-                                        ImgLink16,
-                                        ImgLink17,
-                                        ImgLink18,
-                                    ]}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <div className="container">
-                            <div className="carousel-caption text-start">
-                                <Tile
-                                    question="Na ktorom obrázku je hrach?"
-                                    imgLinks={[
-                                        ImgLink19,
-                                        ImgLink20,
-                                        ImgLink21,
-                                        ImgLink22,
-                                        ImgLink23,
-                                        ImgLink24,
-                                    ]}
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
-                {/* Previous and Next buttons */}
-                <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#myCarousel"
-                    data-bs-slide="prev"
-                >
-                    <span
-                        className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                    ></span>
+                {/* Carousel control buttons */}
+                <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Previous</span>
                 </button>
-                <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-bs-target="#myCarousel"
-                    data-bs-slide="next"
-                >
-                    <span
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                    ></span>
+                <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
@@ -172,4 +69,4 @@ const QuestionStart = () => {
     );
 };
 
-export default QuestionStart;
+export default QuestionStart; // Export the QuestionStart component
