@@ -23,7 +23,7 @@ const QuestionCarousel = ({ slides }) => {
     return (
         <>
             {/* Carousel container */}
-            <div id="myCarousel" className="carousel slide mb-6" data-bs-theme="dark" data-bs-ride="carousel">
+            <div id="myCarousel" className="carousel slide mb-6" data-bs-theme="dark">
                 {/* Carousel indicators */}
                 <div className="carousel-indicators">
                     {/* Map over slides array to create carousel indicators */}

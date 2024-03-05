@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import QuestionCarousel from "./subcomponents/QuestionCarousel";
 
-import O_A_BP_FaD from "./data/questions/O_A_BP_FaD.json";
-
 // Function to dynamically import images
 const importAll = (require) => {
   // Initialize an empty object to store the imported images
@@ -21,11 +19,8 @@ const images = importAll(
   require.context("./data/pictures", false, /\.(png|jpe?g|svg|webp)$/)
 );
 
-const Controller = () => {
+const Controller = ({ filename, category, jsonData }) => {
   const [slides, setSlides] = useState([]);
-
-  // Function to parse the JSON data
-  const jsonData = () => JSON.parse(JSON.stringify(O_A_BP_FaD));
 
   useEffect(() => {
     fetchQuestions();
@@ -41,11 +36,12 @@ const Controller = () => {
         question: item.question,
         imgLinks: item.answers.map(
           (answer) =>
-            images[`O_A_BP_FaD-Marketplace-${item.id}-${answer.id}.webp`]
+            images[`${filename}-${category}-${item.id}-${answer.id}.webp`]
         ),
       }));
       setSlides(slidesArray);
-    } catch (error) {      console.error("Error fetching questions:", error);
+    } catch (error) {
+      console.error("Error fetching questions:", error);
     }
   };
 

@@ -10,6 +10,7 @@ import Registration from "./components/public/Registration";
 
 /* Private Routes */
 import Dashboard from "./components/private/Dashboard";
+import Lolz from "./components/private/game/lolz";
 import Controller from "./components/private/game/Controller";
 
 /*  TODO List
@@ -28,7 +29,7 @@ const App = () => {
 
             {/* Private route auth */}
             {isLoggedInValue && <Route path="/Dashboard" element={<Dashboard />} />}
-            {isLoggedInValue && <Route path="/Controller" element={<Controller />} />}
+            {isLoggedInValue && <Route path="/Lolz" element={<Lolz />} />}
 
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
