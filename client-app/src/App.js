@@ -12,6 +12,10 @@ import Registration from "./components/public/Registration";
 import Dashboard from "./components/private/Dashboard";
 import Controller from "./components/private/game/Controller";
 
+/*  TODO List
+*   TODO: make all private routes blocked by default
+*/
+
 const App = () => {
     const { isLoggedInValue } = useContext(isLoggedIn);
 
