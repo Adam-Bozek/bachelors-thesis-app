@@ -4,7 +4,7 @@ import "./styles/Carousel.css";
 
 import Tile from "./Tiles";
 
-const QuestionStart = ({ slides }) => {
+const QuestionCarousel = ({ slides }) => {
     // State to manage the current slide index
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -69,4 +69,4 @@ const QuestionStart = ({ slides }) => {
     );
 };
 
-export default QuestionStart;
+export default QuestionCarousel;

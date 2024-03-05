@@ -1,3 +1,6 @@
+import React from "react";
+
+import QuestionCarousel from "./subcomponents/QuestionCarousel";
 
 import ImgLink1 from "./data/pictures/O_A_BP_FaD-Marketplace-1-1.jpg";
 import ImgLink2 from "./data/pictures/O_A_BP_FaD-Marketplace-1-2.webp";
@@ -27,20 +30,15 @@ import ImgLink22 from "./data/pictures/O_A_BP_FaD-Marketplace-4-4.jpg";
 import ImgLink23 from "./data/pictures/O_A_BP_FaD-Marketplace-4-5.png";
 import ImgLink24 from "./data/pictures/O_A_BP_FaD-Marketplace-4-6.jpg";
 
-
-import React from "react";
-
-import QuestionStart from "./QuestionStart";
-
 const Controller = () => {
     const slides = [
         {
-          question: "Na ktorom obrázku je ananás?",
-          imgLinks: [ImgLink1, ImgLink2, ImgLink3, ImgLink4, ImgLink5, ImgLink6],
+            question: "Na ktorom obrázku je ananás?",
+            imgLinks: [ImgLink1, ImgLink2, ImgLink3, ImgLink4, ImgLink5, ImgLink6],
         },
         {
-          question: "Na ktorom obrázku je čokoláda?",
-          imgLinks: [ImgLink7, ImgLink8, ImgLink9, ImgLink10, ImgLink11, ImgLink12],
+            question: "Na ktorom obrázku je čokoláda?",
+            imgLinks: [ImgLink7, ImgLink8, ImgLink9, ImgLink10, ImgLink11, ImgLink12],
         },
         {
             question: "Na ktorom obrázku je lekvár?",
@@ -49,13 +47,12 @@ const Controller = () => {
         {
             question: "Na ktorom obrázku je hrach?",
             imgLinks: [ImgLink19, ImgLink20, ImgLink21, ImgLink22, ImgLink23, ImgLink24],
-          },
-        // Add more slide data here as needed
-      ];
+        },
+    ];
 
     return (
         <>
-            <QuestionStart slides={slides} />;
+            <QuestionCarousel slides={slides} />;
         </>
     );
 };
