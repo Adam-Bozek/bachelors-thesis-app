@@ -1,39 +1,53 @@
 import React, { useState, useEffect } from "react";
+
 import QuestionCarousel from "./subcomponents/QuestionCarousel";
 
-import O_A_BP_FaD from "./data/questions/O_A_BP_FaD.json"
+import O_A_BP_FaD from "./data/questions/O_A_BP_FaD.json";
+
+// Function to dynamically import images
+const importAll = (require) => {
+  let images = {};
+  require.keys().map((item, index) => {
+    images[item.replace("./", "")] = require(item);
+  });
+  return images;
+};
+
+const images = importAll(
+  require.context("./data/pictures", false, /\.(png|jpe?g|svg|webp)$/)
+);
 
 const Controller = () => {
-    const [marketplaceSlides, setMarketplaceSlides] = useState([]);
-    const loadData = () => JSON.parse(JSON.stringify(O_A_BP_FaD));
+  const [slides, setSlides] = useState([]);
 
-    useEffect(() => {
-        fetchMarketplaceQuestions();
-    }, []);
+  const jsonData = () => JSON.parse(JSON.stringify(O_A_BP_FaD));
 
-    const fetchMarketplaceQuestions = async () => {
-        try {
-            const data = loadData();
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
 
-            const marketplaceSlidesArray = data.marketplace.map((item) => ({
-                question: item.question,
-                imgLinks: item.answers.map((answer) => answer.id),
-            }));
-            
-            // Set the transformed 'MarketplaceSlides' array to the state
-            setMarketplaceSlides(marketplaceSlidesArray);
-        } catch (error) {
-            // Log error if fetching fails
-            console.error("Error fetching marketplace questions:", error);
-        }
-    };
-    
+  const fetchQuestions = async () => {
+    try {
+      const data = jsonData();
 
-    return (
-        <>
-            <QuestionCarousel slides={marketplaceSlides} />
-        </>
-    );
+      const slidesArray = data.marketplace.map((item) => ({
+        question: item.question,
+        imgLinks: item.answers.map(
+          (answer) =>
+            images[`O_A_BP_FaD-Marketplace-${item.id}-${answer.id}.webp`]
+        ),
+      }));
+      setSlides(slidesArray);
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+    }
+  };
+
+  return (
+    <>
+      <QuestionCarousel slides={slides} />
+    </>
+  );
 };
 
 export default Controller;
