@@ -13,7 +13,7 @@ const importAll = (require) => {
 
 // Importing all images from the specified directory
 const images = importAll(
-  require.context("./data/pictures", false, /\.(png|jpe?g|svg|webp)$/)
+  require.context("../data/pictures", false, /\.(png|jpe?g|svg|webp)$/)
 );
 
 const QuestionDisplay = ({ filename, category, jsonData }) => {
