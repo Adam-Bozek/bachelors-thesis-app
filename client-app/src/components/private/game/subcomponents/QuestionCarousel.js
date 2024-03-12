@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./styles/Carousel.css";
 
-import Tile from "./Tiles";
+import Tiles from "./Tiles";
 
 const QuestionCarousel = ({ slides }) => {
   // State to manage the current slide index
@@ -14,9 +14,11 @@ const QuestionCarousel = ({ slides }) => {
     const onSlide = () => {
       // Update currentSlide state when the carousel slides
       setCurrentSlide(
-        carouselElement
-          .querySelector(".active")
-          .getAttribute("data-bs-slide-to")
+        parseInt(
+          carouselElement
+            .querySelector(".active")
+            .getAttribute("data-bs-slide-to")
+        )
       );
     };
     carouselElement.addEventListener("slid.bs.carousel", onSlide); // Add event listener for carousel slide event
@@ -55,11 +57,12 @@ const QuestionCarousel = ({ slides }) => {
             >
               <div className="container">
                 <div className="carousel-caption text-start">
-                  {/* Render Tile component for each slide */}
-                  <Tile
+                  {/* Render Tiles component for each slide */}
+                  <Tiles
                     question={slide.question}
                     imgLinks={slide.imgLinks}
                     audioFile={slide.audioFile}
+                    isCurrentSlide={index === currentSlide}
                   />
                 </div>
               </div>
