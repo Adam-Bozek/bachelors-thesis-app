@@ -1,19 +1,18 @@
-import React from 'react';
+import React from "react";
 
 import Header from "./Header";
 import Footer from "./Footer";
 
 const Dashboard = () => {
-    const pageName = "Informačný panel";
+  const pageName = "Informačný panel";
 
-    return(
-        <>
-            <Header pageName={pageName}/>
+  return (
+    <>
+      <Header pageName={pageName} />
 
-
-            <Footer />
-        </>
-    );
+      <Footer />
+    </>
+  );
 };
 
 export default Dashboard;

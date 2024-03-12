@@ -90,3 +90,5 @@ yarn-error.log*
 
 # avif
 *.avif
+
+*.mp3

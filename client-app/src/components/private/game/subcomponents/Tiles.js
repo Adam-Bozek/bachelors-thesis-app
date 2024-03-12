@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Style from "./styles/Style.module.css";
 
@@ -30,9 +30,13 @@ const Tiles = ({ question, imgLinks, audioFile }) => {
     setIsPlaying(!isPlaying);
   };
 
+  useEffect(() => {
+    audioRef.current.play();
+    setIsPlaying(true);
+  }, []);
+
   const handleEnded = () => {
     setIsPlaying(false);
-    // You can perform any additional actions when the audio ends here
   };
 
   const handleTileClick = (index) => {
@@ -49,6 +53,7 @@ const Tiles = ({ question, imgLinks, audioFile }) => {
         ) : (
           <PlaySVG onClick={togglePlay} />
         )}
+
         <audio ref={audioRef} onEnded={handleEnded}>
           <source src={audioFile} type="audio/mpeg" />
           Your browser does not support the audio element.

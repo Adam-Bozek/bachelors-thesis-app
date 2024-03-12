@@ -2,7 +2,13 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { isLoggedIn } from "../ContextProvider";
-import { checkEmail, checkPassword, verifyUserLogin, apiIPAddress, webProtocol } from "../../Utils";
+import {
+  checkEmail,
+  checkPassword,
+  verifyUserLogin,
+  apiIPAddress,
+  webProtocol,
+} from "../../Utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -35,7 +41,11 @@ const Login = () => {
       } else {
         // Verify user login using the verifyUserLogin function
         // Password isn not encrypted in app due to transfer trough https protocol and bcrypt compare function
-        const loginInfo = await verifyUserLogin(email, password, apiAddress + verifyUserLoginEndpoint);
+        const loginInfo = await verifyUserLogin(
+          email,
+          password,
+          apiAddress + verifyUserLoginEndpoint
+        );
 
         if (loginInfo) {
           // If login is successful, redirect to Dashboard

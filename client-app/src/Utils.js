@@ -111,9 +111,18 @@ export async function verifyUserExistance(email, apiAddress) {
 
 // This function will post to database
 // This is function without return
-export async function createUser(name, surname, email, password, apiAddress, navigate) {
+export async function createUser(
+  name,
+  surname,
+  email,
+  password,
+  apiAddress,
+  navigate
+) {
   try {
-    const response = await Axios.post(apiAddress, {
+    const response = await Axios.post(
+      apiAddress,
+      {
         name: name,
         surname: surname,
         email: email,

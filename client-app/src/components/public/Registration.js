@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 
-import { checkEmail, checkName, checkPasswords, checkSurname, hashPassword, verifyUserExistance, createUser, apiIPAddress, webProtocol } from "../../Utils";
+import {
+  checkEmail,
+  checkName,
+  checkPasswords,
+  checkSurname,
+  hashPassword,
+  verifyUserExistance,
+  createUser,
+  apiIPAddress,
+  webProtocol,
+} from "../../Utils";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "./Footer";
@@ -46,7 +56,10 @@ const Registration = () => {
     else {
       try {
         // Check if the user already exists
-        const userDoesntExists = await verifyUserExistance(email, apiAddress + verifyEndpoint);
+        const userDoesntExists = await verifyUserExistance(
+          email,
+          apiAddress + verifyEndpoint
+        );
 
         if (userDoesntExists) {
           // If user does not exist, make a POST request to create a new user
@@ -54,9 +67,16 @@ const Registration = () => {
             // Hash the user's password
             const hashedPassword = await hashPassword(password);
 
-            await createUser(name, surname, email, hashedPassword, apiAddress + createEndPoint, navigate);
+            await createUser(
+              name,
+              surname,
+              email,
+              hashedPassword,
+              apiAddress + createEndPoint,
+              navigate
+            );
           } catch (error) {
-            console.error('Registration failed:', error);
+            console.error("Registration failed:", error);
           }
         } else {
           // Inform the user that a user with the provided email already exists
@@ -69,14 +89,20 @@ const Registration = () => {
     }
   };
 
-
   return (
     <>
       <Header pageName={pageName} />
 
       <main className="container">
-        <h1 className="mt-5 mb-3"> Ďakujeme, že ste sa rozhodli zaregistrovať! </h1>
-        <p> Práve vaša registrácia nám dokáže pomôcť k zlepšeniu aplikácie a väčšiemu dosahu tejto aplikácie. </p>
+        <h1 className="mt-5 mb-3">
+          {" "}
+          Ďakujeme, že ste sa rozhodli zaregistrovať!{" "}
+        </h1>
+        <p>
+          {" "}
+          Práve vaša registrácia nám dokáže pomôcť k zlepšeniu aplikácie a
+          väčšiemu dosahu tejto aplikácie.{" "}
+        </p>
 
         <div className="py-3 body-height">
           <div className="form-signin">
@@ -90,7 +116,8 @@ const Registration = () => {
                   placeholder="Meno"
                   autoComplete="given-name"
                   value={name}
-                  onChange={(event) => setName(event.target.value)} />
+                  onChange={(event) => setName(event.target.value)}
+                />
                 <label htmlFor="floatingName">Meno</label> <br />
               </div>
               <div className="form-floating">
@@ -102,7 +129,8 @@ const Registration = () => {
                   placeholder="Priezvysko"
                   autoComplete="family-name"
                   value={surname}
-                  onChange={(event) => setSurname(event.target.value)} />
+                  onChange={(event) => setSurname(event.target.value)}
+                />
                 <label htmlFor="floatingSurname"> Priezvisko </label> <br />
               </div>
               <div className="form-floating">
@@ -114,7 +142,8 @@ const Registration = () => {
                   placeholder="Email"
                   autoComplete="email"
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)} />
+                  onChange={(event) => setEmail(event.target.value)}
+                />
                 <label htmlFor="floatingEmail"> Emailová adresa </label> <br />
               </div>
               <div className="form-floating">
@@ -125,8 +154,10 @@ const Registration = () => {
                   name="password"
                   placeholder="Heslo"
                   value={password}
-                  onChange={(event) => setPassword(event.target.value)} />
-                <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label> <br />
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+                <label htmlFor="floatingPasswordMain"> Zadajte Heslo </label>{" "}
+                <br />
               </div>
               <div className="form-floating">
                 <input
@@ -136,11 +167,21 @@ const Registration = () => {
                   name="password"
                   placeholder="Heslo"
                   value={passwordRepeat}
-                  onChange={(event) => setPasswordRepeat(event.target.value)} />
-                <label htmlFor="floatingPasswordRepeat"> Zopakujte Heslo </label> <br />
+                  onChange={(event) => setPasswordRepeat(event.target.value)}
+                />
+                <label htmlFor="floatingPasswordRepeat">
+                  {" "}
+                  Zopakujte Heslo{" "}
+                </label>{" "}
+                <br />
               </div>
               <div className="d-flex gap-2">
-                <button className="btn btn-primary py-2 sign-in-btn" type="submit">Zaregistrovať sa</button>
+                <button
+                  className="btn btn-primary py-2 sign-in-btn"
+                  type="submit"
+                >
+                  Zaregistrovať sa
+                </button>
               </div>
             </form>
           </div>
@@ -150,6 +191,6 @@ const Registration = () => {
       <Footer />
     </>
   );
-}
+};
 
 export default Registration;
