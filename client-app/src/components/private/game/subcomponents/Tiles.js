@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Style from "./styles/Style.module.css";
 
-// Import SVG icons as components
 import { ReactComponent as PlaySVG } from "./svg/play.svg";
 import { ReactComponent as PauseSVG } from "./svg/pause.svg";
 
@@ -17,16 +16,27 @@ const Tile = ({ imageUrl, onClick, index }) => (
   </div>
 );
 
-const Tiles = ({ question, imgLinks }) => {
+const Tiles = ({ question, imgLinks, audioFile }) => {
   // State to manage play/pause state
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+    // You can perform any additional actions when the audio ends here
+  };
 
   const handleTileClick = (index) => {
     alert("you clicked tile number " + (index + 1));
-  };
-
-  const handlePausePlayClick = () => {
-    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -35,10 +45,14 @@ const Tiles = ({ question, imgLinks }) => {
         {question}
         {/* Conditional rendering of play/pause icon based on isPlaying state */}
         {isPlaying ? (
-          <PauseSVG onClick={handlePausePlayClick} />
+          <PauseSVG onClick={togglePlay} />
         ) : (
-          <PlaySVG onClick={handlePausePlayClick} />
+          <PlaySVG onClick={togglePlay} />
         )}
+        <audio ref={audioRef} onEnded={handleEnded}>
+          <source src={audioFile} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
       </h1>
       <div className="row">
         {/* Map over imgLinks array to render Tile components */}

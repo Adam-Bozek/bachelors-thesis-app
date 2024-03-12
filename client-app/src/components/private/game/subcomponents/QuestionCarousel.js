@@ -56,7 +56,11 @@ const QuestionCarousel = ({ slides }) => {
               <div className="container">
                 <div className="carousel-caption text-start">
                   {/* Render Tile component for each slide */}
-                  <Tile question={slide.question} imgLinks={slide.imgLinks} />
+                  <Tile
+                    question={slide.question}
+                    imgLinks={slide.imgLinks}
+                    audioFile={slide.audioFile}
+                  />
                 </div>
               </div>
             </div>
