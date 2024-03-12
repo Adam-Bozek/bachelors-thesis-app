@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import QuestionCarousel from "./QuestionCarousel";
 
-// Function to import all images from a directory using Webpack's require.context
+// Function to import all images from a directory
 const importAll = (require) => {
   let images = {};
   require.keys().map((item, index) => {
