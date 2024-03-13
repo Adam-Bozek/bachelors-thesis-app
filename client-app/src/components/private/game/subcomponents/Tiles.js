@@ -21,7 +21,7 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
   const [shuffledImgLinks, setShuffledImgLinks] = useState([]);
-  const [correctTileIndex, setCorrectTileIndex] = useState(-1);
+  const [correctTileIndex, setCorrectTileIndex] = useState(0);
 
   useEffect(() => {
     // Shuffle the image links array
@@ -31,7 +31,6 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
     const correctIndex = shuffledArray.findIndex(
       (link) => link === imgLinks[0]
     );
-    console.log("Index of the correct picture:", correctIndex + 1);
     setCorrectTileIndex(correctIndex + 1);
 
     // Set the shuffled image links array
@@ -63,7 +62,9 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
   };
 
   const handleTileClick = (index) => {
-    alert("you clicked tile number " + (index + 1));
+    if (index+1 == correctTileIndex) {
+      alert("You clicked the right answer!");
+    }
   };
 
   return (
