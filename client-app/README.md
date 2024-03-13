@@ -114,3 +114,21 @@ This is the default structure for a question object with blank question and answ
 ```
 
 This structure serves as a template for creating new questions.
+
+# FEATURES
+
+One of the features developed is playng question audio when slide witch question si played. This feature is implemented but not used. It is used in Tiles component.
+
+```javascript
+useEffect(() => {
+    // Start playing audio when the current slide is active
+    if (isCurrentSlide) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    } else {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [isCurrentSlide]);
+
+```

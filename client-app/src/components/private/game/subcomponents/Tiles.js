@@ -30,7 +30,7 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
     setIsPlaying(!isPlaying);
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     // Start playing audio when the current slide is active
     if (isCurrentSlide) {
       audioRef.current.play();
@@ -39,7 +39,7 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
       audioRef.current.pause();
       setIsPlaying(false);
     }
-  }, [isCurrentSlide]);
+  }, [isCurrentSlide]); */
 
   const handleEnded = () => {
     setIsPlaying(false);
