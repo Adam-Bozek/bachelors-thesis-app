@@ -20,15 +20,23 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
   // State to manage play/pause state
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const [shuffledImgLinks, setShuffledImgLinks] = useState([]);
+  const [correctTileIndex, setCorrectTileIndex] = useState(-1);
 
-  const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
+  useEffect(() => {
+    // Shuffle the image links array
+    const shuffledArray = [...imgLinks].sort(() => Math.random() - 0.5);
+
+    // Find the index of the correct picture in the shuffled array
+    const correctIndex = shuffledArray.findIndex(
+      (link) => link === imgLinks[0]
+    );
+    console.log("Index of the correct picture:", correctIndex + 1);
+    setCorrectTileIndex(correctIndex + 1);
+
+    // Set the shuffled image links array
+    setShuffledImgLinks(shuffledArray);
+  }, [imgLinks]);
 
   /* useEffect(() => {
     // Start playing audio when the current slide is active
@@ -40,6 +48,15 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
       setIsPlaying(false);
     }
   }, [isCurrentSlide]); */
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   const handleEnded = () => {
     setIsPlaying(false);
@@ -66,8 +83,8 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
         </audio>
       </h1>
       <div className="row">
-        {/* Map over imgLinks array to render Tile components */}
-        {imgLinks.map((imgLink, index) => (
+        {/* Map over shuffledImgLinks array to render Tile components */}
+        {shuffledImgLinks.map((imgLink, index) => (
           <Tile
             key={index}
             imageUrl={imgLink}
