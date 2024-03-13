@@ -7,6 +7,15 @@ import Tiles from "./Tiles";
 const QuestionCarousel = ({ slides }) => {
   // State to manage the current slide index
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const moveToNextQuestion = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide((prevSlide) => prevSlide + 1);
+      setIsTransitioning(false);
+    }, 500); // Adjust the transition duration accordingly
+  };
 
   // Effect hook to set up event listener when the component mounts
   useEffect(() => {
@@ -53,16 +62,19 @@ const QuestionCarousel = ({ slides }) => {
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
+              className={`carousel-item ${
+                index === currentSlide ? "active" : ""
+              }`}
             >
               <div className="container">
                 <div className="carousel-caption text-start">
-                  {/* Render Tiles component for each slide */}
+                  {/* Pass moveToNextQuestion function to Tiles component */}
                   <Tiles
                     question={slide.question}
                     imgLinks={slide.imgLinks}
                     audioFile={slide.audioFile}
                     isCurrentSlide={index === currentSlide}
+                    moveToNextQuestion={moveToNextQuestion}
                   />
                 </div>
               </div>

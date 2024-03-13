@@ -113,7 +113,8 @@ This is the default structure for a question object with blank question and answ
 }
 ```
 
-This structure serves as a template for creating new questions.
+This structure serves as a template for creating new questions. 
+A_a_A.json = adjectives and adverbs
 
 # FEATURES
 

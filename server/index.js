@@ -88,8 +88,7 @@ connectionPool.on("error", (poolError) => {
 });
 
 // Setup MySQL session store
-const sessionStore = new MySQLStore(
-  {
+const sessionStore = new MySQLStore({
     clearExpired: true,
     checkExpirationInterval: 1000 * 60 * 20, // 20 minutes
     expiration: 1000 * 60 * 60 * 1, // 1 hour
@@ -121,7 +120,7 @@ app.use(
 );
 
 // Function to generate random API key
-// On return there sould be a random API key
+// On return there should be a random API key
 const generateApiKey = () => {
   const apiKey = crypto.randomBytes(32).toString("hex");
   console.log("API KEY GEN: API key generated: " + apiKey);
@@ -217,7 +216,7 @@ app.get(userLoginEndpoint, (request, response) => {
   );
 });
 
-// Creating an API endpoint to chceck if user with the provided email exists
+// Creating an API endpoint to check if user with the provided email exists
 app.post(verifyUserExistanceEndpoint, (request, response) => {
   const email = request.body.email;
 

@@ -16,12 +16,13 @@ const Tile = ({ imageUrl, onClick, index }) => (
   </div>
 );
 
-const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
+const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide, moveToNextQuestion }) => {
   // State to manage play/pause state
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
   const [shuffledImgLinks, setShuffledImgLinks] = useState([]);
   const [correctTileIndex, setCorrectTileIndex] = useState(0);
+  
+  const audioRef = useRef(null);
 
   useEffect(() => {
     // Shuffle the image links array
@@ -37,6 +38,7 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
     setShuffledImgLinks(shuffledArray);
   }, [imgLinks]);
 
+  // Autoplay when question shown to the user NOT IN USE
   /* useEffect(() => {
     // Start playing audio when the current slide is active
     if (isCurrentSlide) {
@@ -48,6 +50,7 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
     }
   }, [isCurrentSlide]); */
 
+  // Function to play or pause question audio
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -61,10 +64,16 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide }) => {
     setIsPlaying(false);
   };
 
+  // Function to handle what happens after question answer
   const handleTileClick = (index) => {
-    if (index+1 == correctTileIndex) {
-      alert("You clicked the right answer!");
+    if (index + 1 === correctTileIndex) {
+      
     }
+    else {
+
+    }
+
+    moveToNextQuestion();
   };
 
   return (
