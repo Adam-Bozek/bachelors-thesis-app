@@ -15,8 +15,8 @@ export const year = 2024;
  *  TODO: Make password functions recognize that password is incorrect
  */
 
-// This bool function checks if the name was inputed
-// On sucess function will return TRUE
+// This bool function checks if the name was inputted
+// On success function will return TRUE
 export function checkName(name) {
   if (name === "") {
     return false;
@@ -24,8 +24,8 @@ export function checkName(name) {
   return true;
 }
 
-// This bool function checks if the name was inputed
-// On sucess function will return TRUE
+// This bool function checks if the name was inputted
+// On success function will return TRUE
 export function checkSurname(surname) {
   if (surname === "") {
     return false;
@@ -33,22 +33,22 @@ export function checkSurname(surname) {
   return true;
 }
 
-// This bool function checks if the email was inputed corectly using regex
-// On sucess function will return TRUE
+// This bool function checks if the email was inputted correctly using regex
+// On success function will return TRUE
 export function checkEmail(email) {
   const emailRegex =
     /^[a-zA-Z0-9](.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*.[a-zA-Z]{2,6}$/;
   return emailRegex.test(email);
 }
 
-// This bool function checks if the password was inputed
-// On sucess function will return TRUE
+// This bool function checks if the password was inputted
+// On success function will return TRUE
 export function checkPassword(password) {
   return password !== "";
 }
 
 // This bool function checks if the passwords input are not empty and if they are equal
-// On sucess function will return TRUE
+// On success function will return TRUE
 export function checkPasswords(password, passwordRepeat) {
   return (
     password !== "" && passwordRepeat !== "" && password === passwordRepeat
@@ -56,7 +56,7 @@ export function checkPasswords(password, passwordRepeat) {
 }
 
 // This bool function checks if the User credentials are not empty and if they are equal
-// On sucess function will return TRUE
+// On success function will return TRUE
 export async function verifyUserLogin(email, password, apiAddress) {
   try {
     const response = await fetch(
@@ -81,8 +81,8 @@ export async function verifyUserLogin(email, password, apiAddress) {
   }
 }
 
-// This bool function checks if the email is allready regis
-// On sucess function will return TRUE
+// This bool function checks if the email is already regis
+// On success function will return TRUE
 export async function verifyUserExistance(email, apiAddress) {
   try {
     const response = await fetch(apiAddress, {
