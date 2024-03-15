@@ -16,12 +16,18 @@ const Tile = ({ imageUrl, onClick, index }) => (
   </div>
 );
 
-const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide, moveToNextQuestion }) => {
+const Tiles = ({
+  question,
+  imgLinks,
+  audioFile,
+  isCurrentSlide,
+  moveToNextQuestion,
+}) => {
   // State to manage play/pause state
   const [isPlaying, setIsPlaying] = useState(false);
   const [shuffledImgLinks, setShuffledImgLinks] = useState([]);
   const [correctTileIndex, setCorrectTileIndex] = useState(0);
-  
+
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -66,14 +72,8 @@ const Tiles = ({ question, imgLinks, audioFile, isCurrentSlide, moveToNextQuesti
 
   // Function to handle what happens after question answer
   const handleTileClick = (index) => {
-    if (index + 1 === correctTileIndex) {
-      
-    }
-    else {
-
-    }
-
-    moveToNextQuestion();
+    const isCorrect = index + 1 === correctTileIndex;
+    moveToNextQuestion(isCorrect);
   };
 
   return (

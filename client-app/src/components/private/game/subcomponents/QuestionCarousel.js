@@ -4,17 +4,24 @@ import "./styles/Carousel.css";
 
 import Tiles from "./Tiles";
 
-const QuestionCarousel = ({ slides }) => {
-  // State to manage the current slide index
+const QuestionCarousel = ({ slides, receiveUserAnswers }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
 
-  const moveToNextQuestion = () => {
-    setCurrentSlide((prevSlide) => prevSlide + 1);
+  const moveToNextQuestion = (isCorrect) => {
+    setUserAnswers((prevAnswers) => [...prevAnswers, isCorrect]);
+    if (currentSlide === slides.length - 1) {
+      console.log("All questions answered");
+      receiveUserAnswers([...userAnswers, isCorrect]);
+    } else {
+      setCurrentSlide((prevSlide) => prevSlide + 1);
+    }
   };
 
   // Effect hook to set up event listener when the component mounts
   useEffect(() => {
     const carouselElement = document.getElementById("myCarousel");
+
     const onSlide = () => {
       // Update currentSlide state when the carousel slides
       setCurrentSlide(
@@ -25,7 +32,9 @@ const QuestionCarousel = ({ slides }) => {
         )
       );
     };
-    carouselElement.addEventListener("slid.bs.carousel", onSlide); // Add event listener for carousel slide event
+
+    carouselElement.addEventListener("slid.bs.carousel", onSlide);
+
     // Clean up event listener when component unmounts
     return () =>
       carouselElement.removeEventListener("slid.bs.carousel", onSlide);
