@@ -7,14 +7,9 @@ import Tiles from "./Tiles";
 const QuestionCarousel = ({ slides }) => {
   // State to manage the current slide index
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const moveToNextQuestion = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentSlide((prevSlide) => prevSlide + 1);
-      setIsTransitioning(false);
-    }, 500); // Adjust the transition duration accordingly
+    setCurrentSlide((prevSlide) => prevSlide + 1);
   };
 
   // Effect hook to set up event listener when the component mounts
