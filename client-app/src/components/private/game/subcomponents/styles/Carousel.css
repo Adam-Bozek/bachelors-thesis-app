@@ -17,8 +17,9 @@ body {
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-    top: 50%; /* Center the caption vertically */
-    transform: translateY(-50%);
+    bottom: 3rem;
+    top: 40%;                    /* DESKTOP imgSel:  35%, imgRec:  40% */ /* MOBILE imgSel:  45%, imgRec:  45% */
+    transform: translateY(-45%); /* DESKTOP imgSel: -65%, imgRec: -45% */ /* MOBILE imgSel: -70%, imgRec: -40% */
     z-index: 10;
 }
 
