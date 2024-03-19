@@ -5,19 +5,26 @@ import "./styles/Carousel.css";
 import Tiles from "./Tiles";
 
 /* TODO list
-*  TODO: vertically center content inside of carousel
-*/
+ *  TODO: vertically center content inside of carousel
+ */
 
+// QuestionCarousel component to manage the carousel of questions
 const QuestionCarousel = ({ slides, receiveUserAnswers }) => {
+  // State to manage current slide and user answers
   const [currentSlide, setCurrentSlide] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
+  // Function to move to the next question
   const moveToNextQuestion = (isCorrect) => {
+    // Update user answers
     setUserAnswers((prevAnswers) => [...prevAnswers, isCorrect]);
+    // Check if all questions answered
     if (currentSlide === slides.length - 1) {
       console.log("All questions answered");
+      // Send user answers to controller component
       receiveUserAnswers([...userAnswers, isCorrect]);
     } else {
+      // Move to the next slide
       setCurrentSlide((prevSlide) => prevSlide + 1);
     }
   };
@@ -37,6 +44,7 @@ const QuestionCarousel = ({ slides, receiveUserAnswers }) => {
       );
     };
 
+    // Add event listener for carousel slide event
     carouselElement.addEventListener("slid.bs.carousel", onSlide);
 
     // Clean up event listener when component unmounts

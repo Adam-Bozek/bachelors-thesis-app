@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import QuestionCarousel from "./QuestionCarousel";
+import QuestionCarousel from "./subcomponents/QuestionCarousel";
 
-/* TODO list
-*  TODO: make nice transition when user clicks on tile
-*/
-
-// Function to handle import of pictures and sounds
 const importAll = (requireContext) => {
   let files = {};
   requireContext.keys().map((item, index) => {
@@ -25,7 +20,7 @@ const audioFiles = importAll(
   require.context("../data/audio", false, /\.(mp3)$/)
 );
 
-const QuestionDisplay = ({ filename, category, jsonData }) => {
+const ImageRecognition = () => {
   const [slides, setSlides] = useState([]);
 
   useEffect(() => {
@@ -57,4 +52,4 @@ const QuestionDisplay = ({ filename, category, jsonData }) => {
   );
 };
 
-export default QuestionDisplay;
+export default ImageRecognition;

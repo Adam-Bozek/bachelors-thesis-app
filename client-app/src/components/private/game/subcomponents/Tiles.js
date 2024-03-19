@@ -5,7 +5,7 @@ import Style from "./styles/Style.module.css";
 import { ReactComponent as PlaySVG } from "./svg/play.svg";
 import { ReactComponent as PauseSVG } from "./svg/pause.svg";
 
-// Define Tile template
+// Tile component to render an image
 const Tile = ({ imageUrl, onClick, index }) => (
   <div className="col-md-4 mb-3">
     <div className="card clickable text-center" onClick={() => onClick(index)}>
@@ -16,13 +16,7 @@ const Tile = ({ imageUrl, onClick, index }) => (
   </div>
 );
 
-const Tiles = ({
-  question,
-  imgLinks,
-  audioFile,
-  isCurrentSlide,
-  moveToNextQuestion,
-}) => {
+function Tiles({ question, imgLinks, audioFile, isCurrentSlide, moveToNextQuestion }) {
   // State to manage play/pause state
   const [isPlaying, setIsPlaying] = useState(false);
   const [shuffledImgLinks, setShuffledImgLinks] = useState([]);
@@ -30,19 +24,36 @@ const Tiles = ({
 
   const audioRef = useRef(null);
 
+  // Effect to shuffle image links and find correct tile index when imgLinks changes
   useEffect(() => {
-    // Shuffle the image links array
     const shuffledArray = [...imgLinks].sort(() => Math.random() - 0.5);
-
-    // Find the index of the correct picture in the shuffled array
     const correctIndex = shuffledArray.findIndex(
       (link) => link === imgLinks[0]
     );
     setCorrectTileIndex(correctIndex + 1);
-
-    // Set the shuffled image links array
     setShuffledImgLinks(shuffledArray);
   }, [imgLinks]);
+
+  // Function to toggle play/pause of audio
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  // Function called when audio playback ends
+  const handleEnded = () => {
+    setIsPlaying(false);
+  };
+
+  // Function called when a tile is clicked
+  const handleTileClick = (index) => {
+    const isCorrect = index + 1 === correctTileIndex;
+    moveToNextQuestion(isCorrect);
+  };
 
   // Autoplay when question shown to the user NOT IN USE
   /* useEffect(() => {
@@ -55,26 +66,6 @@ const Tiles = ({
       setIsPlaying(false);
     }
   }, [isCurrentSlide]); */
-
-  // Function to play or pause question audio
-  const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  const handleEnded = () => {
-    setIsPlaying(false);
-  };
-
-  // Function to handle what happens after question answer
-  const handleTileClick = (index) => {
-    const isCorrect = index + 1 === correctTileIndex;
-    moveToNextQuestion(isCorrect);
-  };
 
   return (
     <div className="container" data-bs-theme="light">
@@ -105,6 +96,6 @@ const Tiles = ({
       </div>
     </div>
   );
-};
+}
 
 export default Tiles;

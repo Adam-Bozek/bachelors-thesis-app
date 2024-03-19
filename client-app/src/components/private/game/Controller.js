@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ImageSelection from "./subcomponents/ImageSelection";
+import ImageSelection from "./ImageSelection";
 
 import O_A_BP_FaD from "./data/json/O_A_BP_FaD.json";
 
