@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 
 import "./styles/Carousel.css";
 
-import Tiles from "./Tiles";
+import SelectionTiles from "./SelectionTiles";
+import RecognitionTile from "./RecognitionTile";
 
 /* TODO list
  *  TODO: vertically center content inside of carousel
  */
 
 // QuestionCarousel component to manage the carousel of questions
-const QuestionCarousel = ({ slides, receiveUserAnswers }) => {
+const QuestionCarousel = ({ slides, receiveUserAnswers, componentType }) => {
   // State to manage current slide and user answers
   const [currentSlide, setCurrentSlide] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -84,14 +85,24 @@ const QuestionCarousel = ({ slides, receiveUserAnswers }) => {
             >
               <div className="container">
                 <div className="carousel-caption text-start">
-                  {/* Pass moveToNextQuestion function to Tiles component */}
-                  <Tiles
-                    question={slide.question}
-                    imgLinks={slide.imgLinks}
-                    audioFile={slide.audioFile}
-                    isCurrentSlide={index === currentSlide}
-                    moveToNextQuestion={moveToNextQuestion}
-                  />
+                  {/* Conditional rendering based on componentType */}
+                  {componentType === "ImageSelection" ? (
+                    <SelectionTiles
+                      question={slide.question}
+                      imgLinks={slide.imgLink}
+                      audioFile={slide.audioFile}
+                      isCurrentSlide={index === currentSlide}
+                      moveToNextQuestion={moveToNextQuestion}
+                    />
+                  ) : componentType === "ImageRecognition" ? (
+                    <RecognitionTile
+                      question={slide.question}
+                      imgLink={slide.imgLinks}
+                      audioFile={slide.audioFile}
+                      isCurrentSlide={index === currentSlide}
+                      moveToNextQuestion={moveToNextQuestion}
+                    />
+                  ) : null}
                 </div>
               </div>
             </div>

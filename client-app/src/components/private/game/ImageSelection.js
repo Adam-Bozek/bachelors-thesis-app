@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import QuestionCarousel from "./subcomponents/QuestionCarousel";
 
 /* TODO list
@@ -59,7 +60,7 @@ const QuestionDisplay = ({ filename, category, jsonData }) => {
   return (
     <>
       {/* Render QuestionCarousel with slides */}
-      <QuestionCarousel slides={slides} />
+      <QuestionCarousel slides={slides} componentType={"ImageSelection"}/>
     </>
   );
 };
