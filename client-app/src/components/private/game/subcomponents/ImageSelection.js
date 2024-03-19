@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import QuestionCarousel from "./QuestionCarousel";
 
 /* TODO list
- *  TODO: make nice transition when user clicks on tile
- */
+*  TODO: make nice transition when user clicks on tile
+*/
 
 // Function to handle import of pictures and sounds
 const importAll = (requireContext) => {
@@ -25,12 +25,7 @@ const audioFiles = importAll(
   require.context("../data/audio", false, /\.(mp3)$/)
 );
 
-const QuestionDisplay = ({
-  filename,
-  category,
-  jsonData,
-  receiveUserAnswers,
-}) => {
+const QuestionDisplay = ({ filename, category, jsonData }) => {
   const [slides, setSlides] = useState([]);
 
   useEffect(() => {
@@ -57,10 +52,7 @@ const QuestionDisplay = ({
 
   return (
     <>
-      <QuestionCarousel
-        slides={slides}
-        receiveUserAnswers={receiveUserAnswers}
-      />
+      <QuestionCarousel slides={slides} />
     </>
   );
 };

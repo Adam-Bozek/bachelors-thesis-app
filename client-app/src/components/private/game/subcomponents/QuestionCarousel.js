@@ -4,6 +4,10 @@ import "./styles/Carousel.css";
 
 import Tiles from "./Tiles";
 
+/* TODO list
+*  TODO: vertically center content inside of carousel
+*/
+
 const QuestionCarousel = ({ slides, receiveUserAnswers }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);

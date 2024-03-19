@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import QuestionDisplay from "./subcomponents/QuestionDisplay";
+import ImageSelection from "./subcomponents/ImageSelection";
 
 import O_A_BP_FaD from "./data/json/O_A_BP_FaD.json";
 
@@ -12,12 +12,12 @@ const Controller = () => {
   const receiveUserAnswers = (answers) => {
     setUserAnswers(answers);
     // Now you can use userAnswers array in this component or pass it to another component
-    console.log("Received user answers:", answers);
+    console.log("Received user answers:", userAnswers);
   };
 
   return (
     <>
-      <QuestionDisplay
+      <ImageSelection
         filename={"O_A_BP_FaD"}
         category={"marketplace"}
         jsonData={jsonData}
