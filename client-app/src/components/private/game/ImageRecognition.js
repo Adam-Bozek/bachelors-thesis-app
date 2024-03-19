@@ -17,12 +17,12 @@ const importAll = (requireContext) => {
 
 // Function to import pictures
 const imageFiles = importAll(
-  require.context("../data/pictures", false, /\.(webp)$/)
+  require.context("./data/pictures", false, /\.(webp)$/)
 );
 
 // Function to import audio files
 const audioFiles = importAll(
-  require.context("../data/audio", false, /\.(mp3)$/)
+  require.context("./data/audio", false, /\.(mp3)$/)
 );
 
 // QuestionDisplay component to handle displaying questions

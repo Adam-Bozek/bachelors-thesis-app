@@ -85,24 +85,27 @@ const QuestionCarousel = ({ slides, receiveUserAnswers, componentType }) => {
             >
               <div className="container">
                 <div className="carousel-caption text-start">
-                  {/* Conditional rendering based on componentType */}
-                  {componentType === "ImageSelection" ? (
-                    <SelectionTiles
-                      question={slide.question}
-                      imgLinks={slide.imgLink}
-                      audioFile={slide.audioFile}
-                      isCurrentSlide={index === currentSlide}
-                      moveToNextQuestion={moveToNextQuestion}
-                    />
-                  ) : componentType === "ImageRecognition" ? (
-                    <RecognitionTile
-                      question={slide.question}
-                      imgLink={slide.imgLinks}
-                      audioFile={slide.audioFile}
-                      isCurrentSlide={index === currentSlide}
-                      moveToNextQuestion={moveToNextQuestion}
-                    />
-                  ) : null}
+                  {/* Render content based on componentType */}
+                  {componentType === "ImageSelection" &&
+                    index === currentSlide && (
+                      <SelectionTiles
+                        question={slide.question}
+                        imgLinks={slide.imgLinks}
+                        audioFile={slide.audioFile}
+                        isCurrentSlide={true}
+                        moveToNextQuestion={moveToNextQuestion}
+                      />
+                    )}
+                  {componentType === "ImageRecognition" &&
+                    index === currentSlide && (
+                      <RecognitionTile
+                        question={slide.question}
+                        imgLink={slide.imgLink}
+                        audioFile={slide.audioFile}
+                        isCurrentSlide={true}
+                        moveToNextQuestion={moveToNextQuestion}
+                      />
+                    )}
                 </div>
               </div>
             </div>

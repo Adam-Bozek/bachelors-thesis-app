@@ -1,5 +1,4 @@
-/* GLOBAL STYLES
--------------------------------------------------- */
+/* GLOBAL STYLES -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
 body {
@@ -9,8 +8,7 @@ body {
 }
 
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
+/* CUSTOMIZE THE CAROUSEL -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
@@ -19,7 +17,8 @@ body {
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-    bottom: 3rem;
+    top: 50%; /* Center the caption vertically */
+    transform: translateY(-50%);
     z-index: 10;
 }
 
@@ -28,9 +27,7 @@ body {
     height: 100vh;
 }
 
-
-/* Featurettes
-------------------------- */
+/* Featurettes -------------------------------------------------- */
 
 .featurette-divider {
     margin: 5rem 0;
@@ -45,8 +42,7 @@ body {
 
 /* rtl:end:remove */
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
+/* RESPONSIVE CSS -------------------------------------------------- */
 
 @media (min-width: 40em) {
 
@@ -63,8 +59,7 @@ body {
 }
 
 
-/* CAUROSELS PLAY/PAUSE CSS
--------------------------------------------------- */
+/* CAROUSELS PLAY/PAUSE CSS -------------------------------------------------- */
 #play-svg, #pause-svg {
     height: 1.25em;
     width: 1.25em;

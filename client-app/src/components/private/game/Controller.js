@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import ImageSelection from "./ImageSelection";
+import ImageRecognition from "./ImageRecognition";
 
 import O_A_BP_FaD from "./data/json/O_A_BP_FaD.json";
 
@@ -17,7 +18,7 @@ const Controller = () => {
 
   return (
     <>
-      <ImageSelection
+      <ImageRecognition
         filename={"O_A_BP_FaD"}
         category={"marketplace"}
         jsonData={jsonData}
