@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // pozriet blizsie
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 import Style from "./styles/Style.module.css";
 
@@ -45,7 +47,8 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
   if (!browserSupportsSpeechRecognition || !isMicrophoneAvailable) {
     return (
       <span>
-        Tvoj internetový prehliadač nepodporuje rozpoznávanie zvuku alebo mikrofón.
+        Tvoj internetový prehliadač nepodporuje rozpoznávanie zvuku alebo
+        mikrofón.
       </span>
     );
   }
@@ -67,9 +70,7 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
       setIsRecording(false);
     } else {
       resetTranscript(transcript);
-
-      // mozno vymazat continous
-      SpeechRecognition.startListening({ language: "sk", continuous: true });
+      SpeechRecognition.startListening({ language: "sk" });
       setIsRecording(true);
     }
   };
@@ -82,6 +83,7 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
     setSpokenWord(transcript);
     resetTranscript();
     console.log("Transcript: " + transcript + ". SpokenWord: " + spokenWord);
+    setIsEdited(false);
     moveToNextQuestion(true);
   };
 
@@ -92,30 +94,22 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
 
   return (
     <div className="container" data-bs-theme="light">
-      <h1 className="py-4">
+      <h1 className="py-4 d-flex align-items-center justify-content-between">
         {question}
 
-        {/* TODO: Zmenit button iba na ikonky */}
-        <button
-          className={`${Style["record-button"]} btn btn-primary`}
-          onClick={toggleRecord}
-        >
-          {isRecording ? (
-            <>
-              <MicMutedSVG /> Skonči nahrávanie
-            </>
+        <div className="d-flex">
+          {listening ? (
+            <MicMutedSVG onClick={toggleRecord} />
           ) : (
-            <>
-              <MicSVG /> Začni Nahrávanie
-            </>
+            <MicSVG onClick={toggleRecord} />
           )}
-        </button>
 
-        {isPlaying ? (
-          <PauseSVG onClick={togglePlay} />
-        ) : (
-          <PlaySVG onClick={togglePlay} />
-        )}
+          {isPlaying ? (
+            <PauseSVG onClick={togglePlay} />
+          ) : (
+            <PlaySVG onClick={togglePlay} />
+          )}
+        </div>
 
         <audio ref={audioRef} onEnded={handleEnded}>
           <source src={audioFile} type="audio/mpeg" />
@@ -125,7 +119,7 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
       <div className="row justify-content-center">
         <Tile imageUrl={imgLink} />
 
-        <div className=" row-md-4 mb-3">
+        <div className="row-md-4 mb-3">
           {!isEdited ? (
             <p className="text-center pt-3"> {transcript} </p>
           ) : (
@@ -141,25 +135,28 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
             </div>
           )}
 
-          {!isRecording && transcript.length > 0 ? (
-            <div class="d-flex gap-2 justify-content-center pt-1 pb-1">
+          {!listening && transcript.length > 0 ? (
+            <div className="d-flex gap-2 justify-content-center pt-1 pb-1">
               <button
-                class="btn btn-success rounded-circle p-2 lh-1"
+                className="btn btn-success p-2 lh-1"
                 type="button"
                 onClick={handleCorrectTranscript}
               >
                 <CheckSVG />
-                <span class="visually-hidden"> Dismiss </span>
+                <span> Potvrdiť </span>
               </button>
-
-              <button
-                class="btn btn-danger rounded-circle p-2 lh-1"
-                type="button"
-                onClick={handleIncorrectTranscript}
-              >
-                <XSVG />
-                <span class="visually-hidden">Dismiss</span>
-              </button>
+              {!isEdited ? (
+                <button
+                  className="btn btn-danger p-2 lh-1"
+                  type="button"
+                  onClick={handleIncorrectTranscript}
+                >
+                  <XSVG />
+                  <span> Odmietnuť </span>
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
           ) : (
             <></>
