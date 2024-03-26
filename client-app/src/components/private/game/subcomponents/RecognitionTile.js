@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
-// pozriet blizsie
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 import Style from "./styles/Style.module.css";
 
@@ -27,8 +24,9 @@ const Tile = ({ imageUrl }) => (
   </div>
 );
 
+// RecognitionTile component for handling speech recognition
 function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNextQuestion }) {
-  // States to manage TODO: fill
+  // States to manage
   const [isPlaying, setIsPlaying] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [spokenWord, setSpokenWord] = useState("");
@@ -37,25 +35,26 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
 
   const audioRef = useRef(null);
 
+  // Necessary variables from useSpeechRecognition hook
   const {
     transcript,
-    listening,
+    finalTranscript,
     resetTranscript,
+    listening,
     browserSupportsSpeechRecognition,
     isMicrophoneAvailable,
   } = useSpeechRecognition();
 
+  // Return message if browser doesn't support speech recognition or microphone is unavailable
   if (!browserSupportsSpeechRecognition || !isMicrophoneAvailable) {
     return (
       <span>
-        Tvoj internetový prehliadač nepodporuje rozpoznávanie zvuku alebo
-        mikrofón.
+        Tvoj internetový prehliadač nepodporuje rozpoznávanie zvuku alebo mikrofón.
       </span>
     );
   }
 
-  // je to skrinig nie test
-
+  // Function to toggle play/pause of audio
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -65,6 +64,7 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
     setIsPlaying(!isPlaying);
   };
 
+  // Function to toggle start/stop recording speech
   const toggleRecord = () => {
     if (isRecording) {
       SpeechRecognition.stopListening();
@@ -76,37 +76,42 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
     }
   };
 
+  // Function to handle end of audio playback
   const handleEnded = () => {
     setIsPlaying(false);
   };
 
+  // Function to handle correct transcript
   const handleCorrectTranscript = () => {
-    if (preSpokenWord === "") {
-      setSpokenWord(transcript);
-    } else {
-      setSpokenWord(preSpokenWord);
-    }
-
     setIsEdited(false);
-    console.log("Transcript: " + transcript + ". SpokenWord: " + spokenWord);
-    moveToNextQuestion(checkAnswer);
+    if (preSpokenWord !== "") {
+      moveToNextQuestion(checkAnswer(preSpokenWord));
+    } else {
+      moveToNextQuestion(checkAnswer(finalTranscript));
+    }
+    resetTranscript();
   };
 
-  // TODO: function that will check whether the word is correct or not
+  // Function to check if the answer is correct
   const checkAnswer = (inputtedAnswer) => {
     const correctAnswerTransformed = removeAccentsAndLowerCase(correctAnswer);
     const inputtedAnswerTransformed = removeAccentsAndLowerCase(inputtedAnswer);
 
-    
-  }
+    return correctAnswerTransformed === inputtedAnswerTransformed;
+  };
 
+  // Function to remove accents and convert to lowercase
   const removeAccentsAndLowerCase = (string) => {
-    return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  }; 
+    return string
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  };
 
+  // Function to handle incorrect transcript
   const handleIncorrectTranscript = () => {
     setIsEdited(true);
-    setPreSpokenWord(transcript);
+    setPreSpokenWord(finalTranscript);
   };
 
   return (
