@@ -46,6 +46,7 @@ const QuestionDisplay = ({ filename, category, jsonData }) => {
         question: "Čo sa nachádza na tomto obrázku?",
         imgLink: imageFiles[`${filename}-${category}-${item.id}-1.webp`],
         audioFile: audioFiles[`${filename}-recognition.mp3`],
+        correctAnswer: item.answers.find((answer) => answer.isCorrect)?.answer, 
       }));
       // Set slides state
       setSlides(slidesArray);

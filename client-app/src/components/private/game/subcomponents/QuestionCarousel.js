@@ -103,6 +103,7 @@ const QuestionCarousel = ({ slides, receiveUserAnswers, componentType }) => {
                         imgLink={slide.imgLink}
                         audioFile={slide.audioFile}
                         isCurrentSlide={true}
+                        correctAnswer={slide.correctAnswer}
                         moveToNextQuestion={moveToNextQuestion}
                       />
                     )}

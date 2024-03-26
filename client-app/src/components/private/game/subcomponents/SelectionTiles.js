@@ -16,7 +16,7 @@ const Tile = ({ imageUrl, onClick, index }) => (
   </div>
 );
 
-function Tiles({ question, imgLinks, audioFile, isCurrentSlide, moveToNextQuestion }) {
+function SelectionTiles({ question, imgLinks, audioFile, isCurrentSlide, moveToNextQuestion }) {
   // State to manage play/pause state
   const [isPlaying, setIsPlaying] = useState(false);
   const [shuffledImgLinks, setShuffledImgLinks] = useState([]);
@@ -98,4 +98,4 @@ function Tiles({ question, imgLinks, audioFile, isCurrentSlide, moveToNextQuesti
   );
 }
 
-export default Tiles;
+export default SelectionTiles;

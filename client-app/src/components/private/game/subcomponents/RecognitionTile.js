@@ -13,8 +13,8 @@ import { ReactComponent as PauseSVG } from "./svg/pause.svg";
 import { ReactComponent as MicSVG } from "./svg/mic.svg";
 import { ReactComponent as MicMutedSVG } from "./svg/mic-mute.svg";
 
-import { ReactComponent as CheckSVG } from "./svg/check.svg";
-import { ReactComponent as XSVG } from "./svg/x.svg";
+import { ReactComponent as AcceptSVG } from "./svg/check.svg";
+import { ReactComponent as DeclineSVG } from "./svg/x.svg";
 
 // Tile component to render an image
 const Tile = ({ imageUrl }) => (
@@ -27,11 +27,12 @@ const Tile = ({ imageUrl }) => (
   </div>
 );
 
-function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
-  // States to manage play/pause sound playback and play/pause recording
+function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNextQuestion }) {
+  // States to manage TODO: fill
   const [isPlaying, setIsPlaying] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [spokenWord, setSpokenWord] = useState("");
+  const [preSpokenWord, setPreSpokenWord] = useState("");
   const [isEdited, setIsEdited] = useState(false);
 
   const audioRef = useRef(null);
@@ -80,16 +81,32 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
   };
 
   const handleCorrectTranscript = () => {
-    setSpokenWord(transcript);
-    resetTranscript();
-    console.log("Transcript: " + transcript + ". SpokenWord: " + spokenWord);
+    if (preSpokenWord === "") {
+      setSpokenWord(transcript);
+    } else {
+      setSpokenWord(preSpokenWord);
+    }
+
     setIsEdited(false);
-    moveToNextQuestion(true);
+    console.log("Transcript: " + transcript + ". SpokenWord: " + spokenWord);
+    moveToNextQuestion(checkAnswer);
   };
+
+  // TODO: function that will check whether the word is correct or not
+  const checkAnswer = (inputtedAnswer) => {
+    const correctAnswerTransformed = removeAccentsAndLowerCase(correctAnswer);
+    const inputtedAnswerTransformed = removeAccentsAndLowerCase(inputtedAnswer);
+
+    
+  }
+
+  const removeAccentsAndLowerCase = (string) => {
+    return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }; 
 
   const handleIncorrectTranscript = () => {
     setIsEdited(true);
-    setSpokenWord(transcript);
+    setPreSpokenWord(transcript);
   };
 
   return (
@@ -128,8 +145,8 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
                 type="text"
                 className="input form-control"
                 id="floatingName"
-                value={spokenWord}
-                onChange={(event) => setSpokenWord(event.target.value)}
+                value={preSpokenWord}
+                onChange={(event) => setPreSpokenWord(event.target.value)}
               />
               <label htmlFor="floatingName"> Odpoveď dieťaťa </label> <br />
             </div>
@@ -142,7 +159,7 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
                 type="button"
                 onClick={handleCorrectTranscript}
               >
-                <CheckSVG />
+                <AcceptSVG />
                 <span> Potvrdiť </span>
               </button>
               {!isEdited ? (
@@ -151,7 +168,7 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
                   type="button"
                   onClick={handleIncorrectTranscript}
                 >
-                  <XSVG />
+                  <DeclineSVG />
                   <span> Odmietnuť </span>
                 </button>
               ) : (
@@ -167,4 +184,4 @@ function Tiles({ question, imgLink, audioFile, moveToNextQuestion }) {
   );
 }
 
-export default Tiles;
+export default RecognitionTile;
