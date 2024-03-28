@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import QuestionCarousel from "./subcomponents/QuestionCarousel";
 
 /* TODO list
-*  TODO: make nice transition when user clicks on tile
-*/
+ *  TODO: make nice transition when user clicks on tile
+ */
 
 // Function to handle import of pictures and sounds
 const importAll = (requireContext) => {
@@ -30,11 +30,6 @@ const ImageRecognition = ({ filename, category, jsonData, receiveUserAnswers }) 
   // State to manage slides containing questions
   const [slides, setSlides] = useState([]);
 
-  useEffect(() => {
-    // Fetch questions when component mounts
-    fetchQuestions();
-  }, []);
-
   // Function to fetch questions from JSON data
   const fetchQuestions = async () => {
     try {
@@ -46,7 +41,7 @@ const ImageRecognition = ({ filename, category, jsonData, receiveUserAnswers }) 
         question: "Čo sa nachádza na tomto obrázku?",
         imgLink: imageFiles[`${filename}-${category}-${item.id}-1.webp`],
         audioFile: audioFiles[`${filename}-recognition.mp3`],
-        correctAnswer: item.answers.find((answer) => answer.isCorrect)?.answer, 
+        correctAnswer: item.answers.find((answer) => answer.isCorrect)?.answer,
       }));
       // Set slides state
       setSlides(slidesArray);
@@ -55,10 +50,19 @@ const ImageRecognition = ({ filename, category, jsonData, receiveUserAnswers }) 
     }
   };
 
+  useEffect(() => {
+    // Fetch questions when component mounts
+    fetchQuestions();
+  }, []);
+
   return (
     <>
       {/* Render QuestionCarousel with slides */}
-      <QuestionCarousel slides={slides} componentType={"ImageRecognition"} receiveUserAnswers={receiveUserAnswers} />
+      <QuestionCarousel
+        slides={slides}
+        componentType={"ImageRecognition"}
+        receiveUserAnswers={receiveUserAnswers}
+      />
     </>
   );
 };

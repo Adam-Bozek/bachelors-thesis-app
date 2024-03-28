@@ -30,11 +30,6 @@ const ImageSelection = ({ filename, category, jsonData, receiveUserAnswers }) =>
   // State to manage slides containing questions
   const [slides, setSlides] = useState([]);
 
-  useEffect(() => {
-    // Fetch questions when component mounts
-    fetchQuestions();
-  }, []);
-
   // Function to fetch questions from JSON data
   const fetchQuestions = async () => {
     try {
@@ -49,14 +44,18 @@ const ImageSelection = ({ filename, category, jsonData, receiveUserAnswers }) =>
             imageFiles[`${filename}-${category}-${item.id}-${answer.id}.webp`]
         ),
         audioFile: audioFiles[`${filename}-${category}-${item.id}.mp3`],
-        };
-      });
+      }));
       // Set slides state
       setSlides(slidesArray);
     } catch (error) {
       console.error("Error fetching questions:", error);
     }
   };
+
+  useEffect(() => {
+    // Fetch questions when component mounts
+    fetchQuestions();
+  }, []);
 
   return (
     <>
