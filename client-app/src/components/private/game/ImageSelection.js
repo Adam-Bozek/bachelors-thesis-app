@@ -49,7 +49,8 @@ const ImageSelection = ({ filename, category, jsonData, receiveUserAnswers }) =>
             imageFiles[`${filename}-${category}-${item.id}-${answer.id}.webp`]
         ),
         audioFile: audioFiles[`${filename}-${category}-${item.id}.mp3`],
-      }));
+        };
+      });
       // Set slides state
       setSlides(slidesArray);
     } catch (error) {
