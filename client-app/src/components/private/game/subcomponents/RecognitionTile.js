@@ -30,7 +30,6 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
   const [isPlaying, setIsPlaying] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [spokenWord, setSpokenWord] = useState("");
-  const [preSpokenWord, setPreSpokenWord] = useState("");
   const [isEdited, setIsEdited] = useState(false);
 
   const audioRef = useRef(null);
@@ -84,8 +83,8 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
   // Function to handle correct transcript
   const handleCorrectTranscript = () => {
     setIsEdited(false);
-    if (preSpokenWord !== "") {
-      moveToNextQuestion(checkAnswer(preSpokenWord));
+    if (spokenWord !== "") {
+      moveToNextQuestion(checkAnswer(spokenWord));
     } else {
       moveToNextQuestion(checkAnswer(finalTranscript));
     }
@@ -111,7 +110,7 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
   // Function to handle incorrect transcript
   const handleIncorrectTranscript = () => {
     setIsEdited(true);
-    setPreSpokenWord(finalTranscript);
+    setSpokenWord(finalTranscript);
   };
 
   return (
@@ -150,8 +149,8 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
                 type="text"
                 className="input form-control"
                 id="floatingName"
-                value={preSpokenWord}
-                onChange={(event) => setPreSpokenWord(event.target.value)}
+                value={spokenWord}
+                onChange={(event) => setSpokenWord(event.target.value)}
               />
               <label htmlFor="floatingName"> Odpoveď dieťaťa </label> <br />
             </div>

@@ -26,7 +26,7 @@ const audioFiles = importAll(
 );
 
 // QuestionDisplay component to handle displaying questions
-const ImageSelection = ({ filename, category, jsonData }) => {
+const ImageSelection = ({ filename, category, jsonData, receiveUserAnswers }) => {
   // State to manage slides containing questions
   const [slides, setSlides] = useState([]);
 
@@ -60,7 +60,7 @@ const ImageSelection = ({ filename, category, jsonData }) => {
   return (
     <>
       {/* Render QuestionCarousel with slides */}
-      <QuestionCarousel slides={slides} componentType={"ImageSelection"}/>
+      <QuestionCarousel slides={slides} componentType={"ImageSelection"} receiveUserAnswers={receiveUserAnswers} />
     </>
   );
 };

@@ -26,7 +26,7 @@ const audioFiles = importAll(
 );
 
 // ImageRecognition component to handle displaying questions
-const ImageRecognition = ({ filename, category, jsonData }) => {
+const ImageRecognition = ({ filename, category, jsonData, receiveUserAnswers }) => {
   // State to manage slides containing questions
   const [slides, setSlides] = useState([]);
 
@@ -58,7 +58,7 @@ const ImageRecognition = ({ filename, category, jsonData }) => {
   return (
     <>
       {/* Render QuestionCarousel with slides */}
-      <QuestionCarousel slides={slides} componentType={"ImageRecognition"} />
+      <QuestionCarousel slides={slides} componentType={"ImageRecognition"} receiveUserAnswers={receiveUserAnswers} />
     </>
   );
 };
