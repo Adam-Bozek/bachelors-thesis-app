@@ -25,8 +25,8 @@ const audioFiles = importAll(
   require.context("./data/audio", false, /\.(mp3)$/)
 );
 
-// QuestionDisplay component to handle displaying questions
-const QuestionDisplay = ({ filename, category, jsonData }) => {
+// ImageRecognition component to handle displaying questions
+const ImageRecognition = ({ filename, category, jsonData }) => {
   // State to manage slides containing questions
   const [slides, setSlides] = useState([]);
 
@@ -63,4 +63,4 @@ const QuestionDisplay = ({ filename, category, jsonData }) => {
   );
 };
 
-export default QuestionDisplay;
+export default ImageRecognition;

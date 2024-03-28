@@ -12,7 +12,6 @@ const Controller = () => {
 
   const receiveUserAnswers = (answers) => {
     setUserAnswers(answers);
-    // Now you can use userAnswers array in this component or pass it to another component
     console.log("Received user answers:", userAnswers);
   };
 

@@ -26,7 +26,7 @@ const audioFiles = importAll(
 );
 
 // QuestionDisplay component to handle displaying questions
-const QuestionDisplay = ({ filename, category, jsonData }) => {
+const ImageSelection = ({ filename, category, jsonData }) => {
   // State to manage slides containing questions
   const [slides, setSlides] = useState([]);
 
@@ -65,4 +65,4 @@ const QuestionDisplay = ({ filename, category, jsonData }) => {
   );
 };
 
-export default QuestionDisplay;
+export default ImageSelection;
