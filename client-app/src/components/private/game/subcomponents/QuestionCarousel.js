@@ -14,6 +14,7 @@ const QuestionCarousel = ({ slides, receiveUserAnswers, componentType }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
+  // Function to find out if device is mobile or desktop
   const isMobileDevice = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
