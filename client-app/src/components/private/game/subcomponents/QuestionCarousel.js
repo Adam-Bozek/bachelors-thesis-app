@@ -14,6 +14,10 @@ const QuestionCarousel = ({ slides, receiveUserAnswers, componentType }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
 
+  const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
   // Function to handle moving to the next question
   const moveToNextQuestion = (isCorrect) => {
     // Update user answers
@@ -82,7 +86,7 @@ const QuestionCarousel = ({ slides, receiveUserAnswers, componentType }) => {
               }`}
             >
               <div className="container">
-                <div className="carousel-caption text-start">
+                <div className={`carousel-caption-${isMobileDevice() ? 'mobile' : 'desktop'}-${componentType} text-start carousel-caption`}>
                   {/* Render content based on componentType */}
                   {componentType === "ImageSelection" &&
                     index === currentSlide && (

@@ -18,13 +18,36 @@ body {
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 3rem;
-    top: 35%;
-    /* DESKTOP imgSel:  35%, imgRec:  35% */
-    /* MOBILE imgSel:  45%, imgRec:  45% */
-    transform: translateY(-45%);
-    /* DESKTOP imgSel: -65%, imgRec: -45% */
-    /* MOBILE imgSel: -70%, imgRec: -40% */
     z-index: 10;
+}
+
+/*
+* top: 35%;
+* DESKTOP imgSel:  35%, imgRec:  35% 
+* MOBILE imgSel:  45%, imgRec:  45% 
+* transform: translateY(-45%);
+* DESKTOP imgSel: -65%, imgRec: -45% 
+* MOBILE imgSel: -70%, imgRec: -40%
+*/
+
+.carousel-caption-desktop-ImageSelection {
+    top: 35%;
+    transform: translateY(-65%);
+}
+
+.carousel-caption-desktop-ImageRecognition {
+    top: 35%;
+    transform: translateY(-45%);
+}
+
+.carousel-caption-mobile-ImageSelection {
+    top: 45%;
+    transform: translateY(-75%);
+}
+
+.carousel-caption-mobile-ImageRecognition {
+    top: 45%;
+    transform: translateY(-40%);
 }
 
 /* Declare heights because of positioning of img element */
@@ -65,12 +88,14 @@ body {
 
 
 /* CAROUSELS PLAY/PAUSE CSS -------------------------------------------------- */
-#play-svg, #pause-svg {
+#play-svg,
+#pause-svg {
     height: 1.5em;
     width: 1.5em;
 }
 
-#mic-SVG, #mic-muted-SVG {
+#mic-SVG,
+#mic-muted-SVG {
     margin: 0.25em;
     height: 1.0em;
     width: 1.0em;
