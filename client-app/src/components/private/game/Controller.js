@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import ImageSelection from "./ImageSelection";
 import ImageRecognition from "./ImageRecognition";
+
+import { Context } from "../../ContextProvider";
 
 import O_A_BP_FaD from "./data/json/O_A_BP_FaD.json";
 
@@ -10,12 +14,14 @@ const Controller = () => {
 
   const categories = ["marketplace", "mountains", "zoo", "home", "street"];
 
+  const { setSelectionAnswers, setRecognitionAnswers } = useContext(Context);
+
+  const navigate = useNavigate();
+
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
   // Define state variables and their updater functions for selection and recognition answers
-  const [selectionAnswers, setSelectionAnswers] = useState([]);
-  const [recognitionAnswers, setRecognitionAnswers] = useState([]);
 
   const receiveUserAnswers = (answers, componentType) => {
     // Store answers based on the current category index
@@ -37,9 +43,25 @@ const Controller = () => {
     }
   };
 
+  // Check if all categories have been displayed
+  const allCategoriesDisplayed = currentCategoryIndex >= categories.length;
+
+  // Function to call when all categories are displayed
+  const handleAllCategoriesDisplayed = () => {
+    navigate("/Dashboard");
+    // Call any function or perform any action you want here
+  };
+
+  // useEffect hook to call the function when all categories are displayed
+  useEffect(() => {
+    if (allCategoriesDisplayed) {
+      handleAllCategoriesDisplayed();
+    }
+  }, [allCategoriesDisplayed]);
+
   return (
     <>
-      {currentCategoryIndex < categories.length && (
+      {!allCategoriesDisplayed && (
         <>
           {!isActive ? (
             <ImageSelection
@@ -71,5 +93,4 @@ const Controller = () => {
     </>
   );
 };
-
 export default Controller;

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { isLoggedIn } from "./components/ContextProvider";
+import { Context } from "./components/ContextProvider";
 
 /* Public Routes */
 import Home from "./components/public/Home";
@@ -17,7 +17,7 @@ import Controller from "./components/private/game/Controller";
 */
 
 const App = () => {
-    const { isLoggedInValue } = useContext(isLoggedIn);
+    const { isLoggedIn } = useContext(Context);
 
     return (
         <Routes>
@@ -27,8 +27,8 @@ const App = () => {
             <Route path="/Registration" element={<Registration />} />
 
             {/* Private route auth */}
-            {isLoggedInValue && <Route path="/Dashboard" element={<Dashboard />} />}
-            {isLoggedInValue && <Route path="/Controller" element={<Controller />} />}
+            {isLoggedIn && <Route path="/Dashboard" element={<Dashboard />} />}
+            {isLoggedIn && <Route path="/Controller" element={<Controller />} />}
 
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

@@ -26,15 +26,13 @@ const Header = ({ pageName }) => {
 
           <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li className="nav-item">
-              {" "}
               <NavLink
                 to="/Controller"
                 className="nav-link active"
                 aria-current="page"
               >
-                {" "}
-                Spustiť hru{" "}
-              </NavLink>{" "}
+                Spustiť hru
+              </NavLink>
             </li>
           </ul>
           <div className="col-md-3 text-end">
@@ -43,8 +41,7 @@ const Header = ({ pageName }) => {
               className="btn btn-outline-primary me-2"
               onClick={handleLogout}
             >
-              {" "}
-              Odhlásiť{" "}
+              Odhlásiť
             </button>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { isLoggedIn } from "../ContextProvider";
+import { Context } from "../ContextProvider";
 import {
   checkEmail,
   checkPassword,
@@ -22,7 +22,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
-  const { updateIsLoggedIn } = useContext(isLoggedIn);
+  const { setIsLoggedIn } = useContext(Context);
 
   const navigate = useNavigate();
 
@@ -49,7 +49,7 @@ const Login = () => {
 
         if (loginInfo) {
           // If login is successful, redirect to Dashboard
-          updateIsLoggedIn(true);
+          setIsLoggedIn(true);
           navigate("/Dashboard");
         } else {
           // If login fails, display an alert for incorrect password or email
@@ -69,7 +69,7 @@ const Login = () => {
 
       <main className="container">
         <h1 className="mt-5 mb-3"> Vitajte naspäť! </h1>
-        <p> Sme radi, že ste sa rozhodli prihlasiť späť do našej aplikácie. </p>
+        <p> Sme radi, že ste sa rozhodli prihlásiť späť do našej aplikácie. </p>
 
         <div className="py-3 body-height">
           <div className="form-signin">

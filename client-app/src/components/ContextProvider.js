@@ -1,24 +1,28 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
-// Define only the isLoggedIn context
-const isLoggedIn = createContext();
+// Define the context
+export const Context = createContext();
 
+// Define the context provider component
 export const ContextProvider = ({ children }) => {
-  // Define state variable for isLoggedInValue
-  const [isLoggedInValue, setIsLoggedInValue] = useState(false);
+  // Define state variables for isLoggedInValue, selectionAnswers, and recognitionAnswers
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectionAnswers, setSelectionAnswers] = useState([]);
+  const [recognitionAnswers, setRecognitionAnswers] = useState([]);
 
-  // Function to update the isLoggedInValue in isLoggedIn context
-  const updateIsLoggedIn = (newValue) => {
-    setIsLoggedInValue(newValue);
-  };
-
-  // Provide isLoggedIn context with its value and update function
+  // Provide the context with its values and update functions
   return (
-    <isLoggedIn.Provider value={{ isLoggedInValue, updateIsLoggedIn }}>
+    <Context.Provider
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        selectionAnswers,
+        setSelectionAnswers,
+        recognitionAnswers,
+        setRecognitionAnswers,
+      }}
+    >
       {children}
-    </isLoggedIn.Provider>
+    </Context.Provider>
   );
 };
-
-// Export isLoggedIn context for use in other components
-export { isLoggedIn };
