@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { apiIPAddress, webProtocol, logoutUser } from "../../Utils";
 
+import { Context } from "../ContextProvider";
+
 const Header = ({ pageName }) => {
+  const { setSelectionAnswers, setRecognitionAnswers } = useContext(Context);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     const apiAddress = `${webProtocol}://${apiIPAddress}/userLogout`;
     logoutUser(apiAddress, navigate);
+  };
+
+  const handleReset = () => {
+    setSelectionAnswers([]);
+    setRecognitionAnswers([]);
   };
 
   return (
@@ -30,6 +38,7 @@ const Header = ({ pageName }) => {
                 to="/Controller"
                 className="nav-link active"
                 aria-current="page"
+                onClick={handleReset}
               >
                 Spustiť hru
               </NavLink>

@@ -346,7 +346,7 @@
                 {
                     "id": 2,
                     "isCorrect": false,
-                    "answer": "Vydlička"
+                    "answer": "Vidlička"
                 },
                 {
                     "id": 3,
@@ -548,7 +548,7 @@
                 {
                     "id": 5,
                     "isCorrect": false,
-                    "answer": "Kožúch"
+                    "answer": "Kožuch"
                 },
                 {
                     "id": 6,
@@ -590,7 +590,7 @@
                 {
                     "id": 6,
                     "isCorrect": false,
-                    "answer": "Sačok"
+                    "answer": "Sáčok"
                 }
             ]
         }
@@ -599,12 +599,12 @@
         {
             "id": 17,
             "questionNo": 1,
-            "question": "Na ktorom obrázku je zólogická záhrada?",
+            "question": "Na ktorom obrázku je zoologická záhrada?",
             "answers": [
                 {
                     "id": 1,
                     "isCorrect": true,
-                    "answer": "Zólogická záhrada"
+                    "answer": "Zoologická záhrada"
                 },
                 {
                     "id": 2,
@@ -693,7 +693,7 @@
                 {
                     "id": 4,
                     "isCorrect": false,
-                    "answer": "Rayba"
+                    "answer": "Ryba"
                 },
                 {
                     "id": 5,
@@ -851,7 +851,7 @@
                 {
                     "id": 6,
                     "isCorrect": false,
-                    "answer": "Veleryba"
+                    "answer": "Velryba"
                 }
             ]
         },
@@ -920,7 +920,7 @@
                 {
                     "id": 5,
                     "isCorrect": false,
-                    "answer": "Motika"
+                    "answer": "Motyka"
                 },
                 {
                     "id": 6,
@@ -1033,7 +1033,7 @@
                 {
                     "id": 5,
                     "isCorrect": false,
-                    "answer": "Máslo"
+                    "answer": "Maslo"
                 },
                 {
                     "id": 6,
@@ -1044,7 +1044,7 @@
         },
         {
             "id": 29,
-            "questionNo": 4,
+            "questionNo": 3,
             "question": "Na ktorom obrázku je lepidlo?",
             "answers": [
                 {
@@ -1081,7 +1081,7 @@
         },
         {
             "id": 30,
-            "questionNo": 5,
+            "questionNo": 4,
             "question": "Na ktorom obrázku je lyžička?",
             "answers": [
                 {
@@ -1117,7 +1117,7 @@
             ]
         },{
             "id": 31,
-            "questionNo": 6,
+            "questionNo": 5,
             "question": "Na ktorom obrázku je mačka?",
             "answers": [
                 {
@@ -1138,7 +1138,7 @@
                 {
                     "id": 4,
                     "isCorrect": false,
-                    "answer": "Ribičky"
+                    "answer": "Rybičky"
                 },
                 {
                     "id": 5,
@@ -1154,7 +1154,7 @@
         },
         {
             "id": 32,
-            "questionNo": 7,
+            "questionNo": 6,
             "question": "Na ktorom obrázku je mašľa?",
             "answers": [
                 {
@@ -1191,7 +1191,7 @@
         },
         {
             "id": 33,
-            "questionNo": 8,
+            "questionNo": 7,
             "question": "Na ktorom obrázku je nočník?",
             "answers": [
                 {
@@ -1228,7 +1228,7 @@
         },
         {
             "id": 34,
-            "questionNo": 9,
+            "questionNo": 8,
             "question": "Na ktorom obrázku je nos?",
             "answers": [
                 {
@@ -1265,7 +1265,7 @@
         },
         {
             "id": 35,
-            "questionNo": 10,
+            "questionNo": 9,
             "question": "Na ktorom obrázku sú papučky?",
             "answers": [
                 {
@@ -1302,7 +1302,7 @@
         },
         {
             "id": 36,
-            "questionNo": 11,
+            "questionNo": 10,
             "question": "Na ktorom obrázku je pena?",
             "answers": [
                 {
@@ -1318,7 +1318,7 @@
                 {
                     "id": 3,
                     "isCorrect": false,
-                    "answer": "Bublifuk"
+                    "answer": "Bubli fuk"
                 },
                 {
                     "id": 4,
@@ -1339,7 +1339,7 @@
         },
         {
             "id": 37,
-            "questionNo": 12,
+            "questionNo": 11,
             "question": "na ktorom obrázku je sedačka?",
             "answers": [
                 {
@@ -1376,7 +1376,7 @@
         },
         {
             "id": 38,
-            "questionNo": 11,
+            "questionNo": 12,
             "question": "Na ktorom obrázku je pohár?",
             "answers": [
                 {
@@ -1392,7 +1392,7 @@
                 {
                     "id": 3,
                     "isCorrect": false,
-                    "answer": "Vydlička"
+                    "answer": "Vidlička"
                 },
                 {
                     "id": 4,
@@ -1413,7 +1413,7 @@
         },
         {
             "id": 39,
-            "questionNo": 12,
+            "questionNo": 13,
             "question": "Na ktorom obrázku je váha?",
             "answers": [
                 {
@@ -1450,7 +1450,7 @@
         },
         {
             "id": 40,
-            "questionNo": 13,
+            "questionNo": 14,
             "question": "Na ktorom obrázku je váza?",
             "answers": [
                 {
@@ -1486,7 +1486,7 @@
             ]
         },{
             "id": 41,
-            "questionNo": 14,
+            "questionNo": 15,
             "question": "Na ktorom obrázku je zubná pasta?",
             "answers": [
                 {
@@ -1546,7 +1546,7 @@
                 {
                     "id": 4,
                     "isCorrect": false,
-                    "answer": "Bycikel"
+                    "answer": "Bicykel"
                 },
                 {
                     "id": 5,
@@ -1703,7 +1703,7 @@
                 {
                     "id": 6,
                     "isCorrect": false,
-                    "answer": "Oplovací krém"
+                    "answer": "Opaľovací krém"
                 }
             ]
         },
@@ -1730,7 +1730,7 @@
                 {
                     "id": 4,
                     "isCorrect": false,
-                    "answer": "Plenéta"
+                    "answer": "Planéta"
                 },
                 {
                     "id": 5,

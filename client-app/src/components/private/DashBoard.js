@@ -33,6 +33,8 @@ const Dashboard = () => {
   const streetSelectionData = getSelectionAnswersForCategory("street");
   const streetRecognitionData = getRecognitionAnswersForCategory("street");
 
+  const categories = ["marketplace", "mountains", "zoo", "home", "street"];
+
   return (
     <>
       <Header pageName={pageName} />
@@ -53,73 +55,36 @@ const Dashboard = () => {
           <>
             <h1> Výsledky </h1>
             <p>
-              V tejto časti sú zobrazené reprezentácie odpovedí dieťaťa na otázky.
+              V tejto časti sú zobrazené reprezentácie odpovedí dieťaťa na
+              otázky.
             </p>
-            <h2>Marketplace Selection Answers</h2>
-            <ul>
-              {marketplaceSelectionData.map((answer, index) => (
-                <li key={index}>{answer.answers}</li>
-              ))}
-            </ul>
+            {categories.map((category) => (
+              <div key={category}>
+                <h2>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                  Selection Answers
+                </h2>
+                <ul>
+                  {getSelectionAnswersForCategory(category).map(
+                    (answer, index) => (
+                      <li key={index}>{answer.answers}</li>
+                    )
+                  )}
+                </ul>
 
-            <h2>Marketplace Recognition Answers</h2>
-            <ul>
-              {marketplaceRecognitionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-            <h2>Mountains Selection Answers</h2>
-            <ul>
-              {mountainsSelectionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-
-            <h2>Mountains Recognition Answers</h2>
-            <ul>
-              {mountainsRecognitionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-            <h2>zoo Selection Answers</h2>
-            <ul>
-              {zooSelectionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-
-            <h2>zoo Recognition Answers</h2>
-            <ul>
-              {zooRecognitionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-            <h2>home Selection Answers</h2>
-            <ul>
-              {homeSelectionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-
-            <h2>home Recognition Answers</h2>
-            <ul>
-              {homeRecognitionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-            <h2>street Selection Answers</h2>
-            <ul>
-              {streetSelectionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
-
-            <h2>street Recognition Answers</h2>
-            <ul>
-              {streetRecognitionData.map((answer, index) => (
-                <li key={index}>{answer}</li>
-              ))}
-            </ul>
+                <h2>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                  Recognition Answers
+                </h2>
+                <ul>
+                  {getRecognitionAnswersForCategory(category).map(
+                    (answer, index) => (
+                      <li key={index}>{answer.answers}</li>
+                    )
+                  )}
+                </ul>
+              </div>
+            ))}
           </>
         )}
       </div>

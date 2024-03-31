@@ -22,7 +22,7 @@ const imageFiles = importAll(
 
 // Function to import audio files
 const audioFiles = importAll(
-  require.context("./data/audio", false, /\.(mp3)$/)
+  require.context("./data/audio", false, /\.(m4a)$/)
 );
 
 // ImageRecognition component to handle displaying questions
@@ -40,7 +40,7 @@ const ImageRecognition = ({ filename, category, jsonData, receiveUserAnswers }) 
       const slidesArray = data[category].map((item) => ({
         question: "Čo sa nachádza na tomto obrázku?",
         imgLink: imageFiles[`${filename}-${category}-${item.id}-1.webp`],
-        audioFile: audioFiles[`${filename}-recognition.mp3`],
+        audioFile: audioFiles[`${filename}-recognition.m4a`],
         correctAnswer: item.answers.find((answer) => answer.isCorrect)?.answer,
       }));
       // Set slides state

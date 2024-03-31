@@ -22,7 +22,7 @@ const imageFiles = importAll(
 
 // Function to import audio files
 const audioFiles = importAll(
-  require.context("./data/audio", false, /\.(mp3)$/)
+  require.context("./data/audio", false, /\.(m4a)$/)
 );
 
 // QuestionDisplay component to handle displaying questions
@@ -43,7 +43,7 @@ const ImageSelection = ({ filename, category, jsonData, receiveUserAnswers }) =>
           (answer) =>
             imageFiles[`${filename}-${category}-${item.id}-${answer.id}.webp`]
         ),
-        audioFile: audioFiles[`${filename}-${category}-${item.id}.mp3`],
+        audioFile: audioFiles[`${filename}-${category}-${item.id}.m4a`],
       }));
       // Set slides state
       setSlides(slidesArray);
