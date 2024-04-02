@@ -23,7 +23,6 @@ yarn-error.log*
 # ignoring folder conating ssl and api keys
 /keys
 
-
 # JPEG
 *.jpg
 *.jpeg

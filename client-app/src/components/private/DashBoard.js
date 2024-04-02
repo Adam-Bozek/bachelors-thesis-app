@@ -4,6 +4,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Context } from "../ContextProvider";
 
+import O_A_BP_FaD from "./game/data/json/O_A_BP_FaD.json";
+
 const Dashboard = () => {
   const pageName = "Informačný panel";
   const { selectionAnswers, recognitionAnswers } = useContext(Context);
@@ -14,6 +16,35 @@ const Dashboard = () => {
 
   const getAnswersForCategory = (category, answers) => {
     return answers.filter((answer) => answer.category === category);
+  };
+
+  const addDataToArray = (category, data, array) => {
+    const existingCategoryIndex = array.findIndex(answer => answer.category === category);
+
+    if (existingCategoryIndex !== -1) {
+      // Category already exists, append data to its array
+      const updatedAnswers = [...array];
+      updatedAnswers[existingCategoryIndex].data.push(data);
+      return updatedAnswers;
+    } else {
+      // Category doesn't exist, create a new one
+      return [...array, { category, data: [data] }];
+    }
+  };
+
+  const handleAddDataToUnderstandsAndSpeaksArray = (category, data) => {
+    const updatedAnswers = addDataToArray(category, data, understandsAndSpeaksIndexes);
+    setUnderstandsAndSpeaksIndexes(updatedAnswers);
+  };
+
+  const handleAddDataToUnderstandsArray = (category, data) => {
+    const updatedAnswers = addDataToArray(category, data, understandsIndexes);
+    setUnderstandIndexes(updatedAnswers);
+  };
+
+  const handleAddDataToDoesNotUnderstandArray = (category, data) => {
+    const updatedAnswers = addDataToArray(category, data, doesNotUnderstandsIndexes);
+    setDoesNotUnderstandsIndexes(updatedAnswers);
   };
 
   const countAnswers = (selectionAnswers, recognitionAnswers, category) => {
@@ -38,14 +69,17 @@ const Dashboard = () => {
           if (selAnswer !== undefined && recAnswer !== undefined) {
             // Rozumie a hovori
             if (selAnswer === true && recAnswer === true) {
+              handleAddDataToUnderstandsAndSpeaksArray(category, j);
               rozumieAHovoriCount++;
             }
             // Rozumie
             else if (selAnswer === true && recAnswer === false) {
+              handleAddDataToUnderstandsArray(category, j);
               rozumieCount++;
             }
             // Nerozumie
             else if (selAnswer === false && recAnswer === false) {
+              handleAddDataToDoesNotUnderstandArray(category, j);
               nerozumieCount++;
             }
           }
@@ -104,24 +138,26 @@ const Dashboard = () => {
               return (
                 <div key={category}>
                   <h2>
-                    {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
-                    Kateória
+                    {category.charAt(0).toUpperCase() + category.slice(1)} Kategória
                   </h2>
                   <h4> Odpovede: </h4>
-                  <ul>
-                    {getAnswersForCategory(category, selectionAnswers).map(
+                  {/*<ul>
+                    {getAnswersForCategory(category, understandsAndSpeaksIndexes).map(
                       (answer, index) => (
-                        <li key={index}>Selection: {String(answer.answers)}</li>
+                        <li key={index}> Rozumie a hovorí:  </li>
                       )
                     )}
-                    {getAnswersForCategory(category, recognitionAnswers).map(
+                    {getAnswersForCategory(category, understandsIndexes).map(
                       (answer, index) => (
-                        <li key={index}>
-                          Recognition: {String(answer.answers)}
-                        </li>
+                        <li key={index}> Rozumie:  </li>
                       )
                     )}
-                  </ul>
+                    {getAnswersForCategory(category, doesNotUnderstandsIndexes).map(
+                      (answer, index) => (
+                        <li key={index}> Nerozumie:  </li>
+                      )
+                    )}
+                      </ul>*/}
                   <PieChart
                     series={[
                       {
