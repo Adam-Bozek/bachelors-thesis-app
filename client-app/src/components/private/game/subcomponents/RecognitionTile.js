@@ -156,7 +156,7 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
             </div>
           )}
 
-          {!listening && transcript.length > 0 ? (
+          {!listening /*&& transcript.length > 0*/ ? (
             <div className="d-flex gap-2 justify-content-center pt-1 pb-1">
               <button
                 className="btn btn-success p-2 lh-1"
