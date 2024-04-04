@@ -1,5 +1,5 @@
 // Importing necessary modules and components from React and other libraries
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -50,13 +50,13 @@ const Dashboard = () => {
           if (selAnswer !== undefined && recAnswer !== undefined) {
             if (selAnswer === true && recAnswer === true) {
               rozumieAHovoriCount++;
-              rozumieAHovori.push(j+1);
+              rozumieAHovori.push(j + 1);
             } else if (selAnswer === true && recAnswer === false) {
               rozumieCount++;
-              rozumie.push(j+1);
+              rozumie.push(j + 1);
             } else if (selAnswer === false && recAnswer === false) {
               nerozumieCount++;
-              nerozumie.push(j+1);
+              nerozumie.push(j + 1);
             }
           }
         }
@@ -80,10 +80,20 @@ const Dashboard = () => {
   // Aggregating counts for all categories
   const aggregatedCounts = categories.reduce(
     (acc, category) => {
-      const selectionAnswersForCategory = getAnswersForCategory( category, selectionAnswers );
-      const recognitionAnswersForCategory = getAnswersForCategory( category, recognitionAnswers );
+      const selectionAnswersForCategory = getAnswersForCategory(
+        category,
+        selectionAnswers
+      );
+      const recognitionAnswersForCategory = getAnswersForCategory(
+        category,
+        recognitionAnswers
+      );
 
-      const { rozumieAHovoriCount, rozumieCount, nerozumieCount, } = countAnswers( selectionAnswersForCategory, recognitionAnswersForCategory );
+      const { rozumieAHovoriCount, rozumieCount, nerozumieCount } =
+        countAnswers(
+          selectionAnswersForCategory,
+          recognitionAnswersForCategory
+        );
 
       acc.rozumieAHovoriCount += rozumieAHovoriCount;
       acc.rozumieCount += rozumieCount;
@@ -116,33 +126,131 @@ const Dashboard = () => {
   ];
 
   const categoryData = () => {
-    let marketplaceData = [];
-    let mountainsData = [];
-    let zooData = [];
-    let homeData = [];
-    let streetData = [];
+    let marketplaceData = { rozumieAHovori: [], rozumie: [], nerozumie: [] };
+    let mountainsData = { rozumieAHovori: [], rozumie: [], nerozumie: [] };
+    let zooData = { rozumieAHovori: [], rozumie: [], nerozumie: [] };
+    let homeData = { rozumieAHovori: [], rozumie: [], nerozumie: [] };
+    let streetData = { rozumieAHovori: [], rozumie: [], nerozumie: [] };
 
-    categories.forEach(category => {
-      const categorySelection = getAnswersForCategory( category, selectionAnswers );
-      const categoryRecognition = getAnswersForCategory( category, recognitionAnswers );
+    categories.forEach((category) => {
+      const categorySelection = getAnswersForCategory(
+        category,
+        selectionAnswers
+      );
+      const categoryRecognition = getAnswersForCategory(
+        category,
+        recognitionAnswers
+      );
 
-      const { rozumieAHovori, rozumie, nerozumie, } = countAnswers( categorySelection, categoryRecognition );
+      const { rozumieAHovori, rozumie, nerozumie } = countAnswers(
+        categorySelection,
+        categoryRecognition
+      );
 
       if (category === "marketplace") {
-        marketplaceData.push( rozumieAHovori, rozumie, nerozumie);
+        marketplaceData.rozumieAHovori.push(rozumieAHovori);
+        marketplaceData.rozumie.push(rozumie);
+        marketplaceData.nerozumie.push(nerozumie);
       } else if (category === "mountains") {
-        mountainsData.push( rozumieAHovori, rozumie, nerozumie);
-      } else if (category === "zoo" ) {
-        zooData.push( rozumieAHovori, rozumie, nerozumie);
-      } else if (category === "home" ) {
-        homeData.push( rozumieAHovori, rozumie, nerozumie);
-      } else if (category === "street" ) {
-        streetData.push( rozumieAHovori, rozumie, nerozumie);
+        mountainsData.rozumieAHovori.push(rozumieAHovori);
+        mountainsData.rozumie.push(rozumie);
+        mountainsData.nerozumie.push(nerozumie);
+      } else if (category === "zoo") {
+        zooData.rozumieAHovori.push(rozumieAHovori);
+        zooData.rozumie.push(rozumie);
+        zooData.nerozumie.push(nerozumie);
+      } else if (category === "home") {
+        homeData.rozumieAHovori.push(rozumieAHovori);
+        homeData.rozumie.push(rozumie);
+        homeData.nerozumie.push(nerozumie);
+      } else if (category === "street") {
+        streetData.rozumieAHovori.push(rozumieAHovori);
+        streetData.rozumie.push(rozumie);
+        streetData.nerozumie.push(nerozumie);
       }
-    })
+    });
 
-    console.log(marketplaceData, mountainsData, zooData, homeData, streetData);
-    return { marketplaceData, mountainsData ,zooData, homeData, streetData }; 
+    return {
+      marketplaceData,
+      mountainsData,
+      zooData,
+      homeData,
+      streetData,
+    };
+  };
+
+  const findCorrectAnswer = (questionNo, category) => {
+    // Find the category object in the JSON data
+    const categoryData = jsonData[category];
+    if (!categoryData) {
+      console.error(`Category '${category}' not found in JSON data.`);
+      return null;
+    }
+
+    // Find the question with the given questionNo in the category data
+    const question = categoryData.find((q) => q.questionNo === questionNo);
+    if (!question) {
+      console.error(
+        `Question '${questionNo}' not found in category '${category}'.`
+      );
+      return null;
+    }
+
+    // Find the correct answer for the question
+    const correctAnswer = question.answers.find((answer) => answer.isCorrect);
+    if (!correctAnswer) {
+      console.error(
+        `Correct answer not found for question '${questionNo}' in category '${category}'.`
+      );
+      return null;
+    }
+
+    return correctAnswer.answer; // Return only the answer string
+  };
+
+  const displayAnswers = () => {
+    let understandsAndSpeaks = [];
+    let understands = [];
+    let doesNotUnderstand = [];
+
+    const { marketplaceData, mountainsData, zooData, homeData, streetData } =
+      categoryData();
+
+    const categoryDataArray = [
+      marketplaceData,
+      mountainsData,
+      zooData,
+      homeData,
+      streetData,
+    ];
+
+    categoryDataArray.forEach((data, index) => {
+      const category = categories[index];
+      for (const key in data) {
+        if (Object.hasOwnProperty.call(data, key)) {
+          const array = data[key];
+          array.forEach((element, index) => {
+            if (key === "rozumieAHovori") {
+              element.forEach((num) =>
+                understandsAndSpeaks.push(findCorrectAnswer(num, category))
+              );
+            } else if (key === "rozumie") {
+              element.forEach((num) =>
+                understands.push(findCorrectAnswer(num, category))
+              );
+            } else if (key === "nerozumie") {
+              element.forEach((num) =>
+                doesNotUnderstand.push(findCorrectAnswer(num, category))
+              );
+            }
+          });
+        }
+      }
+    });
+
+    console.log(understandsAndSpeaks, understands, doesNotUnderstand);
+
+    return { understandsAndSpeaks, understands, doesNotUnderstand };
   };
 
   // Rendering UI elements
@@ -170,6 +278,22 @@ const Dashboard = () => {
           // Render results if answers are available
           <>
             <h1> Výsledky testu </h1>
+            <p>
+              V následujúcich kategóriach budú zobrazené slová ktorým dieťa:
+            </p>
+            {/* Display answers here */}
+            <p>
+              <strong>Rozumie a hovrí </strong>
+              {displayAnswers().understandsAndSpeaks.join(", ")}
+            </p>
+            <p>
+              <strong> Rozumie: </strong>
+              {displayAnswers().understands.join(", ")}
+            </p>
+            <p>
+              <strong>Nerozumie:</strong>
+              {displayAnswers().doesNotUnderstand.join(", ")}
+            </p>
             <PieChart
               series={[
                 {
@@ -187,24 +311,6 @@ const Dashboard = () => {
               width={400}
               height={200}
             />
-            <div>
-              {/* Mapping and rendering correct answers for each category */}
-              {correctAnswers.map((category) => (
-                <div key={category.category}>
-                  <h2>
-                    {category.category.charAt(0).toUpperCase() +
-                      category.category.slice(1)}{" "}
-                    Kategória
-                  </h2>
-                  {category.correctAnswersForCategory.map((question) => (
-                    <p key={question.questionNo}>
-                      Otázka {question.questionNo}:{" "}
-                      {question.correctAnswer.answer}
-                    </p>
-                  ))}
-                </div>
-              ))}
-            </div>
           </>
         )}
       </div>
