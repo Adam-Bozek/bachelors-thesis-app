@@ -1,5 +1,5 @@
 // Importing necessary modules and components from React and other libraries
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -103,17 +103,7 @@ const Dashboard = () => {
     },
     { rozumieAHovoriCount: 0, rozumieCount: 0, nerozumieCount: 0 }
   );
-
-  // Getting correct answers for each category
-  const correctAnswers = categories.map((category) => {
-    const questions = jsonData[category];
-    const correctAnswersForCategory = questions.map((question) => {
-      const correctAnswer = question.answers.find((answer) => answer.isCorrect);
-      return { questionNo: question.questionNo, correctAnswer };
-    });
-    return { category, correctAnswersForCategory };
-  });
-
+  
   // Data for PieChart component
   const seriesData = [
     {
