@@ -1115,7 +1115,8 @@
                     "answer": "Varecha"
                 }
             ]
-        },{
+        },
+        {
             "id": 31,
             "questionNo": 5,
             "question": "Na ktorom obrázku je mačka?",
@@ -1484,7 +1485,8 @@
                     "answer": "Kvetináč"
                 }
             ]
-        },{
+        },
+        {
             "id": 41,
             "questionNo": 15,
             "question": "Na ktorom obrázku je zubná pasta?",
@@ -1559,7 +1561,8 @@
                     "answer": "Korčule"
                 }
             ]
-        },{
+        },
+        {
             "id": 43,
             "questionNo": 2,
             "question": "Na ktorom obrázku je kamión?",
