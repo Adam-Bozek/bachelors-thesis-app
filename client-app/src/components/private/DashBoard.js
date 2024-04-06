@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Context } from "../ContextProvider";
 
-import Header from "./Header";
 import Footer from "./Footer";
+import Header from "./Header";
 
 import O_A_BP_FaD from "./game/data/json/O_A_BP_FaD.json";
 
@@ -119,6 +119,7 @@ const Dashboard = () => {
 				mountainsData.nerozumie.push(nerozumie);
 			} else if (category === "zoo") {
 				zooData.rozumieAHovori.push(rozumieAHovori);
+				
 				zooData.rozumie.push(rozumie);
 				zooData.nerozumie.push(nerozumie);
 			} else if (category === "home") {

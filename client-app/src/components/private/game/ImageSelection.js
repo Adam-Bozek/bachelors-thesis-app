@@ -43,7 +43,7 @@ const ImageSelection = ({ filename, category, jsonData, receiveUserAnswers }) =>
           (answer) =>
             imageFiles[`${filename}-${category}-${item.id}-${answer.id}.webp`]
         ),
-        audioFile: audioFiles[`${filename}-${category}-${item.id}.mp3`],
+        audioFile: audioFiles[`${filename}-${category}-${item.questionNo}.mp3`],
       }));
       // Set slides state
       setSlides(slidesArray);
