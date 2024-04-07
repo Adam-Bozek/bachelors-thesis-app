@@ -119,7 +119,7 @@ const Dashboard = () => {
 				mountainsData.nerozumie.push(nerozumie);
 			} else if (category === "zoo") {
 				zooData.rozumieAHovori.push(rozumieAHovori);
-				
+
 				zooData.rozumie.push(rozumie);
 				zooData.nerozumie.push(nerozumie);
 			} else if (category === "home") {

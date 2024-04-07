@@ -13,10 +13,10 @@ const MySQLStore = require("express-mysql-session")(session);
 const { authenticateUser } = require("./utils");
 
 /** TODO LIST
- *  TODO: handle worong inputs to the endpoints properly
+ *  TODO: handle wrong inputs to the endpoints properly
  *  TODO: add site where API keys will be generated
  *  TODO: create a database table for storing api keys based on something
- *  TODO: chnage this on line 84: secret: 'your-secret-key'
+ *  TODO: change this on line 84: secret: 'your-secret-key'
  *  TODO: Finish user logout endpoint
  *  TODO: THINK OF HOW TO SEND COOKIES TO USER
  */
@@ -168,7 +168,7 @@ const apiMiddleware = (request, response, next) => {
 // Endpoint creation
 const userRegisterEndpoint = "/userRegister";
 const userLoginEndpoint = "/userLogin";
-const verifyUserExistanceEndpoint = "/verifyUserExistance";
+const verifyUserExistenceEndpoint = "/verifyUserExistence";
 const userLogoutEndpoint = "/userLogout";
 
 // Applying the API key middleware function
@@ -217,7 +217,7 @@ app.get(userLoginEndpoint, (request, response) => {
 });
 
 // Creating an API endpoint to check if user with the provided email exists
-app.post(verifyUserExistanceEndpoint, (request, response) => {
+app.post(verifyUserExistenceEndpoint, (request, response) => {
   const email = request.body.email;
 
   connectionPool.query(
@@ -226,12 +226,12 @@ app.post(verifyUserExistanceEndpoint, (request, response) => {
     (err, results) => {
       if (err) {
         console.error("VERIFY USER: " + err);
-        response.status(500).send("USER EXISTANCE: Internal Server Error");
+        response.status(500).send("USER EXISTENCE: Internal Server Error");
       } else {
         if (results.length > 0) {
           // User Found with provided email
           console.log("VERIFY USER: User with provided email was found.");
-          response.status(404).send("Email address allready in use");
+          response.status(404).send("Email address already in use");
         } else {
           // No user found with the provided email
           console.log("VERIFY USER: No user with provided email found");
