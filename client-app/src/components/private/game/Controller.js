@@ -14,6 +14,7 @@ const Controller = () => {
 	const jsonData = () => JSON.parse(JSON.stringify(O_A_BP_FaD));
 
 	const categories = [
+		"firstScene",
 		"marketplaceScene", "marketplace",
 		"mountainsScene", "mountains",
     "zooScene", "zoo",
@@ -83,7 +84,7 @@ const Controller = () => {
 							)}
 						</>
 					) : [0, 2, 4, 6, 8, 10].includes(currentCategoryIndex) ? (
-						<SceneDisplay />
+						<SceneDisplay sceneType={categories[currentCategoryIndex]}/>
 					) : (
 						<></>
 					)}
