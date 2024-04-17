@@ -3,3 +3,19 @@
     max-height: 15vw;
     margin: 5px;
 }
+
+.scene-display-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene-display-firstScene-cabuu {
+    width: 18%;
+    height: 18%;
+}
+
+.scene-display-firstScene-picture {
+    height: 50%;
+    width: 50%;
+}
