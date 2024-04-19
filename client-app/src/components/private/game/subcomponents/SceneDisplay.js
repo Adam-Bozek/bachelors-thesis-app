@@ -22,7 +22,6 @@ import streetScene from "../data/pictures/scenes/streetScene.png";
 
 const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 	const [secondAudioPlayed, setSecondAudioPlayed] = useState(false);
-
 	const [isPlaying, setIsPlaying] = useState(false);
 
 	const audioRef = useRef(null);
@@ -38,31 +37,32 @@ const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 	};
 
 	const handleEnded = () => {
-		if (!secondAudioPlayed) {
-			// If the first audio ended and second audio hasn't been played yet
-			audioRef.current.src = firstSceneAudio2; // Change audio source to second audio file
-			audioRef.current.play(); // Play the second audio file
-			setSecondAudioPlayed(true); // Set the flag to indicate that second audio has been played
+		if (!secondAudioPlayed && sceneType === "firstScene") {
+			audioRef.current.src = firstSceneAudio2;
+			audioRef.current.play();
+			setSecondAudioPlayed(true);
 		} else {
-			// If both audios have been played, reset the state
 			setIsPlaying(false);
 			setSecondAudioPlayed(false);
+			advanceToNextCategory();
 		}
 	};
 
 	useEffect(() => {
-		togglePlay();
-	}, []);
+		if (!isPlaying) {
+			audioRef.current.play();
+			setIsPlaying(true);
+		}
+	}, [sceneType, isPlaying]);
 
 	const displayFirstScene = () => (
 		<div className={`${style["scene-display-div"]} container`}>
 			<img src={cabuuDefault} className={`${style["scene-display-firstScene-cabuu"]}`} />
 			<img src={firstScene} className={`${style["scene-display-firstScene-picture"]}`} />
-
-			<img src={monster} className={`${style["scene-display-firstScene-monster"]}`} />
+			{secondAudioPlayed ? <img src={monster} className={`${style["scene-display-firstScene-monster"]}`} /> : <></>}
 			<audio ref={audioRef} onEnded={handleEnded}>
 				<source src={firstSceneAudio1} type="audio/mpeg" />
-				Your browser does not support the audio element.
+				Tvoj prehliadač nepodporuje audio html element.
 			</audio>
 		</div>
 	);
@@ -70,6 +70,10 @@ const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 	const displayMarketplaceScene = () => (
 		<div className={`${style["scene-display-div"]} container`}>
 			<img src={marketplaceScene} alt="Marketplace Scene" className={`${style["scene-display-firstScene-picture"]}`} />
+			<audio ref={audioRef} onEnded={handleEnded}>
+				<source src={marketplaceSceneAudio} type="audio/mpeg" />
+				Tvoj prehliadač nepodporuje audio html element.
+			</audio>
 		</div>
 	);
 
@@ -115,7 +119,7 @@ const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 		case "finalScene":
 			return displayFinalScene();
 		default:
-			return null; // Or return a default scene or an error message
+			return null;
 	}
 };
 

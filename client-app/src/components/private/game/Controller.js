@@ -31,7 +31,7 @@ const Controller = () => {
 	const [isActive, setIsActive] = useState(false);
 
 	const advanceToNextCategory = () => {
-    setCurrentCategoryIndex(prevIndex => prevIndex + 1);
+		setCurrentCategoryIndex((prevIndex) => prevIndex + 1);
 	};
 
 	// Define state variables and their updater functions for selection and recognition answers
@@ -69,7 +69,7 @@ const Controller = () => {
 		<>
 			{!allCategoriesDisplayed && (
 				<>
-					{[1, 3, 5, 7, 9].includes(currentCategoryIndex) ? (
+					{[2, 4, 6, 8, 10].includes(currentCategoryIndex) ? (
 						<>
 							{!isActive ? (
 								<ImageSelection
@@ -87,9 +87,8 @@ const Controller = () => {
 								/>
 							)}
 						</>
-					) : [0, 2, 4, 6, 8, 10].includes(currentCategoryIndex) ? (
+					) : [0, 1, 3, 5, 7, 9, 11].includes(currentCategoryIndex) ? (
 						<SceneDisplay sceneType={categories[currentCategoryIndex]} advanceToNextCategory={advanceToNextCategory} />
-
 					) : (
 						<></>
 					)}
