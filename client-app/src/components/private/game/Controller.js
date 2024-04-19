@@ -30,6 +30,10 @@ const Controller = () => {
 	const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
 	const [isActive, setIsActive] = useState(false);
 
+	const advanceToNextCategory = () => {
+    setCurrentCategoryIndex(prevIndex => prevIndex + 1);
+	};
+
 	// Define state variables and their updater functions for selection and recognition answers
 
 	const receiveUserAnswers = (answers, componentType) => {
@@ -84,7 +88,8 @@ const Controller = () => {
 							)}
 						</>
 					) : [0, 2, 4, 6, 8, 10].includes(currentCategoryIndex) ? (
-						<SceneDisplay sceneType={categories[currentCategoryIndex]}/>
+						<SceneDisplay sceneType={categories[currentCategoryIndex]} advanceToNextCategory={advanceToNextCategory} />
+
 					) : (
 						<></>
 					)}
