@@ -37,7 +37,7 @@ import streetSceneAudio from "../data/audio/audio-for-scenes/streetScene.mp3";
 
 // Imports for the final scene
 import finalScene from "../data/pictures/scenes/finalScene.jpeg";
-import finalSceneAudio from "../data/audio/audio-for-scenes/placeholder.mp3";
+import finalSceneAudio from "../data/audio/audio-for-scenes/finalScene.mp3";
 
 const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 	// State for tracking second part of audio played and whether audio is currently playing
