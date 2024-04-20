@@ -4,16 +4,20 @@
     margin: 5px;
 }
 
+/*----- SCENE TYPE'S COMPONENT MODULES -----*/
 .scene-display-div {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.scene-display-firstScene-cabuu {
-    width: 18%;
-    height: 18%;
+/* GLOBAL ADJUSTMENTS  */
+.scene-display-robot {
+    width: 19%;
+    height: 19%;
 }
+
+/* FIRST SCENE ADJUSTMENTS  */
 
 .scene-display-firstScene-picture {
     height: 50%;
@@ -23,4 +27,41 @@
 .scene-display-firstScene-monster {
     height: 30%;
     width: 30%;
+}
+
+/* MARKETPLACE SCENE ADJUSTMENTS  */
+.scene-display-marketplaceScene-picture {
+    height: 65%;
+    width: 65%;
+}
+
+/* MOUNTAINS SCENE ADJUSTMENTS */
+.scene-display-mountainsScene-picture {
+    height: 80%;
+    width: 80%;
+}
+
+/* ZOO SCENE ADJUSTMENTS */
+.scene-display-zooScene-picture {
+    height: 55%;
+    width: 55%;
+}
+
+/* HOME SCENE ADJUSTMENTS */
+.scene-display-homeScene-picture {
+    height: 55%;
+    width: 55%;
+}
+
+/* STREET SCENE ADJUSTMENTS */
+.scene-display-streetScene-picture {
+    height: 55%;
+    width: 55%;
+}
+
+/* FINAL SCENE ADJUSTMENTS */
+
+.scene-display-finalScene-picture {
+    height: 45%;
+    width: 45%;
 }
