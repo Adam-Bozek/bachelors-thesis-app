@@ -76,7 +76,7 @@ export async function verifyUserLogin(email, password, apiAddress) {
 
 // This bool function checks if the email is already regis
 // On success function will return TRUE
-export async function verifyUserExistance(email, apiAddress) {
+export async function verifyUserExistence(email, apiAddress) {
 	try {
 		const response = await fetch(apiAddress, {
 			method: "POST",

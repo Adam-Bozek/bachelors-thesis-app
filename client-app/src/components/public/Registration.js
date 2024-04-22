@@ -6,7 +6,7 @@ import {
 	checkPasswords,
 	checkSurname,
 	hashPassword,
-	verifyUserExistance,
+	verifyUserExistence,
 	createUser,
 	apiIPAddress,
 	webProtocol,
@@ -21,7 +21,7 @@ const Registration = () => {
 
 	const apiAddress = `${webProtocol}://${apiIPAddress}/`;
 	const createEndPoint = "userRegister";
-	const verifyEndpoint = "verifyUserExistance";
+	const verifyEndpoint = "verifyUserExistence";
 
 	const [name, setName] = useState("");
 	const [surname, setSurname] = useState("");
@@ -56,7 +56,7 @@ const Registration = () => {
 		else {
 			try {
 				// Check if the user already exists
-				const userDoesntExists = await verifyUserExistance(email, apiAddress + verifyEndpoint);
+				const userDoesntExists = await verifyUserExistence(email, apiAddress + verifyEndpoint);
 
 				if (userDoesntExists) {
 					// If user does not exist, make a POST request to create a new user
@@ -88,7 +88,7 @@ const Registration = () => {
 				<p> Práve vaša registrácia nám dokáže pomôcť k zlepšeniu aplikácie a väčšiemu dosahu tejto aplikácie. </p>
 
 				<div className="py-3 body-height">
-					<div className="form-signin">
+					<div className="form-signing">
 						<form onSubmit={registerUser}>
 							<div className="form-floating">
 								<input
