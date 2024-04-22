@@ -4,28 +4,28 @@ import style from "./styles/Style.module.css";
 
 // Imports for whole page
 import robotDefault from "../data/pictures/gif/robot-default.gif";
-import robotWinter from "../data/pictures/gif/robot-winter.gif"; 
-import robotZoo from "../data/pictures/gif/robot-zoo.gif"; 
-import robotParty from "../data/pictures/gif/robot-party.gif"; 
+import robotWinter from "../data/pictures/gif/robot-winter.gif";
+import robotZoo from "../data/pictures/gif/robot-zoo.gif";
+import robotParty from "../data/pictures/gif/robot-party.gif";
 
-import monster from "../data/pictures/scenes/monster.jpeg"; 
+import monster from "../data/pictures/scenes/monster.jpeg";
 
 // Imports for the first scene
-import firstScene from "../data/pictures/scenes/firstScene.png"; 
+import firstScene from "../data/pictures/scenes/firstScene.png";
 import firstSceneAudioPartOne from "../data/audio/audio-for-scenes/firstScene-1.mp3";
-import firstSceneAudioPartTwo from "../data/audio/audio-for-scenes/firstScene-2.mp3"; 
+import firstSceneAudioPartTwo from "../data/audio/audio-for-scenes/firstScene-2.mp3";
 
 // Imports for the marketplace scene
 import marketplaceScene from "../data/pictures/scenes/marketplaceScene.png";
 import marketplaceSceneAudio from "../data/audio/audio-for-scenes/marketplaceScene.mp3";
 
 // Imports for mountains scene
-import mountainsScene from "../data/pictures/scenes/mountainsScene.png"; 
-import mountainsSceneAudio from "../data/audio/audio-for-scenes/mountainsScene.mp3"; 
+import mountainsScene from "../data/pictures/scenes/mountainsScene.png";
+import mountainsSceneAudio from "../data/audio/audio-for-scenes/mountainsScene.mp3";
 
 // Imports for the Zoo scene
-import zooScene from "../data/pictures/scenes/zooScene.png"; 
-import zooSceneAudio from "../data/audio/audio-for-scenes/zooScene.mp3"; 
+import zooScene from "../data/pictures/scenes/zooScene.png";
+import zooSceneAudio from "../data/audio/audio-for-scenes/zooScene.mp3";
 
 // Imports for the home scene
 import homeScene from "../data/pictures/scenes/homeScene.jpeg";

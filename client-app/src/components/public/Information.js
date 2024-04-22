@@ -4,14 +4,14 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 const Information = () => {
-  const pageName = "Informácie";
-  return (
-    <>
-      <Header pageName={pageName} />
+	const pageName = "Informácie";
+	return (
+		<>
+			<Header pageName={pageName} />
 
-      <Footer />
-    </>
-  );
+			<Footer />
+		</>
+	);
 };
 
 export default Information;

@@ -193,6 +193,7 @@ const Dashboard = () => {
 	return (
 		<>
 			<Header pageName={pageName} />
+
 			<div className="container">
 				{getAnswersForCategory("marketplace", selectionAnswers).length === 0 ||
 				getAnswersForCategory("marketplace", recognitionAnswers).length === 0 ||
@@ -244,6 +245,7 @@ const Dashboard = () => {
 					</>
 				)}
 			</div>
+
 			<Footer />
 		</>
 	);
