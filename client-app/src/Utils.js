@@ -161,7 +161,6 @@ export async function logoutUser(apiAddress, navigate) {
 		}
 
 		const data = await response.text();
-		console.log("Logout successful:", data);
 		// Perform any additional actions after successful logout (e.g., redirect to login page)
 		navigate("/Home");
 	} catch (error) {

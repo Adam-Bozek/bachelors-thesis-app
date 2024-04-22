@@ -228,21 +228,29 @@ app.post(verifyUserExistenceEndpoint, (request, response) => {
 
 // Creating an API endpoint for user logout
 app.get(userLogoutEndpoint, (request, response) => {
-	 if (!request.session) {
-        console.error("USER LOGOUT: Session doesn't exist");
-        response.status(400).send("Bad Request: Session doesn't exist");
-        return;
-    }
+	// Check if session exists
+	if (!request.session) {
+		console.error("USER LOGOUT: Session doesn't exist");
+		return response.status(400).send("USER LOGOUT: Bad Request: Session doesn't exist");
+	} else {
+		// Destroy session in session store
+		sessionStore.destroy(request.session.id, (error) => {
+			if (error) {
+				console.error("USER LOGOUT: Error destroying session from session store", error);
+				return response.status(500).send("USER LOGOUT: Internal Server Error");
+			}
 
-	request.session.destroy((err) => {
-		if (err) {
-			console.error("USER LOGOUT: " + err);
-			response.status(500).send("Internal Server Error");
-		} else {
-			console.log("USER LOGOUT: Logout Successful");
-			response.status(200).send("Logout successful");
-		}
-	});
+			// Destroy session
+			request.session.destroy((err) => {
+				if (err) {
+					console.error("USER LOGOUT: Error destroying session", err);
+					return response.status(500).send("USER LOGOUT: Internal Server Error");
+				}
+				console.log("USER LOGOUT: Logout Successful");
+				response.status(200).send("Logout successful");
+			});
+		});
+	}
 });
 
 httpsServer.listen(PORT, IP_ADDRESS, () => {
