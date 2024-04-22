@@ -159,8 +159,6 @@ export async function logoutUser(apiAddress, navigate) {
 		if (!response.ok) {
 			throw new Error("Logout failed");
 		}
-
-		const data = await response.text();
 		// Perform any additional actions after successful logout (e.g., redirect to login page)
 		navigate("/Home");
 	} catch (error) {

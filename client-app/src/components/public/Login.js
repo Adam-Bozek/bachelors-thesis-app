@@ -14,7 +14,6 @@ const Login = () => {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [isChecked, setIsChecked] = useState(false);
 
 	const { setIsLoggedIn } = useContext(Context);
 
