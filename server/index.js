@@ -227,30 +227,20 @@ app.post(verifyUserExistenceEndpoint, (request, response) => {
 });
 
 // Creating an API endpoint for user logout
-app.post(userLogoutEndpoint, (request, response) => {
-	if (!request.session) {
-		// Session doesn't exist, handle accordingly
-		console.error("USER LOGOUT: Session doesn't exist");
-		response.status(400).send("Bad Request: Session doesn't exist");
-		return;
-	}
+app.get(userLogoutEndpoint, (request, response) => {
+	 if (!request.session) {
+        console.error("USER LOGOUT: Session doesn't exist");
+        response.status(400).send("Bad Request: Session doesn't exist");
+        return;
+    }
 
 	request.session.destroy((err) => {
 		if (err) {
 			console.error("USER LOGOUT: " + err);
 			response.status(500).send("Internal Server Error");
 		} else {
-			// Remove session data from the database
-			const sessionId = request.session.id;
-			connectionPool.query("DELETE FROM sessions WHERE session_id = ?", [sessionId], (deleteErr, result) => {
-				if (deleteErr) {
-					console.error("Error deleting session from database:", deleteErr);
-					response.status(500).send("Internal Server Error");
-				} else {
-					console.log("USER LOGOUT: Logout Successful");
-					response.status(200).send("Logout successful");
-				}
-			});
+			console.log("USER LOGOUT: Logout Successful");
+			response.status(200).send("Logout successful");
 		}
 	});
 });

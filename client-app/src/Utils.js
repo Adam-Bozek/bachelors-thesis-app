@@ -150,7 +150,7 @@ export async function hashPassword(password) {
 export async function logoutUser(apiAddress, navigate) {
 	try {
 		const response = await fetch(apiAddress, {
-			method: "POST",
+			method: "GET",
 			headers: {
 				"api-key": apiKey,
 			},
