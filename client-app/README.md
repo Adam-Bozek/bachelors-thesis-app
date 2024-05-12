@@ -6,7 +6,7 @@ File names represent this:
 - `SoA_AS.json`: Sounds of Animals and Surroudndings
 ## Question Object
 
-- `id` (integer): Unique identifier for each marketplace item.
+- `id` (integer): Unique identifier for each item.
 - `questionNo` (integer): Number assigned to the question within its section.
 - `question` (string): The text of the question being asked.
 - `answers` (array): An array containing possible answers to the question.
@@ -46,7 +46,7 @@ This section contains questions related to marketplace items.
         {
             "id": 3,
             "isCorrect": false,
-            "answer": "Vydlička"
+            "answer": "Vidlička"
         },
         {
             "id": 4,

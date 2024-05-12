@@ -7,8 +7,8 @@ import Style from "./styles/Style.module.css";
 import { ReactComponent as PlaySVG } from "./svg/play.svg";
 import { ReactComponent as PauseSVG } from "./svg/pause.svg";
 
-import { ReactComponent as MicSVG } from "./svg/mic.svg";
-import { ReactComponent as MicMutedSVG } from "./svg/mic-mute.svg";
+import { ReactComponent as MicMutedSVG } from "./svg/mic.svg";
+import { ReactComponent as MicSVG } from "./svg/mic-mute.svg";
 
 import { ReactComponent as AcceptSVG } from "./svg/check.svg";
 import { ReactComponent as DeclineSVG } from "./svg/x.svg";

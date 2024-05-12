@@ -1,1788 +1,1788 @@
 {
     "marketplace": [
-        {
-            "id": 1,
-            "questionNo": 1,
-            "question": "Na ktorom obrázku je ananás?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Ananás"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Kiwi"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Mango"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Avokado"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Citrón"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Jablko"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "questionNo": 2,
-            "question": "Na ktorom obrázku je čokoláda?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Čokoláda"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Granko"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Koláč"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Piškóty"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Lízatko"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Cukrík"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "questionNo": 3,
-            "question": "Na ktorom obrázku je lekvár?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Lekvár"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Malina"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Sirup"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Slivky"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Džús"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Čučoriedka"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "questionNo": 4,
-            "question": "Na ktorom obrázku je hrach?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Hrach"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Kukurica"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Fazuľa"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Brokolica"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Šalát"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Šošovica"
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "questionNo": 5,
-            "question": "Na ktorom obrázku je klobása",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Klobása"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Párky"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Šunka"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Syr"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Slanina"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Paštéta"
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "questionNo": 6,
-            "question": "Na ktorom obrázku je mäso?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Mäso"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Zemiaky"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Tofu"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Vyprážaný syr"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Kečup"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Kompót"
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "questionNo": 7,
-            "question": "Na ktorom obrázku je papier?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Papier"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Zošit"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Pero"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Perie"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Farbičky"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Fixka"
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "questionNo": 8,
-            "question": "Na ktorom obrázku je pivo?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Pivo"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Limonáda"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Sirup"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Kofola"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Čaj"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Káva"
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "questionNo": 9,
-            "question": "Na ktorom obrázku je pomaranč?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Pomaranč"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Jablko"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Hruška"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Slivka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Melón"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Citrón"
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "questionNo": 10,
-            "question": "Na ktorom obrázku je zvonček?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Zvonček"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Vidlička"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Koleso"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Hrnček"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Ozdoba"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Konzerva"
-                }
-            ]
-        }
-    ],
-    "mountains": [
-        {
-            "id": 11,
-            "questionNo": 1,
-            "question": "na ktorom obrázku je bunda?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Bunda"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Šaty"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Nohavice"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Tričko"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Topánky"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Vesta"
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "questionNo": 2,
-            "question": "Na ktorom obrázku sú čižmy?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Čižmy"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Ponožky"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Topánky"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Noha"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Čiapka"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Sandále"
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "questionNo": 3,
-            "question": "Na ktorom obrázku sú rukavice?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Rukavice"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Ruka"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Prsty"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Šál"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Čiapka"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Sánky"
-                }
-            ]
-        },
-        {
-            "id": 14,
-            "questionNo": 4,
-            "question": "Na ktorom obrázku je sneh?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Sneh"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Voda"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Ľad"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Tráva"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Blato"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Dážď"
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "questionNo": 5,
-            "question": "Na ktorom obrázku je svetrík",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Svetrík"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Kabát"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Tričko"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Plavky"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Kožuch"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Košeľa"
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "questionNo": 6,
-            "question": "Na ktorom obrázku je pršiplášť?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Pršiplášť"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Dáždnik"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Plachta"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Kabát"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Stan"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Sáčok"
-                }
-            ]
-        }
-    ],
-    "zoo": [
-        {
-            "id": 17,
-            "questionNo": 1,
-            "question": "Na ktorom obrázku je zoologická záhrada?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Zoologická záhrada"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Les"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Cukráreň"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Lúka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Ihrisko"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Jazero"
-                }
-            ]
-        },
-        {
-            "id": 18,
-            "questionNo": 2,
-            "question": "Na ktorom obrázku je chvost?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Chvost"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Labka"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Ňufák"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Uši"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Oči"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Zuby"
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "questionNo": 3,
-            "question": "Na ktorom obrázku je jašterica?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Jašterica"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Had"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Korytnačka"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Ryba"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Morské prasa"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Zajac"
-                }
-            ]
-        },
-        {
-            "id": 20,
-            "questionNo": 4,
-            "question": "Na ktorom obrázku je ježko",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Ježko"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Ihla"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Červík"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Konár"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Krík"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Gaštan"
-                }
-            ]
-        },
-        {
-            "id": 21,
-            "questionNo": 5,
-            "question": "Na ktorom obrázku je kosť",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Kosť"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Kameň"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Pes"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Dinosaurus"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Zuby"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Ľad"
-                }
-            ]
-        },
-        {
-            "id": 22,
-            "questionNo": 6,
-            "question": "Na ktorom obrázku sa nachádza medveď?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Medveď"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Jeleň"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Vlk"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Líška"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Syseľ"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Sob"
-                }
-            ]
-        },
-        {
-            "id": 23,
-            "questionNo": 7,
-            "question": "Na ktorom obrázku je tuleň?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Tuleň"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Hroch"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Ryba"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Nosorožec"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Tučniak"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Velryba"
-                }
-            ]
-        },
-        {
-            "id": 24,
-            "questionNo": 8,
-            "question": "Na ktorom obrázku je udica?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Udica"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Palica"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Píšťalka"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Luk"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Šíp"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Šnúrka"
-                }
-            ]
-        },
-        {
-            "id": 25,
-            "questionNo": 9,
-            "question": "Na ktorom obrázku je vedierko?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Vedierko"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Lopatka"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Hrable"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Polievačka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Motyka"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Metla"
-                }
-            ]
-        },
-        {
-            "id": 26,
-            "questionNo": 10,
-            "question": "Na ktorom obrázku je veverička?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Veverička"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Strom"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Orechy"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Búdka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Vták"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Potkan"
-                }
-            ]
-        }
-    ],
-    "home": [
-        {
-            "id": 27,
-            "questionNo": 1,
-            "question": "Na ktorom obrázku je čelo?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Čelo"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Vlasy"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Krk"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "koleno"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Ruka"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Ústa"
-                }
-            ]
-        },
-        {
-            "id": 28,
-            "questionNo": 2,
-            "question": "na ktorom obrázku je krupica?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Krupica"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Granko"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Mlieko"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Guľky do mlieka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Maslo"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Nátierka"
-                }
-            ]
-        },
-        {
-            "id": 29,
-            "questionNo": 3,
-            "question": "Na ktorom obrázku je lepidlo?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Lepidlo"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Nožnice"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Nálepky"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Pečiatky"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Farby"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Štetec"
-                }
-            ]
-        },
-        {
-            "id": 30,
-            "questionNo": 4,
-            "question": "Na ktorom obrázku je lyžička?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Lyžička"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Tanier"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Nôž"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Myska"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Naberačka"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Varecha"
-                }
-            ]
-        },
-        {
-            "id": 31,
-            "questionNo": 5,
-            "question": "Na ktorom obrázku je mačka?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Mačka"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Škrečok"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Myš"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Rybičky"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Pes"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Sliepky"
-                }
-            ]
-        },
-        {
-            "id": 32,
-            "questionNo": 6,
-            "question": "Na ktorom obrázku je mašľa?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Mašľa"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Sponky"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Čelenka"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Sukňa"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Vlasy"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Šatka"
-                }
-            ]
-        },
-        {
-            "id": 33,
-            "questionNo": 7,
-            "question": "Na ktorom obrázku je nočník?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Nočník"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Plienka"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Cumlík"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Kočiar"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Bábika"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Perinka"
-                }
-            ]
-        },
-        {
-            "id": 34,
-            "questionNo": 8,
-            "question": "Na ktorom obrázku je nos?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Nos"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Pery"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Vreckovka"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Uši"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Sprej do nosa"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Fúzy"
-                }
-            ]
-        },
-        {
-            "id": 35,
-            "questionNo": 9,
-            "question": "Na ktorom obrázku sú papučky?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Papučky"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Lodičky"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Kroksy"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Skrinka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Podlaha"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Tepláky"
-                }
-            ]
-        },
-        {
-            "id": 36,
-            "questionNo": 10,
-            "question": "Na ktorom obrázku je pena?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Pena"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Vaňa"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Bubli fuk"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Hubka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Uterák"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Umývadlo"
-                }
-            ]
-        },
-        {
-            "id": 37,
-            "questionNo": 11,
-            "question": "na ktorom obrázku je sedačka?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Sedačka"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Posteľ"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Kreslo"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Stolička"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Stolík"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Koberec"
-                }
-            ]
-        },
-        {
-            "id": 38,
-            "questionNo": 12,
-            "question": "Na ktorom obrázku je pohár?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Pohár"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Tanier"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Vidlička"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Kohútik"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Fľaša"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Kefka"
-                }
-            ]
-        },
-        {
-            "id": 39,
-            "questionNo": 13,
-            "question": "Na ktorom obrázku je váha?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Váha"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Múka"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Soľ"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Cukor"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Mixér"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Kávovar"
-                }
-            ]
-        },
-        {
-            "id": 40,
-            "questionNo": 14,
-            "question": "Na ktorom obrázku je váza?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Váza"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Kvety"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Socha"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Knihy"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Obrus"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Kvetináč"
-                }
-            ]
-        },
-        {
-            "id": 41,
-            "questionNo": 15,
-            "question": "Na ktorom obrázku je zubná pasta?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Zubná pasta"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Kefka"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Niť"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Zub"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Špáradlo"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Zubár"
-                }
-            ]
-        }
-    ],
-    "street": [
-        {
-            "id": 42,
-            "questionNo": 1,
-            "question": "Na ktorom obrázku je auto?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Auto"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Koč"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Voz"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Bicykel"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Kolobežka"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Korčule"
-                }
-            ]
-        },
-        {
-            "id": 43,
-            "questionNo": 2,
-            "question": "Na ktorom obrázku je kamión?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Kamión"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Autobus"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Vlak"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Loď"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Lietadlo"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Dodávka"
-                }
-            ]
-        },
-        {
-            "id": 44,
-            "questionNo": 3,
-            "question": "Na ktorom obrázku je miešačka?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Miešačka"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Bager"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Žeriav"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Vŕtačka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Kladivo "
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Lopata"
-                }
-            ]
-        },
-        {
-            "id": 45,
-            "questionNo": 4,
-            "question": "Na ktorom obrázku je sanitka?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Sanitka"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Nemocnica"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Vrtuľník"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Doktor"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Sestrička"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Injekcia"
-                }
-            ]
-        },
-        {
-            "id": 46,
-            "questionNo": 5,
-            "question": "Na ktorom obrázku je svetlo?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Svetlo"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Sviečka"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Lehátko"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Slnko"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Okuliare"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Opaľovací krém"
-                }
-            ]
-        },
-        {
-            "id": 47,
-            "questionNo": 6,
-            "question": "na ktorom obrázku je mesiac?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Mesiac"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Hviezdy"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Slnko"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Planéta"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Raketa"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Mimozemšťan"
-                }
-            ]
-        },
-        {
-            "id": 48,
-            "questionNo": 7,
-            "question": "Na ktorom obrázku je diera?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Diera"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Kopec"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Hora"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Pláž"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Chodník"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Cesta"
-                }
-            ]
-        }
-    ]
+		{
+			"id": 1,
+			"questionNo": 1,
+			"question": "Na ktorom obrázku je ananás?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Ananás"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Kiwi"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Mango"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Avokado"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Citrón"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Jablko"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"questionNo": 2,
+			"question": "Na ktorom obrázku je čokoláda?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Čokoláda"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Granko"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Koláč"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Piškóty"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Lízatko"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Cukrík"
+				}
+			]
+		},
+		{
+			"id": 3,
+			"questionNo": 3,
+			"question": "Na ktorom obrázku je lekvár?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Lekvár"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Malina"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Sirup"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Slivky"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Džús"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Čučoriedka"
+				}
+			]
+		},
+		{
+			"id": 4,
+			"questionNo": 4,
+			"question": "Na ktorom obrázku je hrach?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Hrach"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Kukurica"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Fazuľa"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Brokolica"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Šalát"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Šošovica"
+				}
+			]
+		},
+		{
+			"id": 5,
+			"questionNo": 5,
+			"question": "Na ktorom obrázku je klobása",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Klobása"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Párky"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Šunka"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Syr"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Slanina"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Paštéta"
+				}
+			]
+		},
+		{
+			"id": 6,
+			"questionNo": 6,
+			"question": "Na ktorom obrázku je mäso?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Mäso"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Zemiaky"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Tofu"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Vyprážaný syr"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Kečup"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Kompót"
+				}
+			]
+		},
+		{
+			"id": 7,
+			"questionNo": 7,
+			"question": "Na ktorom obrázku je papier?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Papier"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Zošit"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Pero"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Perie"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Farbičky"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Fixka"
+				}
+			]
+		},
+		{
+			"id": 8,
+			"questionNo": 8,
+			"question": "Na ktorom obrázku je pivo?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Pivo"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Limonáda"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Sirup"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Kofola"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Čaj"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Káva"
+				}
+			]
+		},
+		{
+			"id": 9,
+			"questionNo": 9,
+			"question": "Na ktorom obrázku je pomaranč?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Pomaranč"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Jablko"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Hruška"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Slivka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Melón"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Citrón"
+				}
+			]
+		},
+		{
+			"id": 10,
+			"questionNo": 10,
+			"question": "Na ktorom obrázku je zvonček?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Zvonček"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Vidlička"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Koleso"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Hrnček"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Ozdoba"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Konzerva"
+				}
+			]
+		}
+	],
+	"mountains": [
+		{
+			"id": 11,
+			"questionNo": 1,
+			"question": "na ktorom obrázku je bunda?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Bunda"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Šaty"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Nohavice"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Tričko"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Topánky"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Vesta"
+				}
+			]
+		},
+		{
+			"id": 12,
+			"questionNo": 2,
+			"question": "Na ktorom obrázku sú čižmy?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Čižmy"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Ponožky"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Topánky"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Noha"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Čiapka"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Sandále"
+				}
+			]
+		},
+		{
+			"id": 13,
+			"questionNo": 3,
+			"question": "Na ktorom obrázku sú rukavice?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Rukavice"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Ruka"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Prsty"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Šál"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Čiapka"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Sánky"
+				}
+			]
+		},
+		{
+			"id": 14,
+			"questionNo": 4,
+			"question": "Na ktorom obrázku je sneh?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Sneh"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Voda"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Ľad"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Tráva"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Blato"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Dážď"
+				}
+			]
+		},
+		{
+			"id": 15,
+			"questionNo": 5,
+			"question": "Na ktorom obrázku je svetrík",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Svetrík"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Kabát"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Tričko"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Plavky"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Kožuch"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Košeľa"
+				}
+			]
+		},
+		{
+			"id": 16,
+			"questionNo": 6,
+			"question": "Na ktorom obrázku je pršiplášť?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Pršiplášť"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Dáždnik"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Plachta"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Kabát"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Stan"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Sáčok"
+				}
+			]
+		}
+	],
+	"zoo": [
+		{
+			"id": 17,
+			"questionNo": 1,
+			"question": "Na ktorom obrázku je zoologická záhrada?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Zoologická záhrada"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Les"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Cukráreň"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Lúka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Ihrisko"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Jazero"
+				}
+			]
+		},
+		{
+			"id": 18,
+			"questionNo": 2,
+			"question": "Na ktorom obrázku je chvost?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Chvost"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Labka"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Ňufák"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Uši"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Oči"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Zuby"
+				}
+			]
+		},
+		{
+			"id": 19,
+			"questionNo": 3,
+			"question": "Na ktorom obrázku je jašterica?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Jašterica"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Had"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Korytnačka"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Ryba"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Morské prasa"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Zajac"
+				}
+			]
+		},
+		{
+			"id": 20,
+			"questionNo": 4,
+			"question": "Na ktorom obrázku je ježko",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Ježko"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Ihla"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Červík"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Konár"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Krík"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Gaštan"
+				}
+			]
+		},
+		{
+			"id": 21,
+			"questionNo": 5,
+			"question": "Na ktorom obrázku je kosť",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Kosť"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Kameň"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Pes"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Dinosaurus"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Zuby"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Ľad"
+				}
+			]
+		},
+		{
+			"id": 22,
+			"questionNo": 6,
+			"question": "Na ktorom obrázku sa nachádza medveď?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Medveď"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Jeleň"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Vlk"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Líška"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Syseľ"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Sob"
+				}
+			]
+		},
+		{
+			"id": 23,
+			"questionNo": 7,
+			"question": "Na ktorom obrázku je tuleň?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Tuleň"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Hroch"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Ryba"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Nosorožec"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Tučniak"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Velryba"
+				}
+			]
+		},
+		{
+			"id": 24,
+			"questionNo": 8,
+			"question": "Na ktorom obrázku je udica?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Udica"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Palica"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Píšťalka"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Luk"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Šíp"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Šnúrka"
+				}
+			]
+		},
+		{
+			"id": 25,
+			"questionNo": 9,
+			"question": "Na ktorom obrázku je vedierko?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Vedierko"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Lopatka"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Hrable"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Polievačka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Motyka"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Metla"
+				}
+			]
+		},
+		{
+			"id": 26,
+			"questionNo": 10,
+			"question": "Na ktorom obrázku je veverička?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Veverička"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Strom"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Orechy"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Búdka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Vták"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Potkan"
+				}
+			]
+		}
+	],
+	"home": [
+		{
+			"id": 27,
+			"questionNo": 1,
+			"question": "Na ktorom obrázku je čelo?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Čelo"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Vlasy"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Krk"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "koleno"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Ruka"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Ústa"
+				}
+			]
+		},
+		{
+			"id": 28,
+			"questionNo": 2,
+			"question": "na ktorom obrázku je krupica?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Krupica"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Granko"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Mlieko"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Guľky do mlieka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Maslo"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Nátierka"
+				}
+			]
+		},
+		{
+			"id": 29,
+			"questionNo": 3,
+			"question": "Na ktorom obrázku je lepidlo?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Lepidlo"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Nožnice"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Nálepky"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Pečiatky"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Farby"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Štetec"
+				}
+			]
+		},
+		{
+			"id": 30,
+			"questionNo": 4,
+			"question": "Na ktorom obrázku je lyžička?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Lyžička"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Tanier"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Nôž"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Myska"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Naberačka"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Varecha"
+				}
+			]
+		},
+		{
+			"id": 31,
+			"questionNo": 5,
+			"question": "Na ktorom obrázku je mačka?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Mačka"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Škrečok"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Myš"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Rybičky"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Pes"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Sliepky"
+				}
+			]
+		},
+		{
+			"id": 32,
+			"questionNo": 6,
+			"question": "Na ktorom obrázku je mašľa?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Mašľa"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Sponky"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Čelenka"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Sukňa"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Vlasy"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Šatka"
+				}
+			]
+		},
+		{
+			"id": 33,
+			"questionNo": 7,
+			"question": "Na ktorom obrázku je nočník?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Nočník"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Plienka"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Cumlík"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Kočiar"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Bábika"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Perinka"
+				}
+			]
+		},
+		{
+			"id": 34,
+			"questionNo": 8,
+			"question": "Na ktorom obrázku je nos?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Nos"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Pery"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Vreckovka"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Uši"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Sprej do nosa"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Fúzy"
+				}
+			]
+		},
+		{
+			"id": 35,
+			"questionNo": 9,
+			"question": "Na ktorom obrázku sú papučky?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Papučky"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Lodičky"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Kroksy"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Skrinka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Podlaha"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Tepláky"
+				}
+			]
+		},
+		{
+			"id": 36,
+			"questionNo": 10,
+			"question": "Na ktorom obrázku je pena?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Pena"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Vaňa"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Bubli fuk"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Hubka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Uterák"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Umývadlo"
+				}
+			]
+		},
+		{
+			"id": 37,
+			"questionNo": 11,
+			"question": "na ktorom obrázku je sedačka?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Sedačka"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Posteľ"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Kreslo"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Stolička"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Stolík"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Koberec"
+				}
+			]
+		},
+		{
+			"id": 38,
+			"questionNo": 12,
+			"question": "Na ktorom obrázku je pohár?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Pohár"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Tanier"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Vidlička"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Kohútik"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Fľaša"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Kefka"
+				}
+			]
+		},
+		{
+			"id": 39,
+			"questionNo": 13,
+			"question": "Na ktorom obrázku je váha?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Váha"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Múka"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Soľ"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Cukor"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Mixér"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Kávovar"
+				}
+			]
+		},
+		{
+			"id": 40,
+			"questionNo": 14,
+			"question": "Na ktorom obrázku je váza?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Váza"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Kvety"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Socha"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Knihy"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Obrus"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Kvetináč"
+				}
+			]
+		},
+		{
+			"id": 41,
+			"questionNo": 15,
+			"question": "Na ktorom obrázku je zubná pasta?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Zubná pasta"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Kefka"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Niť"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Zub"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Špáradlo"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Zubár"
+				}
+			]
+		}
+	],
+	"street": [
+		{
+			"id": 42,
+			"questionNo": 1,
+			"question": "Na ktorom obrázku je auto?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Auto"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Koč"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Voz"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Bicykel"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Kolobežka"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Korčule"
+				}
+			]
+		},
+		{
+			"id": 43,
+			"questionNo": 2,
+			"question": "Na ktorom obrázku je kamión?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Kamión"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Autobus"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Vlak"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Loď"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Lietadlo"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Dodávka"
+				}
+			]
+		},
+		{
+			"id": 44,
+			"questionNo": 3,
+			"question": "Na ktorom obrázku je miešačka?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Miešačka"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Bager"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Žeriav"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Vŕtačka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Kladivo "
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Lopata"
+				}
+			]
+		},
+		{
+			"id": 45,
+			"questionNo": 4,
+			"question": "Na ktorom obrázku je sanitka?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Sanitka"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Nemocnica"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Vrtuľník"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Doktor"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Sestrička"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Injekcia"
+				}
+			]
+		},
+		{
+			"id": 46,
+			"questionNo": 5,
+			"question": "Na ktorom obrázku je svetlo?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Svetlo"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Sviečka"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Lehátko"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Slnko"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Okuliare"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Opaľovací krém"
+				}
+			]
+		},
+		{
+			"id": 47,
+			"questionNo": 6,
+			"question": "na ktorom obrázku je mesiac?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Mesiac"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Hviezdy"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Slnko"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Planéta"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Raketa"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Mimozemšťan"
+				}
+			]
+		},
+		{
+			"id": 48,
+			"questionNo": 7,
+			"question": "Na ktorom obrázku je diera?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Diera"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Kopec"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Hora"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Pláž"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Chodník"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Cesta"
+				}
+			]
+		}
+	]
 }

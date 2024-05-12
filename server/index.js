@@ -16,7 +16,7 @@ const { authenticateUser } = require("./utils");
  *  TODO: handle wrong inputs to the endpoints properly
  *  TODO: add site where API keys will be generated
  *  TODO: create a database table for storing api keys based on something
- *  TODO: change this on line 84: secret: 'your-secret-key'
+ *  TODO: change this on line 103: secret: 'your-lol-key'
  *  TODO: Finish user logout endpoint
  *  TODO: THINK OF HOW TO SEND COOKIES TO USER
  */
@@ -82,7 +82,7 @@ connectionPool.on("error", (poolError) => {
 const sessionStore = new MySQLStore(
 	{
 		clearExpired: true,
-		checkExpirationInterval: 1000 * 60 * 20, // 20 minutes
+		checkExpirationInterval: 1000 * 60 * 1, //  1 minute
 		expiration: 1000 * 60 * 60 * 1, // 1 hour
 		createDatabaseTable: true,
 		schema: {
@@ -100,12 +100,12 @@ const sessionStore = new MySQLStore(
 // Use express-session middleware with MySQL session store
 app.use(
 	session({
-		secret: "your-lol-key",
+		secret: "your-lol-key", // FIXME: CHANGE THIS BEFORE UPLOADING
 		resave: true,
 		saveUninitialized: true,
 		store: sessionStore,
 		cookie: {
-			maxAge: 1000 * 60 * 60 * 5, // 5 hours
+			maxAge: 1000 * 60 * 60 * 2, // 2 hours
 			secure: true,
 		},
 	}),

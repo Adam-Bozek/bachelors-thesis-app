@@ -53,6 +53,11 @@
     width: 55%;
 }
 
+.scene-display-homeScene-robot {
+    width: 28%;
+    height: 28%;
+}
+
 /* STREET SCENE ADJUSTMENTS */
 .scene-display-streetScene-picture {
     height: 55%;
@@ -62,6 +67,9 @@
 /* FINAL SCENE ADJUSTMENTS */
 
 .scene-display-finalScene-picture {
-    height: 45%;
-    width: 45%;
+    height: 40%;
+    width: 40%;
+}
+.scene-display-finalScene-robot {
+    width: 40%;
 }

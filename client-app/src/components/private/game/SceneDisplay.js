@@ -1,43 +1,44 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import style from "./styles/Style.module.css";
+import style from "./subcomponents/styles/Style.module.css";
 
 // Imports for whole page
-import robotDefault from "../data/pictures/gif/robot-default.gif";
-import robotWinter from "../data/pictures/gif/robot-winter.gif";
-import robotZoo from "../data/pictures/gif/robot-zoo.gif";
-import robotParty from "../data/pictures/gif/robot-party.gif";
+import robotDefault from "./data/pictures/robot/robot-default.gif";
+import robotWinter from "./data/pictures/robot/robot-winter.gif";
+import robotZoo from "./data/pictures/robot/robot-zoo.gif";
+import robotChill from "./data/pictures/robot/robot-chill.gif";
+import robotParty from "./data/pictures/robot/robot-party.gif";
 
-import monster from "../data/pictures/scenes/monster.jpeg";
+import monster from "./data/pictures/scenes/monster.jpeg";
 
 // Imports for the first scene
-import firstScene from "../data/pictures/scenes/firstScene.png";
-import firstSceneAudioPartOne from "../data/audio/audio-for-scenes/firstScene-1.mp3";
-import firstSceneAudioPartTwo from "../data/audio/audio-for-scenes/firstScene-2.mp3";
+import firstScene from "./data/pictures/scenes/firstScene.png";
+import firstSceneAudioPartOne from "./data/audio/audio-for-scenes/firstScene-1.mp3";
+import firstSceneAudioPartTwo from "./data/audio/audio-for-scenes/firstScene-2.mp3";
 
 // Imports for the marketplace scene
-import marketplaceScene from "../data/pictures/scenes/marketplaceScene.png";
-import marketplaceSceneAudio from "../data/audio/audio-for-scenes/marketplaceScene.mp3";
+import marketplaceScene from "./data/pictures/scenes/marketplaceScene.png";
+import marketplaceSceneAudio from "./data/audio/audio-for-scenes/marketplaceScene.mp3";
 
 // Imports for mountains scene
-import mountainsScene from "../data/pictures/scenes/mountainsScene.png";
-import mountainsSceneAudio from "../data/audio/audio-for-scenes/mountainsScene.mp3";
+import mountainsScene from "./data/pictures/scenes/mountainsScene.png";
+import mountainsSceneAudio from "./data/audio/audio-for-scenes/mountainsScene.mp3";
 
 // Imports for the Zoo scene
-import zooScene from "../data/pictures/scenes/zooScene.png";
-import zooSceneAudio from "../data/audio/audio-for-scenes/zooScene.mp3";
+import zooScene from "./data/pictures/scenes/zooScene.png";
+import zooSceneAudio from "./data/audio/audio-for-scenes/zooScene.mp3";
 
 // Imports for the home scene
-import homeScene from "../data/pictures/scenes/homeScene.jpeg";
-import homeSceneAudio from "../data/audio/audio-for-scenes/homeScene.mp3";
+import homeScene from "./data/pictures/scenes/homeScene.jpeg";
+import homeSceneAudio from "./data/audio/audio-for-scenes/homeScene.mp3";
 
 // Imports for the street scene
-import streetScene from "../data/pictures/scenes/streetScene.png";
-import streetSceneAudio from "../data/audio/audio-for-scenes/streetScene.mp3";
+import streetScene from "./data/pictures/scenes/streetScene.png";
+import streetSceneAudio from "./data/audio/audio-for-scenes/streetScene.mp3";
 
 // Imports for the final scene
-import finalScene from "../data/pictures/scenes/finalScene.jpeg";
-import finalSceneAudio from "../data/audio/audio-for-scenes/finalScene.mp3";
+import finalScene from "./data/pictures/scenes/finalScene.jpeg";
+import finalSceneAudio from "./data/audio/audio-for-scenes/finalScene.mp3";
 
 const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 	// State for tracking second part of audio played and whether audio is currently playing
@@ -131,7 +132,7 @@ const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 	// Function to display home scene
 	const displayHomeScene = () => (
 		<div className={`${style["scene-display-div"]} container`}>
-			<img src={robotDefault} className={`${style["scene-display-robot"]}`} alt="" />
+			<img src={robotChill} className={`${style["scene-display-homeScene-robot"]}`} alt="" />
 			<img src={homeScene} alt="" className={`${style["scene-display-homeScene-picture"]}`} />
 			<audio ref={audioRef} onEnded={handleEnded}>
 				<source src={homeSceneAudio} type="audio/mpeg" />
@@ -155,7 +156,7 @@ const SceneDisplay = ({ sceneType, advanceToNextCategory }) => {
 	// Function to display final scene
 	const displayFinalScene = () => (
 		<div className={`${style["scene-display-div"]} container`}>
-			<img src={robotParty} className={`${style["scene-display-robot"]}`} alt="" />
+			<img src={robotParty} className={`${style["scene-display-finalScene-robot"]}`} alt="" />
 			<img src={finalScene} alt="" className={`${style["scene-display-finalScene-picture"]}`} />
 			<audio ref={audioRef} onEnded={handleEnded}>
 				<source src={finalSceneAudio} type="audio/mpeg" />

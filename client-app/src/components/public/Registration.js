@@ -56,9 +56,9 @@ const Registration = () => {
 		else {
 			try {
 				// Check if the user already exists
-				const userDoesntExists = await verifyUserExistence(email, apiAddress + verifyEndpoint);
+				const userDoesNotExists = await verifyUserExistence(email, apiAddress + verifyEndpoint);
 
-				if (userDoesntExists) {
+				if (userDoesNotExists) {
 					// If user does not exist, make a POST request to create a new user
 					try {
 						// Hash the user's password
@@ -85,7 +85,7 @@ const Registration = () => {
 
 			<main className="container">
 				<h1 className="mt-5 mb-3"> Ďakujeme, že ste sa rozhodli zaregistrovať! </h1>
-				<p> Práve vaša registrácia nám dokáže pomôcť k zlepšeniu aplikácie a väčšiemu dosahu tejto aplikácie. </p>
+				<p> Práve vaša registrácia nám dokáže pomôcť k zlepšeniu a väčšiemu dosahu tejto aplikácie. </p>
 
 				<div className="py-3 body-height">
 					<div className="form-signing">

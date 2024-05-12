@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import ImageSelection from "./ImageSelection";
 import ImageRecognition from "./ImageRecognition";
-import SceneDisplay from "./subcomponents/SceneDisplay";
+import SceneDisplay from "./SceneDisplay";
 
 import { Context } from "../../ContextProvider";
 
