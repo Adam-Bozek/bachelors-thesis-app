@@ -1,230 +1,230 @@
 {
-    "zoo":[
-        {
-            "id": 1,
-            "questionNo": 1,
-            "question": "Na ktorom obrázku sa niekto smeje Chachacha?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Smejúci sa človek"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Smutný človek"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Pracujúci človek"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Ležiaci človek"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Variaci človek"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Predávajúci človek"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "questionNo": 2,
-            "question": "Na ktorom obrázku je zvieratko ktoré robí kač kač kač?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Kačka"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Hus"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Ryba"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Bocján"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Orol"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Tučniak"
-                }
-            ]
-        }
-    ],
-    "home": [
-        {
-            "id": 3,
-            "questionNo": 1,
-            "question": "Na ktorom obrázku robí človek ach?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Človek je smutný"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Človek tlieska rukami"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Človek ktorí sedí"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Človek ktorý pozerá film"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Človek ktorý leží"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Človek ktorý obeduje"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "questionNo": 2,
-            "question": "Na ktorom obrázku je prístroj ktorý robí tik-tak?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Hodiny"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Televízor"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Rádio"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Telefón"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Auto"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Počítač"
-                }
-            ]
-        }
-    ],
-    "street": [
-        {
-            "id": 5,
-            "questionNo": 1,
-            "question": "Ktorý predmet robí bim-bam?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Zvon"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Auto"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Lopta"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Veža"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Strom"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Telefón"
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "questionNo": 2,
-            "question": "Ktorý dopravný prostriedok robí šiši?",
-            "answers": [
-                {
-                    "id": 1,
-                    "isCorrect": true,
-                    "answer": "Vlak"
-                },
-                {
-                    "id": 2,
-                    "isCorrect": false,
-                    "answer": "Autobus"
-                },
-                {
-                    "id": 3,
-                    "isCorrect": false,
-                    "answer": "Loď"
-                },
-                {
-                    "id": 4,
-                    "isCorrect": false,
-                    "answer": "Kolobežka"
-                },
-                {
-                    "id": 5,
-                    "isCorrect": false,
-                    "answer": "Bicykel"
-                },
-                {
-                    "id": 6,
-                    "isCorrect": false,
-                    "answer": "Korčule"
-                }
-            ]
-        }
-    ]
+	"zoo": [
+		{
+			"id": 1,
+			"questionNo": 1,
+			"question": "Na ktorom obrázku sa niekto smeje Chachacha?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Smejúci sa človek"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Smutný človek"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Pracujúci človek"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Ležiaci človek"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Variaci človek"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Predávajúci človek"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"questionNo": 2,
+			"question": "Na ktorom obrázku je zvieratko ktoré robí kač kač kač?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Kačka"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Hus"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Ryba"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Bocján"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Orol"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Tučniak"
+				}
+			]
+		}
+	],
+	"home": [
+		{
+			"id": 3,
+			"questionNo": 1,
+			"question": "Na ktorom obrázku robí človek ach?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Človek je smutný"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Človek tlieska rukami"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Človek ktorí sedí"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Človek ktorý pozerá film"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Človek ktorý leží"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Človek ktorý obeduje"
+				}
+			]
+		},
+		{
+			"id": 4,
+			"questionNo": 2,
+			"question": "Na ktorom obrázku je prístroj ktorý robí tik-tak?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Hodiny"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Televízor"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Rádio"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Telefón"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Auto"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Počítač"
+				}
+			]
+		}
+	],
+	"street": [
+		{
+			"id": 5,
+			"questionNo": 1,
+			"question": "Ktorý predmet robí bim-bam?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Zvon"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Auto"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Lopta"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Veža"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Strom"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Telefón"
+				}
+			]
+		},
+		{
+			"id": 5,
+			"questionNo": 2,
+			"question": "Ktorý dopravný prostriedok robí šiši?",
+			"answers": [
+				{
+					"id": 1,
+					"isCorrect": true,
+					"answer": "Vlak"
+				},
+				{
+					"id": 2,
+					"isCorrect": false,
+					"answer": "Autobus"
+				},
+				{
+					"id": 3,
+					"isCorrect": false,
+					"answer": "Loď"
+				},
+				{
+					"id": 4,
+					"isCorrect": false,
+					"answer": "Kolobežka"
+				},
+				{
+					"id": 5,
+					"isCorrect": false,
+					"answer": "Bicykel"
+				},
+				{
+					"id": 6,
+					"isCorrect": false,
+					"answer": "Korčule"
+				}
+			]
+		}
+	]
 }

@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
@@ -24,7 +26,7 @@ const { authenticateUser } = require("./utils");
 const corsOptions = {
 	origin: (origin, callback) => {
 		// Check if the origin is allowed
-		if (!origin || origin === "https://localhost:3000") {
+	if (!origin || origin === "https://localhost:3000") {
 			callback(null, true); // Allow the request
 		} else {
 			callback(new Error("Not allowed by CORS")); // Block the request
@@ -50,10 +52,10 @@ const httpsServer = https.createServer(credentials, app);
 
 // Database configuration
 const DBConfig = {
-	host: "localhost",
-	user: "root",
-	password: "",
-	database: "test_database",
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_DATABASE,
 };
 
 // Create a MySQL connection pool
@@ -100,7 +102,7 @@ const sessionStore = new MySQLStore(
 // Use express-session middleware with MySQL session store
 app.use(
 	session({
-		secret: "your-lol-key", // FIXME: CHANGE THIS BEFORE UPLOADING
+		secret: process.env.ACCESS_TOKEN, // FIXME: CHANGE THIS BEFORE UPLOADING
 		resave: true,
 		saveUninitialized: true,
 		store: sessionStore,

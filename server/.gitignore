@@ -1,2 +1,4 @@
 # ignoring folder conating ssl and api keys
 /keys
+
+.env

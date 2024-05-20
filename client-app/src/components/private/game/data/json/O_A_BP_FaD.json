@@ -1,5 +1,5 @@
 {
-    "marketplace": [
+	"marketplace": [
 		{
 			"id": 1,
 			"questionNo": 1,
@@ -151,7 +151,7 @@
 		{
 			"id": 5,
 			"questionNo": 5,
-			"question": "Na ktorom obrázku je klobása",
+			"question": "Na ktorom obrázku je klobása?",
 			"answers": [
 				{
 					"id": 1,
@@ -710,7 +710,7 @@
 		{
 			"id": 20,
 			"questionNo": 4,
-			"question": "Na ktorom obrázku je ježko",
+			"question": "Na ktorom obrázku je ježko?",
 			"answers": [
 				{
 					"id": 1,
@@ -814,7 +814,7 @@
 				{
 					"id": 6,
 					"isCorrect": false,
-					"answer": "Sob"
+					"answer": "Los"
 				}
 			]
 		},

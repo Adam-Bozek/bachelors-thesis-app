@@ -1,7 +1,8 @@
 import bcrypt from "bcryptjs";
 import Axios from "axios";
 
-const apiKey = "5432175b6c1df2fae956bfafc50a193375645c615df82ed6ae7887fb31834971";
+
+const apiKey = process.env.REACT_APP_API_KEY;
 
 export const webProtocol = "https";
 export const apiIPAddress = "localhost:3001";

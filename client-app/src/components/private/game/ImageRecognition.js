@@ -35,7 +35,7 @@ const ImageRecognition = ({ filename, category, jsonData, receiveUserAnswers }) 
 			// Map data to slides array
 			const slidesArray = data[category].map((item) => ({
 				question: "Čo sa nachádza na tomto obrázku?",
-				imgLink: imageFiles[`${filename}-${category}-${item.id}-1.webp`],
+				imgLink: imageFiles[`${filename}-${category}-${item.questionNo}-1.webp`],
 				audioFile: audioFiles[`${filename}-recognition.mp3`],
 				correctAnswer: item.answers.find((answer) => answer.isCorrect)?.answer,
 			}));

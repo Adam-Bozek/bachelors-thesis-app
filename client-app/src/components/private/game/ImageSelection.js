@@ -35,7 +35,7 @@ const ImageSelection = ({ filename, category, jsonData, receiveUserAnswers }) =>
 			// Map data to slides array
 			const slidesArray = data[category].map((item) => ({
 				question: item.question,
-				imgLinks: item.answers.map((answer) => imageFiles[`${filename}-${category}-${item.id}-${answer.id}.webp`]),
+				imgLinks: item.answers.map((answer) => imageFiles[`${filename}-${category}-${item.questionNo}-${answer.id}.webp`]),
 				audioFile: audioFiles[`${filename}-${category}-${item.questionNo}.mp3`],
 			}));
 			// Set slides state
