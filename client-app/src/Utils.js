@@ -7,7 +7,7 @@ const apiKey = process.env.REACT_APP_API_KEY;
 export const webProtocol = "https";
 export const apiIPAddress = "localhost:3001";
 
-export const year = 2024;
+export const year = new Date().getFullYear();
 
 /** TODO LIST
  *  TODO: handle wrong function input properties

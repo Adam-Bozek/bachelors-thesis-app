@@ -35,7 +35,6 @@ const Controller = () => {
 	};
 
 	// Define state variables and their updater functions for selection and recognition answers
-
 	const receiveUserAnswers = (answers, componentType) => {
 		// Store answers based on the current category index
 		const category = categories[currentCategoryIndex];

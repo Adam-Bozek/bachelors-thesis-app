@@ -33,7 +33,7 @@ const Login = () => {
 				alert("Zadajte heslo");
 			} else {
 				// Verify user login using the verifyUserLogin function
-				// Password isn not encrypted in app due to transfer trough https protocol and bcrypt compare function
+				// Password is not encrypted in app due to transfer trough https protocol and bcrypt compare function
 				const loginInfo = await verifyUserLogin(email, password, apiAddress + verifyUserLoginEndpoint);
 
 				if (loginInfo) {

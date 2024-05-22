@@ -18,9 +18,6 @@ const { authenticateUser } = require("./utils");
  *  TODO: handle wrong inputs to the endpoints properly
  *  TODO: add site where API keys will be generated
  *  TODO: create a database table for storing api keys based on something
- *  TODO: change this on line 103: secret: 'your-lol-key'
- *  TODO: Finish user logout endpoint
- *  TODO: THINK OF HOW TO SEND COOKIES TO USER
  */
 
 const corsOptions = {
@@ -81,8 +78,7 @@ connectionPool.on("error", (poolError) => {
 });
 
 // Setup MySQL session store
-const sessionStore = new MySQLStore(
-	{
+const sessionStore = new MySQLStore({
 		clearExpired: true,
 		checkExpirationInterval: 1000 * 60 * 1, //  1 minute
 		expiration: 1000 * 60 * 60 * 1, // 1 hour
@@ -102,7 +98,7 @@ const sessionStore = new MySQLStore(
 // Use express-session middleware with MySQL session store
 app.use(
 	session({
-		secret: process.env.ACCESS_TOKEN, // FIXME: CHANGE THIS BEFORE UPLOADING
+		secret: process.env.ACCESS_TOKEN,
 		resave: true,
 		saveUninitialized: true,
 		store: sessionStore,
