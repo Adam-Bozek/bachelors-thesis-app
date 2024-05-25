@@ -19,7 +19,7 @@ const importAll = (requireContext) => {
 const imageFiles = importAll(require.context("./data/pictures", false, /\.(webp)$/));
 
 // Function to import audio files
-const audioFiles = importAll(require.context("./data/audio/", false, /\.(mp3)$/));
+const audioFiles = importAll(require.context("./data/audio", false, /\.(mp3)$/));
 
 // ImageRecognition component to handle displaying questions
 const ImageRecognition = ({ filename, category, jsonData, receiveUserAnswers }) => {
