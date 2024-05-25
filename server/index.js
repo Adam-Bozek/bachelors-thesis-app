@@ -23,7 +23,7 @@ const { authenticateUser } = require("./utils");
 const corsOptions = {
 	origin: (origin, callback) => {
 		// Check if the origin is allowed
-		if (!origin || origin === "https://bachelors-thesis-demo.netlify.app") {
+		if (!origin || origin === "https://bachelors-thesis-demo.netlify.app/") {
 			callback(null, true); // Allow the request
 		} else {
 			callback(null, true); // Allow the request
