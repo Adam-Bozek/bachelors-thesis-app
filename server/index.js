@@ -5,7 +5,7 @@ const cors = require("cors");
 const session = require("express-session");
 
 const app = express();
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 const fs = require("fs");
 const https = require("https");
