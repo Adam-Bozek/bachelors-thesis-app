@@ -11,6 +11,7 @@ const https = require("https");
 const crypto = require("crypto");
 const MySQLStore = require("express-mysql-session")(session);
 
+
 const { authenticateUser } = require("./utils");
 
 /** TODO LIST
@@ -21,7 +22,6 @@ const { authenticateUser } = require("./utils");
 
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 // IP address and port number on which application will run
 const IP_ADDRESS = "localhost";
