@@ -20,20 +20,6 @@ const { authenticateUser } = require("./utils");
  *  TODO: create a database table for storing api keys based on something
  */
 
-const corsOptions = {
-	origin: (origin, callback) => {
-		// Check if the origin is allowed
-		if (!origin || origin === "https://bachelors-thesis-demo.netlify.app") {
-			callback(null, true); // Allow the request
-		} else {
-			callback(new Error("Not allowed by CORS")); // Block the request
-		}
-	},
-	credentials: true, // Allow cookies to be sent with the request
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
