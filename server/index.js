@@ -46,7 +46,7 @@ const httpsServer = https.createServer(app);
 const DBConfig = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
 
 // Create a MySQL connection pool
-const connectionPool = mysql.createPool(DBConfig);
+const connectionPool = mysql.createConnection(DBConfig);
 
 // Database connection test
 connectionPool.getConnection((connectionError, connection) => {
