@@ -23,10 +23,10 @@ const { authenticateUser } = require("./utils");
 const corsOptions = {
 	origin: (origin, callback) => {
 		// Check if the origin is allowed
-		if (!origin || origin === "https://bachelors-thesis-demo.netlify.app/") {
+		if (!origin || origin === "*") {
 			callback(null, true); // Allow the request
 		} else {
-			callback(null, true); // Allow the request
+			callback(new Error("Not allowed by CORS")); // Block the request
 		}
 	},
 	credentials: true, // Allow cookies to be sent with the request
@@ -35,6 +35,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.options('*', cors())
 
 // IP address and port number on which application will run
 const IP_ADDRESS = "localhost";
