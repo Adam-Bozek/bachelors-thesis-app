@@ -43,7 +43,7 @@ const PORT = process.env.PORT || 3001;
 const httpsServer = https.createServer(app);
 
 // Database configuration
-const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
+const urlDB = `mysql://root:ilrSauktTDOwMglzywNpsqAOEoEewLGo@monorail.proxy.rlwy.net:52493/railway`;
 
 // Create a MySQL connection
 const connection = mysql.createConnection(urlDB);
