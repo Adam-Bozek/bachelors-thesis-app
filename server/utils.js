@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 // Function to authenticate user after retrieving user data from the database
 const authenticateUser = (results, password, request, response) => {
