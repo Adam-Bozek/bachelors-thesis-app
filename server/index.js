@@ -43,34 +43,40 @@ const PORT = process.env.PORT || 3001;
 const httpsServer = https.createServer(app);
 
 // Database configuration
-const DBConfig = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
+const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
 
-// Create a MySQL connection pool
-const connectionPool = mysql.createConnection(DBConfig);
+// Create a MySQL connection
+const connection = mysql.createConnection(urlDB);
 
-// Database connection test
-connectionPool.getConnection((connectionError, connection) => {
+connection.connect((connectionError) => {
 	if (connectionError) {
-		console.error("DATABASE CONNECTION: Unable to get a connection from the pool:", connectionError);
+		console.error("DATABASE CONNECTION: Unable to connect to the database:", connectionError);
 		process.exit(1);
 	}
-
 	console.log("DATABASE CONNECTION: Connected to the database successfully.");
-
-	// Release the connection back to the pool
-	connection.release();
 });
 
-// Handle database connection errors
-connectionPool.on("error", (poolError) => {
-	console.error("DATABASE CONNECTION: Pool error:", poolError);
-	process.exit(1);
+// Handle connection errors
+connection.on("error", (connectionError) => {
+	console.error("DATABASE CONNECTION: Connection error:", connectionError);
+	if (connectionError.code === "PROTOCOL_CONNECTION_LOST") {
+		// Reconnect if the connection is lost
+		connection.connect((err) => {
+			if (err) {
+				console.error("DATABASE CONNECTION: Unable to reconnect to the database:", err);
+				process.exit(1);
+			}
+			console.log("DATABASE CONNECTION: Reconnected to the database successfully.");
+		});
+	} else {
+		throw connectionError;
+	}
 });
 
 // Setup MySQL session store
 const sessionStore = new MySQLStore({
 		clearExpired: true,
-		checkExpirationInterval: 1000 * 60 * 1, //  1 minute
+		checkExpirationInterval: 1000 * 60 * 1, // 1 minute
 		expiration: 1000 * 60 * 60 * 1, // 1 hour
 		createDatabaseTable: true,
 		schema: {
@@ -82,7 +88,7 @@ const sessionStore = new MySQLStore({
 			},
 		},
 	},
-	connectionPool,
+	connection,
 );
 
 // Use express-session middleware with MySQL session store
@@ -131,19 +137,15 @@ app.post(userRegisterEndpoint, (request, response) => {
 	const email = request.body.email;
 	const hashedPassword = request.body.password;
 
-	connectionPool.query(
-		"INSERT INTO user_data (name, surname, email, password) VALUES (?, ?, ?, ?)",
-		[name, surname, email, hashedPassword],
-		(err, res) => {
-			if (err) {
-				console.error("USER REGISTRATION: Internal Server Error" + err.message);
-				response.status(500).send("Internal Server Error");
-			} else {
-				console.log("USER REGISTRATION: User created successfully");
-				response.status(200).send("User created successfully");
-			}
-		},
-	);
+	connection.query("INSERT INTO user_data (name, surname, email, password) VALUES (?, ?, ?, ?)", [name, surname, email, hashedPassword], (err, res) => {
+		if (err) {
+			console.error("USER REGISTRATION: Internal Server Error" + err.message);
+			response.status(500).send("Internal Server Error");
+		} else {
+			console.log("USER REGISTRATION: User created successfully");
+			response.status(200).send("User created successfully");
+		}
+	});
 });
 
 // Creating an API endpoint for authentication of Login
@@ -151,7 +153,7 @@ app.get(userLoginEndpoint, (request, response) => {
 	const email = request.query.param1;
 	const password = request.query.param2;
 
-	connectionPool.query("SELECT * FROM user_data WHERE email = ?", [email], (err, results) => {
+	connection.query("SELECT * FROM user_data WHERE email = ?", [email], (err, results) => {
 		if (err) {
 			console.err("USER LOGIN: " + err);
 			response.status(500).send("Internal Server Error");
@@ -166,7 +168,7 @@ app.get(userLoginEndpoint, (request, response) => {
 app.post(verifyUserExistenceEndpoint, (request, response) => {
 	const email = request.body.email;
 
-	connectionPool.query("SELECT * FROM user_data WHERE email = ?", [email], (err, results) => {
+	connection.query("SELECT * FROM user_data WHERE email = ?", [email], (err, results) => {
 		if (err) {
 			console.error("VERIFY USER: " + err);
 			response.status(500).send("USER EXISTENCE: Internal Server Error");
