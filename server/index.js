@@ -99,43 +99,13 @@ app.use(
 	}),
 );
 
-// Function to generate random API key
-// On return there should be a random API key
-const generateApiKey = () => {
-	const apiKey = crypto.randomBytes(32).toString("hex");
-	console.log("API KEY GEN: API key generated: " + apiKey);
-	return apiKey;
-};
-
-// Path to the file storing the API key
-const apiKeyFilePath = "./keys/api-key.txt";
-
-// Function to read the API key from the file or generate a new one if not present
-const readOrGenerateApiKey = () => {
-	try {
-		// Try to read the API key from the file
-		const apiKey = fs.readFileSync(apiKeyFilePath, "utf8");
-		console.log("API KEY READ: API key read from file: " + apiKey);
-		return apiKey;
-	} catch (error) {
-		// File not found or other error, generate a new API key
-		const newApiKey = generateApiKey();
-		// Save the new API key to the file
-		fs.writeFileSync(apiKeyFilePath, newApiKey, "utf8");
-		return newApiKey;
-	}
-};
-
-// Storing created or read API key
-const generatedApiKey = readOrGenerateApiKey();
-
 // Middleware function authenticating API access
 const apiMiddleware = (request, response, next) => {
 	try {
 		const apiKey = request.headers["api-key"];
 
 		// Check if API key is present and valid
-		if (apiKey && apiKey === generatedApiKey) {
+		if (apiKey && apiKey === process.env.API_KEY) {
 			next();
 		} else {
 			response.status(401).send("API AUTH: Unauthorized - Invalid API Key");
