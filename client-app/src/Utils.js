@@ -5,7 +5,7 @@ import Axios from "axios";
 const apiKey = process.env.REACT_APP_API_KEY;
 
 export const webProtocol = "https";
-export const apiIPAddress = "localhost:3001";
+export const apiIPAddress = process.env.REACT_APP_API_ADDRESS;
 
 export const year = new Date().getFullYear();
 
