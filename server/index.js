@@ -8,7 +8,7 @@ const app = express();
 const mysql = require("mysql2");
 
 const fs = require("fs");
-const http = require("http");
+const https = require("https");
 const crypto = require("crypto");
 const MySQLStore = require("express-mysql-session")(session);
 
@@ -42,7 +42,7 @@ app.options('*', cors())
 const IP_ADDRESS = "localhost";
 const PORT = process.env.PORT || 3001;
 
-const httpsServer = http.createServer(app);
+const httpsServer = https.createServer(app);
 
 // Database configuration
 const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
