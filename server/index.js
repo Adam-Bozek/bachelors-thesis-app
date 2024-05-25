@@ -40,12 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 const IP_ADDRESS = "localhost";
 const PORT = process.env.PORT || 3001;
 
-// Credentials for https protocol
-const privateKey = fs.readFileSync(`./keys/localhost/${IP_ADDRESS}-key.pem`, "utf8");
-const certificate = fs.readFileSync(`./keys/localhost/${IP_ADDRESS}.pem`, "utf8");
-const credentials = { key: privateKey, cert: certificate };
-
-const httpsServer = https.createServer(credentials, app);
+const httpsServer = https.createServer(app);
 
 // Database configuration
 const DBConfig = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
@@ -246,6 +241,6 @@ app.get(userLogoutEndpoint, (request, response) => {
 	}
 });
 
-httpsServer.listen(PORT, IP_ADDRESS, () => {
+httpsServer.listen(PORT, () => {
 	console.log(`Server is running on https://${IP_ADDRESS}:${PORT}`);
 });
