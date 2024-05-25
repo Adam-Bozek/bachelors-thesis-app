@@ -23,7 +23,7 @@ const { authenticateUser } = require("./utils");
 const corsOptions = {
 	origin: (origin, callback) => {
 		// Check if the origin is allowed
-	if (!origin || origin === "https://localhost:3000") {
+		if (!origin || origin === "https://localhost:3000") {
 			callback(null, true); // Allow the request
 		} else {
 			callback(new Error("Not allowed by CORS")); // Block the request
@@ -48,12 +48,7 @@ const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials, app);
 
 // Database configuration
-const DBConfig = {
-	host: process.env.DB_HOST,
-	user: process.env.DB_USER,
-	password: process.env.DB_PASSWORD,
-	database: process.env.DB_DATABASE,
-};
+const DBConfig = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
 
 // Create a MySQL connection pool
 const connectionPool = mysql.createPool(DBConfig);
