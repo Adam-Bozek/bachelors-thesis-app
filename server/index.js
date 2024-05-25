@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const session = require("express-session");
 
 const app = express();
@@ -11,7 +12,6 @@ const https = require("https");
 const crypto = require("crypto");
 const MySQLStore = require("express-mysql-session")(session);
 
-
 const { authenticateUser } = require("./utils");
 
 /** TODO LIST
@@ -20,8 +20,21 @@ const { authenticateUser } = require("./utils");
  *  TODO: create a database table for storing api keys based on something
  */
 
+const corsOptions = {
+	origin: (origin, callback) => {
+		// Check if the origin is allowed
+		if (!origin || origin === "https://bachelors-thesis-demo.netlify.app") {
+			callback(null, true); // Allow the request
+		} else {
+			callback(null, true); // Allow the request
+		}
+	},
+	credentials: true, // Allow cookies to be sent with the request
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // IP address and port number on which application will run
 const IP_ADDRESS = "localhost";
