@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Context } from "../ContextProvider";
 
-
 import Footer from "./Footer";
 import Header from "./Header";
 
