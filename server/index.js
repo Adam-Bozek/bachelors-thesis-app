@@ -3,8 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
-
-const app = express();
 const mysql = require("mysql2");
 
 const fs = require("fs");
@@ -14,18 +12,14 @@ const MySQLStore = require("express-mysql-session")(session);
 
 const { authenticateUser } = require("./utils");
 
-/** TODO LIST
- *  TODO: handle wrong inputs to the endpoints properly
- *  TODO: add site where API keys will be generated
- *  TODO: create a database table for storing api keys based on something
- */
+const app = express();
 
 // CORS configuration
 const corsOptions = {
-	origin: '*', // Allow all origins
+	origin: "https://stupendous-puppy-d6df50.netlify.app", // Allow specific origin
 	credentials: true, // Allow cookies to be sent with the request
-	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-	allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+	methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+	allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
 };
 
 app.use(cors(corsOptions));
@@ -33,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Enable pre-flight across-the-board
-app.options('*', cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 // IP address and port number on which application will run
 const PORT = process.env.PORT || 3001;
@@ -212,5 +206,5 @@ app.get(userLogoutEndpoint, (request, response) => {
 });
 
 httpsServer.listen(PORT, () => {
-	console.log(`Server is running on ${PORT}`);
+	console.log(`Server is running on https://localhost:${PORT}`);
 });
