@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 const mysql = require("mysql2");
+const cors = require("cors");
 
 const fs = require("fs");
 const https = require("https");
@@ -15,6 +16,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Use the CORS middleware
+app.use(cors());
 
 // IP address and port number on which application will run
 const PORT = process.env.PORT || 3001;
@@ -134,7 +138,7 @@ app.get(userLoginEndpoint, (request, response) => {
 
 	connection.query("SELECT * FROM user_data WHERE email = ?", [email], (err, results) => {
 		if (err) {
-			console.err("USER LOGIN: " + err);
+			console.error("USER LOGIN: " + err);
 			response.status(500).send("Internal Server Error");
 		} else {
 			// Definition of this function and functions which this function uses are located in utils.js
