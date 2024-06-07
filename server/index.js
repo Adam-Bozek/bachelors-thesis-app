@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const cors = require("cors");
 const session = require("express-session");
 const mysql = require("mysql2");
 
@@ -14,20 +13,8 @@ const { authenticateUser } = require("./utils");
 
 const app = express();
 
-// CORS configuration
-const corsOptions = {
-	origin: "https://stupendous-puppy-d6df50.netlify.app", // Allow specific origin
-	credentials: true, // Allow cookies to be sent with the request
-	methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-	allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-};
-
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// Enable pre-flight across-the-board
-app.options("*", cors(corsOptions));
 
 // IP address and port number on which application will run
 const PORT = process.env.PORT || 3001;
