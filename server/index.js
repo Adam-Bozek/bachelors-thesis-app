@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const session = require("express-session");
 
 const app = express();
@@ -19,11 +20,22 @@ const { authenticateUser } = require("./utils");
  *  TODO: create a database table for storing api keys based on something
  */
 
+// CORS configuration
+const corsOptions = {
+	origin: '*', // Allow all origins
+	credentials: true, // Allow cookies to be sent with the request
+	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+	allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Enable pre-flight across-the-board
+app.options('*', cors(corsOptions));
+
 // IP address and port number on which application will run
-const IP_ADDRESS = "localhost";
 const PORT = process.env.PORT || 3001;
 
 const httpsServer = https.createServer(app);
@@ -60,8 +72,7 @@ connection.on("error", (connectionError) => {
 });
 
 // Setup MySQL session store
-const sessionStore = new MySQLStore(
-	{
+const sessionStore = new MySQLStore({
 		clearExpired: true,
 		checkExpirationInterval: 1000 * 60 * 1, // 1 minute
 		expiration: 1000 * 60 * 60 * 1, // 1 hour
