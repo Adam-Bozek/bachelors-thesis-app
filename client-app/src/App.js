@@ -9,7 +9,7 @@ import Login from "./components/public/Login";
 import Registration from "./components/public/Registration";
 
 /* Private Routes */
-import Dashboard from "./components/private/Dashboard";
+import Dashboard from "./components/private/DashBoard";
 import Controller from "./components/private/game/Controller";
 
 const App = () => {
