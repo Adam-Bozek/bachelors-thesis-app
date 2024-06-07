@@ -18,11 +18,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Use the CORS middleware
+// Configure CORS to allow requests from your frontend domain
 app.use(cors({
 	origin: 'https://stupendous-puppy-d6df50.netlify.app',
-	methods: 'GET,POST,PUT,DELETE',
-	allowedHeaders: 'Content-Type,Authorization,api-key'
+	methods: ['GET', 'POST'], // Include the methods used in your requests
+	allowedHeaders: ['Content-Type', 'Authorization', 'api-key'],
+	preflightContinue: false, // Allow preflight requests to pass through
+	optionsSuccessStatus: 204 // Set the preflight success status to 204
 }));
+
 
 // IP address and port number on which application will run
 const PORT = process.env.PORT || 3001;
