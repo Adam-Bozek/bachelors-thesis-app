@@ -212,5 +212,5 @@ app.get(userLogoutEndpoint, (request, response) => {
 });
 
 httpsServer.listen(PORT, () => {
-	console.log(`Server is running on https://${IP_ADDRESS}:${PORT}`);
+	console.log(`Server is running on ${PORT}`);
 });
