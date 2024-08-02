@@ -54,7 +54,7 @@ const Controller = () => {
 
 	// Function to call when all categories are displayed
 	const handleAllCategoriesDisplayed = () => {
-		navigate("/Dashboard");
+		navigate("/DashBoard");
 	};
 
 	// useEffect hook to call the function when all categories are displayed

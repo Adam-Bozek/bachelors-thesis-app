@@ -1,25 +1,20 @@
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { apiIPAddress, webProtocol, logoutUser } from "../../Utils";
-
 import { Context } from "../ContextProvider";
 
 const Header = ({ pageName }) => {
 	const { setSelectionAnswers, setRecognitionAnswers } = useContext(Context);
 	const navigate = useNavigate();
 
-	const { setIsLoggedIn } = useContext(Context);
-
-	const handleLogout = () => {
-		const apiAddress = `${webProtocol}://${apiIPAddress}/userLogout`;
-		logoutUser(apiAddress, navigate);
-		setIsLoggedIn(false); //
-	};
-
 	const handleReset = () => {
 		setSelectionAnswers([]);
 		setRecognitionAnswers([]);
+	};
+
+	const handlePlayGame = () => {
+		handleReset();
+		navigate("/Controller");
 	};
 
 	return (
@@ -32,16 +27,9 @@ const Header = ({ pageName }) => {
 						</NavLink>
 					</div>
 
-					<ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-						<li className="nav-item">
-							<NavLink to="/Controller" className="nav-link active" aria-current="page" onClick={handleReset}>
-								Spustiť hru
-							</NavLink>
-						</li>
-					</ul>
 					<div className="col-md-3 text-end">
-						<button type="button" className="btn btn-outline-primary me-2" onClick={handleLogout}>
-							Odhlásiť
+						<button type="button" className="btn btn-outline-primary me-2" onClick={handlePlayGame}>
+							Spustiť hru
 						</button>
 					</div>
 				</div>

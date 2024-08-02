@@ -4,7 +4,6 @@ export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
 	// Defining state variables for isLoggedInValue, selectionAnswers, and recognitionAnswers
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [selectionAnswers, setSelectionAnswers] = useState([]);
 	const [recognitionAnswers, setRecognitionAnswers] = useState([]);
 
@@ -12,8 +11,6 @@ export const ContextProvider = ({ children }) => {
 	return (
 		<Context.Provider
 			value={{
-				isLoggedIn,
-				setIsLoggedIn,
 				selectionAnswers,
 				setSelectionAnswers,
 				recognitionAnswers,

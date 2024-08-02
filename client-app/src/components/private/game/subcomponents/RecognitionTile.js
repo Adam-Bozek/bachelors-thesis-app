@@ -39,7 +39,7 @@ function RecognitionTile({ question, imgLink, audioFile, correctAnswer, moveToNe
 
 	// Return message if browser doesn't support speech recognition or microphone is unavailable
 	if (!browserSupportsSpeechRecognition || !isMicrophoneAvailable) {
-		return <span>Tvoj internetový prehliadač nepodporuje rozpoznávanie zvuku alebo mikrofón.</span>;
+		alert( "Tvoj internetový prehliadač nepodporuje rozpoznávanie zvuku alebo mikrofón" );
 	}
 
 	// Function to toggle play/pause of audio

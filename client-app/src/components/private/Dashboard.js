@@ -206,8 +206,34 @@ const Dashboard = () => {
 				getAnswersForCategory("street", selectionAnswers).length === 0 ||
 				getAnswersForCategory("street", recognitionAnswers).length === 0 ? (
 					<>
-						<h1> Zatiaľ žiadne výsledky </h1>
-						<p> Pre zobrazenie výsledkov dokončte hru </p>
+						<main className="container mt-5">
+							<div className="text-center">
+								<h1 className="display-4">Vitajte!</h1>
+								<p className="lead">Táto webová aplikácia využíva skrátenú verziu testu TEKOS II na hodnotenie detí.</p>
+							</div>
+
+							<div className="mt-5">
+								<div className="alert alert-warning" role="alert">
+									<strong>Upozornenie! </strong>
+									Táto webová aplikácia bola optimalizovaná na rozlíšenie displeja <strong> 1920 x 1080 </strong>px. <br/>
+								</div>
+
+								<p className="mb-4">Výsledky testu nie sú odosielané do databázy a zostávajú len vo webovom prehliadači.</p>
+
+								<div className="card mt-5">
+									<div className="card-body">
+										<p className="card-text">
+											Táto webová aplikácia je súčasťou praktickej časti bakalárskej práce ktorá bola vytvorená na Technickej univerzite v Košiciach v roku v roku 2023/2024 na
+											tému:
+											<br />
+											<strong>Gamifikácia terapeutických nástrojov pre oblasť rečových a sluchových porúch.</strong>
+											<br />
+											Vedúci práce: doc. Ing. Stanislav Ondáš, PhD.
+										</p>
+									</div>
+								</div>
+							</div>
+						</main>
 					</>
 				) : (
 					<>
@@ -242,6 +268,8 @@ const Dashboard = () => {
 							width={400}
 							height={200}
 						/>
+
+						<p> <strong> Pokus je možné opakovať znovu spustením hry. odpovede sa neuložia. </strong> </p>
 					</>
 				)}
 			</div>
