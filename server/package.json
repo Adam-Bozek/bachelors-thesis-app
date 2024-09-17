@@ -4,7 +4,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "escape-html": "^1.0.3",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "express-mysql-session": "^3.0.2",
     "express-session": "^1.17.3",
     "mysql": "^2.18.1",
